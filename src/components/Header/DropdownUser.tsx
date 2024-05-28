@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,Navigate } from 'react-router-dom';
 
 import UserOne from '../../images/user/user-01.png';
 
@@ -8,6 +8,14 @@ const DropdownUser = () => {
 
   const trigger = useRef<any>(null);
   const dropdown = useRef<any>(null);
+
+
+  function Logout(){
+    localStorage.removeItem("token")
+
+    return <Navigate to="/auth/signup"/>
+
+  }
 
   // close on click outside
   useEffect(() => {
@@ -171,7 +179,7 @@ const DropdownUser = () => {
               fill=""
             />
           </svg>
-          Log Out
+          <span onClick={()=>Logout()}>Log Out</span>
         </button>
       </div>
       {/* <!-- Dropdown End --> */}
