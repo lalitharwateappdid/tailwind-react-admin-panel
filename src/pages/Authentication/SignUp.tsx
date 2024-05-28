@@ -10,7 +10,7 @@ const SignUp: React.FC = () => {
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
 
-  async function submitUser(event) {
+  async function submitUser() {
     event.preventDefault(); 
   try {
     const response = await axios.post(`${apiLink}auth/login`, {
