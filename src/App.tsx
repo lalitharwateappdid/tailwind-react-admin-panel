@@ -34,6 +34,10 @@ import AddHomeContent from './pages/Add/AddHomeContent';
 import UpdateHomeContent from './pages/Update/UpdateHomeContent';
 
 
+// private Router
+import PrivateRoute from './middleware/PrivateRouter';
+
+
 // toast configuration method
 
 
@@ -68,8 +72,10 @@ function App() {
           path="/calendar"
           element={
             <>
+            <PrivateRoute>
               <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <Calendar />
+              </PrivateRoute>
             </>
           }
         />

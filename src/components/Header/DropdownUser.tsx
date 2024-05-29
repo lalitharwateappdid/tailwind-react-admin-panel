@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link,Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 import UserOne from '../../images/user/user-01.png';
 
+// const navigate = useNavigate();
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -13,7 +15,7 @@ const DropdownUser = () => {
   function Logout(){
     localStorage.removeItem("token")
 
-    return <Navigate to="/auth/signup"/>
+    // return navigate("/auth/signup")
 
   }
 

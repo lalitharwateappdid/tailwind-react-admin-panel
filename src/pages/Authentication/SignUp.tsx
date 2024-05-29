@@ -24,6 +24,8 @@ const SignUp: React.FC = () => {
 
     if (response.status === 200){
       localStorage.setItem("token",response.data.token)
+      console.log(response.data)
+      localStorage.setItem("user",response.data.user)
       setEmail('');
       setPassword('')  
     }
