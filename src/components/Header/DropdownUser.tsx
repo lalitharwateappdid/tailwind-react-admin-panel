@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import UserOne from '../../images/user/user-01.png';
 
-// const navigate = useNavigate();
 const DropdownUser = () => {
+  const navigate = useNavigate()
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [username,setUsername] = useState("")
 
   const trigger = useRef<any>(null);
   const dropdown = useRef<any>(null);
@@ -14,9 +15,9 @@ const DropdownUser = () => {
 
   function Logout(){
     localStorage.removeItem("token")
-
-    // return navigate("/auth/signup")
-
+    localStorage.removeItem("user_name");
+    localStorage.removeItem("user_id");
+    navigate("/auth/signin")
   }
 
   // close on click outside
@@ -45,6 +46,14 @@ const DropdownUser = () => {
     return () => document.removeEventListener('keydown', keyHandler);
   });
 
+  useEffect(()=>{
+    const name = localStorage.getItem("user_name");
+    setUsername(name)
+  },[])
+
+  // getting user name and id
+  
+
   return (
     <div className="relative">
       <Link
@@ -54,8 +63,8 @@ const DropdownUser = () => {
         to="#"
       >
         <span className="hidden text-right lg:block">
-          <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+          <span className="uppercase block text-sm font-medium text-black dark:text-white">
+            {username}
           </span>
           <span className="block text-xs">UX Designer</span>
         </span>

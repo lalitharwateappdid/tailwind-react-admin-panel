@@ -63,8 +63,10 @@ function App() {
           index
           element={
             <>
+            <PrivateRoute>
               <PageTitle title="eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <ECommerce />
+              </PrivateRoute>
             </>
           }
         />
@@ -83,8 +85,10 @@ function App() {
           path="/profile"
           element={
             <>
+            <PrivateRoute>
               <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <Profile />
+              </PrivateRoute>
             </>
           }
         />
@@ -110,8 +114,10 @@ function App() {
           path="/media"
           element={
             <>
+            <PrivateRoute>
               <PageTitle title="Youtube Media" />
               <Media />
+              </PrivateRoute>
             </>
           }
         />
@@ -170,7 +176,7 @@ function App() {
           }
         />
 
-
+            
         <Route path='/add-book' element={<AddBook />} />
 
           {/* youtube media routes */}

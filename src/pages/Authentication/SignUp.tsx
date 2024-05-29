@@ -3,9 +3,11 @@ import "../../css/form.css"
 import { useState } from 'react';
 import axios from 'axios';
 import { apiLink } from '../../api_link';
+import { useNavigate } from 'react-router-dom';
 
 
 const SignUp: React.FC = () => {
+    const navigate = useNavigate()
 
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
@@ -24,10 +26,14 @@ const SignUp: React.FC = () => {
 
     if (response.status === 200){
       localStorage.setItem("token",response.data.token)
-      console.log(response.data)
-      localStorage.setItem("user",response.data.user)
+      console.log(response.data.data)
+      localStorage.setItem("user_name",response.data.data.name)
+      localStorage.setItem("user_id",response.data.data.id)
       setEmail('');
-      setPassword('')  
+      setPassword('');
+      navigate("/")
+      
+
     }
   } catch (error) {
     console.error('Error submitting user:', error);
