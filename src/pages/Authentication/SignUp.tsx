@@ -6,7 +6,6 @@ import { apiLink } from '../../api_link';
 import { useNavigate } from 'react-router-dom';
 
 
-
 const SignUp: React.FC = () => {
   const navigate = useNavigate()
 
@@ -393,7 +392,7 @@ const SignUp: React.FC = () => {
 
   return (
     <>
-      {/* <body className="align">
+      <body className="align">
 
         <div className="grid align__item">
 
@@ -414,7 +413,7 @@ const SignUp: React.FC = () => {
               </div>
 
               <div className="form__field">
-                <input type="submit" onClick={()=>submitUser()} value="Sign Up" />
+                <input type="submit" onClick={() => submitUser()} value="Sign Up" />
               </div>
 
             </form>
@@ -425,23 +424,7 @@ const SignUp: React.FC = () => {
 
         </div>
 
-      </body> */}
-
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"></link>
-      <div className=" d-flex justify-content-center">
-        <form>
-          <div className="form-group">
-            <label >Email address</label>
-            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-          </div>
-          <div className="form-group">
-            <label >Password</label>
-            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-          </div>
-
-          <button type="submit" className="btn btn-primary">Login</button>
-        </form>
-      </div>
+      </body>
     </>
   )
 };
