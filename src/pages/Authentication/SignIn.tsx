@@ -14,13 +14,13 @@ const SignIn: React.FC = () => {
   const [password, setPassword] = useState("")
 
   async function submitUser() {
-    console.log(email,password)
+    console.log(email, password)
     event.preventDefault();
     try {
       const response = await axios.post(`${apiLink}auth/login`, {
         email: email,
         password: password
-      },{
+      }, {
         headers: {
           "Content-Type": "application/json"
         }
@@ -50,19 +50,19 @@ const SignIn: React.FC = () => {
         <div className="flex flex-wrap items-center justify-center h-screen">
 
 
-          <div className="w-full  border-stroke dark:border-strokedark xl:w-1/2 xl:border-none">
+          <div className="w-full  border-stroke dark:border-strokedark xl:w-1/2 xl:border-none shadow-xl rounded-lg	">
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
               <div className="text-center">
                 <div className="flex justify-center">
                   <img src={Logo} className='w-80' alt="Brand" />
                 </div>
                 {/* <span className="mb-1.5 block font-medium">Start for free</span> */}
-                <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
+                {/* <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                   Sign In to Sadhana
-                </h2>
+                </h2> */}
               </div>
 
-              <form>
+              <form >
                 <div className="mb-4">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
                     Email
