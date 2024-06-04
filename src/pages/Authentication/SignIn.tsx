@@ -4,6 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { apiLink } from '../../api_link';
 import { useNavigate } from 'react-router-dom';
+import Notify from '../../components/toast_notify/Notify'
 
 import Logo from '../../images/logo/logo_sadhannandadip.png';
 
@@ -14,7 +15,7 @@ const SignIn: React.FC = () => {
   const [password, setPassword] = useState("")
 
   async function submitUser() {
-    console.log(email, password)
+    // console.log(email, password)
     event.preventDefault();
     try {
       const response = await axios.post(`${apiLink}auth/login`, {
@@ -28,17 +29,21 @@ const SignIn: React.FC = () => {
 
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token)
-        console.log(response.data.data)
+        // console.log(response.data.data)
+
         localStorage.setItem("user_name", response.data.data.name)
         localStorage.setItem("user_id", response.data.data.id)
         setEmail('');
         setPassword('');
+
         navigate("/")
 
 
       }
+
     } catch (error) {
       console.error('Error submitting user:', error);
+
       throw error; // Rethrow the error for handling in the calling code
     }
   }
