@@ -32,6 +32,7 @@ import UpdateSubCategory from './pages/Update/UpdateSubCategory';
 import HomeContent from './pages/Home/HomeContent';
 import AddHomeContent from './pages/Add/AddHomeContent';
 import UpdateHomeContent from './pages/Update/UpdateHomeContent';
+import Ebook from './pages/Home/Ebook';
 
 
 // private Router
@@ -63,9 +64,9 @@ function App() {
           index
           element={
             <>
-            <PrivateRoute>
-              <PageTitle title="eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <ECommerce />
+              <PrivateRoute>
+                <PageTitle title="eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <ECommerce />
               </PrivateRoute>
             </>
           }
@@ -74,9 +75,9 @@ function App() {
           path="/calendar"
           element={
             <>
-            <PrivateRoute>
-              <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Calendar />
+              <PrivateRoute>
+                <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <Calendar />
               </PrivateRoute>
             </>
           }
@@ -85,9 +86,9 @@ function App() {
           path="/profile"
           element={
             <>
-            <PrivateRoute>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Profile />
+              <PrivateRoute>
+                <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <Profile />
               </PrivateRoute>
             </>
           }
@@ -114,9 +115,9 @@ function App() {
           path="/media"
           element={
             <>
-            <PrivateRoute>
-              <PageTitle title="Youtube Media" />
-              <Media />
+              <PrivateRoute>
+                <PageTitle title="Youtube Media" />
+                <Media />
               </PrivateRoute>
             </>
           }
@@ -176,13 +177,13 @@ function App() {
           }
         />
 
-            
+
         <Route path='/add-book' element={<AddBook />} />
 
-          {/* youtube media routes */}
-        
+        {/* youtube media routes */}
+
         <Route path='/add-media' element={<AddMedia />} />
-        <Route path='/edit-media/:id' element={<UpdateMedia/>} />
+        <Route path='/edit-media/:id' element={<UpdateMedia />} />
 
 
         {/* quote routes */}
@@ -197,55 +198,65 @@ function App() {
           }
         />
         <Route path='/add-quote' element={<AddQuotes />} />
-        <Route path='/edit-quote/:id' element={<UpdateQuote/>} />
+        <Route path='/edit-quote/:id' element={<UpdateQuote />} />
 
 
 
         {/* Book routes */}
         <Route
-        path="/books" element={
-          <>
-            <PageTitle title="Books" />
+          path="/books" element={
+            <>
+              <PageTitle title="Books" />
               <Books />
-          </>
-        }
+            </>
+          }
         />
         <Route path='/add-book' element={<AddBook />} />
-        <Route path='/edit-book/:id' element={<UpdateBook/>} />
+        <Route path='/edit-book/:id' element={<UpdateBook />} />
 
 
 
         {/* category routes */}
         <Route path='/category' element={
           <>
-             <PageTitle title="Category" />
-              <Category />
+            <PageTitle title="Category" />
+            <Category />
           </>
         } />
         <Route path='/add-category' element={<AddCategory />} />
-        <Route path='/edit-category/:id' element={<UpdateCategory/>} />
+        <Route path='/edit-category/:id' element={<UpdateCategory />} />
 
 
 
         {/* sub categories */}
         <Route path='/sub-category' element={
           <>
-             <PageTitle title="Sub Category" />
-              <SubCategory />
+            <PageTitle title="Sub Category" />
+            <SubCategory />
           </>
         } />
         <Route path='/add-sub-category' element={<AddSubCategory />} />
-        <Route path='/edit-sub-category/:id' element={<UpdateSubCategory/>} />
+        <Route path='/edit-sub-category/:id' element={<UpdateSubCategory />} />
 
         {/* home content route */}
         <Route path='/home-content' element={
           <>
-             <PageTitle title="Home Content" />
-              <HomeContent />
+            <PageTitle title="Home Content" />
+            <HomeContent />
           </>
         } />
         <Route path='/add-home-content' element={<AddHomeContent />} />
-        <Route path='/edit-home-content/:id' element={<UpdateHomeContent/>} />
+        <Route path='/edit-home-content/:id' element={<UpdateHomeContent />} />
+
+
+        {/* ebook path */}
+        <Route path='/ebook' element={
+          <>
+            <PageTitle title="Ebook" />
+            <Ebook />
+          </>
+
+        } />
 
       </Routes>
     </>
