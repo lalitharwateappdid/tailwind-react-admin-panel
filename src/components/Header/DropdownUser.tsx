@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-import UserOne from '../../images/user/user-01.png';
 
 const DropdownUser = () => {
   const navigate = useNavigate()
@@ -64,7 +63,7 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="uppercase block text-sm font-medium text-black dark:text-white">
-            {username}
+            {username} 
           </span>
           <span className="block text-xs">Admin</span>
         </span>
