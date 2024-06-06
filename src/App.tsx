@@ -37,6 +37,7 @@ import Ebook from './pages/Home/Ebook';
 
 // private Router
 import PrivateRoute from './middleware/PrivateRouter';
+import AddEbook from './pages/Add/AddEbook';
 
 
 // toast configuration method
@@ -255,8 +256,10 @@ function App() {
             <PageTitle title="Ebook" />
             <Ebook />
           </>
-
-        } />
+        
+        
+      } />
+      <Route path="/add-ebook" element={<AddEbook/>}/>
 
       </Routes>
     </>

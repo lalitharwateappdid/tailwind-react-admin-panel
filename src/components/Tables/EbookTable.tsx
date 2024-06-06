@@ -15,7 +15,7 @@ function EbookTable() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch(`${apiLink}ebooks/get`);
+            const response = await fetch(`${apiLink}ebook/get`);
             const data = await response.json();
             console.log(data);
             
@@ -98,12 +98,17 @@ function EbookTable() {
             selector: row => row.description,
         },
         {
-            name: 'Pages in Book',
-            selector: row => row.pages_in_books,
+            name: 'Author Name',
+            selector: row => row.authorName,
         },
         {
-            name: 'Price',
-            selector: row => row.price,
+            name: 'Cover Path',
+            selector: row => row.coverPath,
+        },
+
+        {
+            name: 'PDF Path',
+            selector: row => row.pdfPath,
         },
        
         {
@@ -120,7 +125,7 @@ function EbookTable() {
     return (
         <>
             <div className="float-right mb-4">
-                <Link to="/add-book" className="bg-primary text-white px-3 py-2 rounded-md hover:opacity-65">Add</Link>
+                <Link to="/add-ebook" className="bg-primary text-white px-3 py-2 rounded-md hover:opacity-65">Add</Link>
             </div>
             <DataTable
                 // title="Books"

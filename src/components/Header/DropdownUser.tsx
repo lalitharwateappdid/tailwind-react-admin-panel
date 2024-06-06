@@ -70,7 +70,8 @@ const DropdownUser = () => {
         </span>
 
         <span className="h-12 w-12 rounded-full">
-          <img src={UserOne} alt="User" />
+          
+          <img className='rounded-xl' src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1717669382~exp=1717669982~hmac=8f8bddef57ecad29e2e927e922da4730adb8a0605661b133c166f9887d2c526d" alt="User" />
         </span>
 
         <svg
