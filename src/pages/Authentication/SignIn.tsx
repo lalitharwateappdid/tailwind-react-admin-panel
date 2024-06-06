@@ -5,7 +5,7 @@ import axios from 'axios';
 import { apiLink } from '../../api_link';
 import { useNavigate } from 'react-router-dom';
 import Notify from '../../components/toast_notify/Notify'
-
+import Swal from 'sweetalert2';
 import Logo from '../../images/logo/logo_sadhannandadip.png';
 
 
@@ -27,24 +27,43 @@ const SignIn: React.FC = () => {
         }
       });
 
+      
+      
+
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token)
-        // console.log(response.data.data)
+        console.log(response.data.token)
 
         localStorage.setItem("user_name", response.data.data.name)
         localStorage.setItem("user_id", response.data.data.id)
         setEmail('');
         setPassword('');
-
+      //   Swal.fire({
+      //     title: "Deleted!",
+      //     text: "Your file has been deleted.",
+      //     icon: "success"
+      // });
         navigate("/")
 
 
       }
 
-    } catch (error) {
-      console.error('Error submitting user:', error);
+      if(response.statusMessage == false){
+        Swal.fire({
+          title: "Failed!",
+          text: "Username or Password Incorrect",
+          icon: "danger"
+      });
+      }
 
-      throw error; // Rethrow the error for handling in the calling code
+    } catch (error) {
+      // console.error('Error submitting user:', error);
+      Swal.fire({
+        title: "Failed!",
+        text: "Invalid Credentials",
+        icon: "error"
+    });
+      // throw error; // Rethrow the error for handling in the calling code
     }
   }
   return (

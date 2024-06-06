@@ -25,6 +25,8 @@ const SignUp: React.FC = () => {
         }
       });
 
+      console.log(response)
+
       if (response) {
        
         localStorage.setItem("token", response.data.token)
