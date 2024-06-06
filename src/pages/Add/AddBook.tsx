@@ -23,7 +23,7 @@ const AddBook = () => {
             const response = await axios.post(`${apiLink}books/create`, {
                 name: name,
                 description:description,
-                pages_in_book: pages_in_book,
+                pages_in_books: pages_in_book,
                 price: price,
                
             });

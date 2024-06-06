@@ -17,6 +17,7 @@ function ListTable() {
         try {
             const response = await fetch(`${apiLink}quote/get`);
             const data = await response.json();
+            console.log(data)
             setApiData(data.data);
         }
         catch (error) {

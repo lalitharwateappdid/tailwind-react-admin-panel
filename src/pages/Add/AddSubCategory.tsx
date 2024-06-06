@@ -29,6 +29,8 @@ const AddSubCategory = () => {
                 category_id: category
 
             });
+
+            
             Notify(response.data.message);
             setName("")
             setDescription("")

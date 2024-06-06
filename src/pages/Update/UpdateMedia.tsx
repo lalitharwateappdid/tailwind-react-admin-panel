@@ -21,7 +21,8 @@ const UpdateMedia = () => {
         const getData =  async () => {
             try{
                 const response = await axios.get(`${apiLink}media/edit/${id}`);
-                const data = response.data.data[0]
+                const data = response.data.data
+                console.log(data)
                 setTitle(data.title)
                 setLink(data.link)
             }

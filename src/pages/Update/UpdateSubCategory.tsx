@@ -22,8 +22,8 @@ const UpdateSubCategory = () => {
         const getData =  async () => {
             try{
                 const response = await axios.get(`${apiLink}sub-category/edit/${id}`);
-                const data = response.data.data[0]
-                console.log(data);
+                const data = response.data.data
+               
                 setName(data.name)
                 setDescription(data.description)
             }

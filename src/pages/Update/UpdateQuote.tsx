@@ -20,9 +20,9 @@ const UpdateQuote = () => {
       
         const getData =  async () => {
             try{
-                const response = await axios.get(`${apiLink}quote/edit/
-                ${id}`);
-                const data = response.data.data[0]
+                const response = await axios.get(`${apiLink}quote/edit/${id}`);
+                const data = response.data.data
+                console.log(data)
                 setQuote(data.quote)
               
             }
@@ -41,7 +41,7 @@ const UpdateQuote = () => {
             const response = await axios.put(`${apiLink}quote/update`,{
                 id:id,
                 quote:quote
-            });
+        });
             Notify(response.data.message);
             setUpdate("Update")
 

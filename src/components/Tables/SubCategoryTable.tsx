@@ -41,17 +41,18 @@ function SubCategory() {
             });
 
             if (result.isConfirmed) {
-
+                await axios.delete(`${apiLink}sub-category/destroy`, {
+                    data: { id: id }
+                });
+                fetchData();
                 Swal.fire({
                     title: "Deleted!",
                     text: "Your file has been deleted.",
                     icon: "success"
                 });
-                await axios.delete(`${apiLink}sub-category/destroy`, {
-                    data: { id: id }
-                });
+                
 
-                fetchData();
+                
 
             };
 

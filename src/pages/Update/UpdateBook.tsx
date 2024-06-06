@@ -23,11 +23,11 @@ const UpdateBook = () => {
         const getData =  async () => {
             try{
                 const response = await axios.get(`${apiLink}books/edit/${id}`);
-                const data = response.data.data[0]
+                const data = response.data.data
                 console.log(data);
                 setName(data.name)
                 setDescription(data.description)
-                setPage(data.pages_in_book)
+                setPage(data.pages_in_books)
                 setPrice(data.price)
                 
             }
@@ -47,10 +47,12 @@ const UpdateBook = () => {
                 id:id,
                 name:name,
                 description:description,
-                pages_in_book:page,
-                price:price
+                pages_in_books:page,
+                price:price,
 
             });
+
+            console.log(response)
             Notify(response.data.message);
             setUpdate("Update")
 

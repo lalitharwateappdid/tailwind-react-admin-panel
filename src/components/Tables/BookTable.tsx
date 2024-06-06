@@ -17,6 +17,8 @@ function BookTable() {
         try {
             const response = await fetch(`${apiLink}books/get`);
             const data = await response.json();
+            console.log(data);
+            
             setApiData(data.data);
         }
         catch (error) {
@@ -39,17 +41,17 @@ function BookTable() {
             });
 
             if (result.isConfirmed) {
+                await axios.delete(`${apiLink}books/destroy`, {
+                    data: { id: id }
+                });
+                fetchData();
 
                 Swal.fire({
                     title: "Deleted!",
                     text: "Your file has been deleted.",
                     icon: "success"
                 });
-                await axios.delete(`${apiLink}books/destroy`, {
-                    data: { id: id }
-                });
 
-                fetchData();
 
             };
 
@@ -97,7 +99,7 @@ function BookTable() {
         },
         {
             name: 'Pages in Book',
-            selector: row => row.pages_in_book,
+            selector: row => row.pages_in_books,
         },
         {
             name: 'Price',

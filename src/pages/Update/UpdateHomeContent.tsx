@@ -21,7 +21,7 @@ const UpdateHomeContent = () => {
         const getData =  async () => {
             try{
                 const response = await axios.get(`${apiLink}home-content/edit/${id}`);
-                const data = response.data.data[0]
+                const data = response.data.data
                 console.log(data);
             
                 setDescription(data.description)
