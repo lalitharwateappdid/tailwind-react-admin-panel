@@ -93,8 +93,9 @@ function CategoryTable() {
         },
         {
             name: 'description',
-            selector: row => row.description,
+            selector: row =>  <img className="w-10 h-10 rounded-full" src="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Rounded avatar"/>,
         },
+       
        
         {
             name: "Actions",

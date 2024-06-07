@@ -7,13 +7,17 @@ import './css/satoshi.css';
 import 'jsvectormap/dist/css/jsvectormap.css';
 import 'flatpickr/dist/flatpickr.min.css';
 
+import { PrimeReactProvider } from 'primereact/api';
+import 'primeicons/primeicons.css';
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   
   <React.StrictMode>
+     <PrimeReactProvider value={{ unstyled: false }}>
     <Router>
       <App />
     </Router>
+    </PrimeReactProvider>
   </React.StrictMode>,
 );

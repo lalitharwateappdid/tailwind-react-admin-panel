@@ -98,6 +98,10 @@ function SubCategory() {
             name: 'description',
             selector: row => row.description,
         },
+        {
+            name: "Category",
+            selector: row => row.Category.name,
+        },
        
        
         {
