@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 
-const SelectGroupOne: React.FC = () => {
+const SelectGroupOne: React.FC = (props) => {
   const [selectedOption, setSelectedOption] = useState<string>('');
   const [isOptionSelected, setIsOptionSelected] = useState<boolean>(false);
+
+  const days = props.array
 
   const changeTextColor = () => {
     setIsOptionSelected(true);
   };
 
+
+
   return (
     <div className="mb-4.5">
-      <label className="mb-2.5 block text-black dark:text-white">
+      {/* <label className="mb-2.5 block text-black dark:text-white">
         {' '}
         Subject{' '}
-      </label>
+      </label> */}
+
 
       <div className="relative z-20 bg-transparent dark:bg-form-input">
         <select
@@ -22,22 +27,19 @@ const SelectGroupOne: React.FC = () => {
             setSelectedOption(e.target.value);
             changeTextColor();
           }}
-          className={`relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary ${
-            isOptionSelected ? 'text-black dark:text-white' : ''
-          }`}
+          className={`relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary ${isOptionSelected ? 'text-black dark:text-white' : ''
+            }`}
         >
           <option value="" disabled className="text-body dark:text-bodydark">
-            Select your subject
+            {props.disabled_option_name}
           </option>
-          <option value="USA" className="text-body dark:text-bodydark">
-            USA
-          </option>
-          <option value="UK" className="text-body dark:text-bodydark">
-            UK
-          </option>
-          <option value="Canada" className="text-body dark:text-bodydark">
-            Canada
-          </option>
+
+          {days.map(title => {
+            return <option value="title" className="text-body dark:text-bodydark">
+              {title}
+            </option>
+          })}
+
         </select>
 
         <span className="absolute top-1/2 right-4 z-30 -translate-y-1/2">

@@ -33,6 +33,8 @@ import HomeContent from './pages/Home/HomeContent';
 import AddHomeContent from './pages/Add/AddHomeContent';
 import UpdateHomeContent from './pages/Update/UpdateHomeContent';
 import Ebook from './pages/Home/Ebook';
+import AddEvent from './pages/Add/AddEvent';
+import Event from './pages/Home/Event';
 
 
 // private Router
@@ -256,10 +258,25 @@ function App() {
             <PageTitle title="Ebook" />
             <Ebook />
           </>
-        
-        
-      } />
-      <Route path="/add-ebook" element={<AddEbook/>}/>
+
+
+        } />
+        <Route path="/add-ebook" element={<AddEbook />} />
+
+
+
+        {/* events path starts */}
+
+        <Route path='/events' element={
+          <>
+            <PageTitle title="Events" />
+            <Event />
+          </>
+        } />
+
+        <Route path="/add-events" element={<AddEvent />} />
+
+        {/* event path ends */}
 
       </Routes>
     </>
