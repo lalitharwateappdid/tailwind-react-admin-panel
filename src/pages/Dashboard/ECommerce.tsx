@@ -16,6 +16,7 @@ const ECommerce: React.FC = () => {
   const [categories, setCategories] = useState("")
   const [subCategories, setSubCategories] = useState("")
   const [eBook, setEbook] = useState("")
+  const [event,setEvent] = useState("")
 
   const getCount = async () => {
     const response = await axios.get(`${apiLink}dashboard/get`)
@@ -28,6 +29,7 @@ const ECommerce: React.FC = () => {
     setSlider(count.media)
     setEbook(count.ebook)
     setCategories(count.subCategory)
+    setEvent(count.event)
   }
 
   useEffect(() => {
@@ -94,7 +96,7 @@ const ECommerce: React.FC = () => {
         </Link>
 
         <Link to="/events">
-        <CardDataStats title="Total Events" total={subCategories} rate="" >
+        <CardDataStats title="Total Events" total={event} rate="" >
         <span className="material-symbols-outlined">
             category
           </span>

@@ -16,6 +16,7 @@ const UpdateSubCategory = () => {
         const [name, setName] = useState('');
         const [description, setDescription] = useState('');
         const [categoryData,setCategory] = useState([])
+        const [category_id,setCategory_id] = useState("")
     
         const [update,setUpdate] = useState("Update")
       
@@ -23,7 +24,7 @@ const UpdateSubCategory = () => {
             try{
                 const response = await axios.get(`${apiLink}sub-category/edit/${id}`);
                 const data = response.data.data
-               
+                setCategory_id(data.categoryId)
                 setName(data.name)
                 setDescription(data.description)
             }
@@ -53,7 +54,8 @@ const UpdateSubCategory = () => {
             const response = await axios.put(`${apiLink}sub-category/update`,{
                 id:id,
                 name:name,
-                description:description
+                description:description,
+                category_id:category_id
             });
             Notify(response.data.message);
             setUpdate("Update")
@@ -97,7 +99,7 @@ const UpdateSubCategory = () => {
                         </label>
 
                         <div className=" z-20 bg-transparent dark:bg-form-input">
-                            <select value={categoryData}
+                            <select value={category_id} onChange={(e) => setCategory_id(e.target.value)}
                                 className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                             >
                                 <option value="" disabled selected className="text-body dark:text-bodydark">
@@ -105,7 +107,7 @@ const UpdateSubCategory = () => {
                                 </option>
                                 {
                                     categoryData.map((category) => (
-                                        <option key={category.id} value={category.id} className="text-body dark:text-bodydark">
+                                        <option key={category.id} value={category.id}   className="text-body dark:text-bodydark">
                                             {category.name}
                                         </option>
                                     ))

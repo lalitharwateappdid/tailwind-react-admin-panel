@@ -35,7 +35,9 @@ const SelectGroupOne: React.FC = (props) => {
           </option>
 
           {days.map(title => {
-            return <option value="title" className="text-body dark:text-bodydark">
+            return <option value="{title}" className="text-body dark:text-bodydark"
+            selected={selectedOption==title}
+            >
               {title}
             </option>
           })}

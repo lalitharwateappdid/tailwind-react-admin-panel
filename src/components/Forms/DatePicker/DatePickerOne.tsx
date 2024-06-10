@@ -1,7 +1,13 @@
 import flatpickr from 'flatpickr';
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
+import moment from 'moment';
 
-const DatePickerOne = () => {
+const DatePickerOne = ({date,state}) => {
+  const [getdate,setDate] = useState(date);
+  
+  // const handleDateChange = (selectedDate) => {
+  //   (selectedDate)
+  // }
   useEffect(() => {
     // Init flatpickr
     flatpickr('.form-datepicker', {
@@ -28,6 +34,8 @@ const DatePickerOne = () => {
           className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
           placeholder="mm/dd/yyyy"
           data-class="flatpickr-right"
+          value={(date)}
+          onChange={(e) => setDate(e.target.value)}
         />
 
         <div className="pointer-events-none absolute inset-0 left-auto right-5 flex items-center">

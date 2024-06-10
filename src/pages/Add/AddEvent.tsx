@@ -27,16 +27,12 @@ const AddEvent = () => {
             const response = await axios.post(`${apiLink}events/create`, {
                 event_name: eventName,
                 event_date: eventDate,
-                day: day,
-                year: year,
-                month: month
+             
             });
             Notify(response.data.message);
             setEventDate('');
             setEventName('');
-            setDay('')
-            setYear('')
-            setMonth('')
+            
 
 
             setSubmit("Submit")
@@ -68,7 +64,7 @@ const AddEvent = () => {
                         <input
                             type="text"
                             placeholder="Enter Name"
-                            value={name}
+                            value={eventName}
                             onChange={(e) => setEventName(e.target.value)}
                             className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         />

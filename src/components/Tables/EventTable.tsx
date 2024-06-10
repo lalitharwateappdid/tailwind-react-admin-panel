@@ -4,6 +4,8 @@ import axios from "axios";
 import Swal from 'sweetalert2';
 import DataTable, { createTheme } from 'react-data-table-component';
 import { Link } from "react-router-dom";
+import moment from 'moment';
+
 
 
 function EventTable() {
@@ -17,7 +19,6 @@ function EventTable() {
         try {
             const response = await fetch(`${apiLink}events/get`);
             const data = await response.json();
-            console.log(data);
             
             setApiData(data.data);
         }
@@ -41,14 +42,14 @@ function EventTable() {
             });
 
             if (result.isConfirmed) {
-                await axios.delete(`${apiLink}books/destroy`, {
+                await axios.delete(`${apiLink}events/delete`, {
                     data: { id: id }
                 });
                 fetchData();
 
                 Swal.fire({
                     title: "Deleted!",
-                    text: "Your file has been deleted.",
+                    text: "Event deleted Sucessfully",
                     icon: "success"
                 });
 
@@ -98,14 +99,15 @@ function EventTable() {
 
         {
             name: 'Event Date',
-            selector: row => `${row.event_date.toLocaleDateString()}`,
+            selector: row => `${moment(row.event_date).format('MMMM Do, YYYY')}`,
         },
        
         {
             name: "Actions",
+            
             cell: (row) => (
                 <div className="flex gap-4">
-                    <Link to={`/edit-book/${row.id}`} className="bg-primary px-2 py-1 rounded-md" >Edit</Link>
+                    <Link to={`/edit-events/${row.id}`} className="bg-primary px-2 py-1 rounded-md" >Edit</Link>
                     <button className="bg-danger px-2 py-1 rounded-md" onClick={() => handleDelete(row.id)}>Delete</button>
                 </div>
             )

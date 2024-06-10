@@ -40,6 +40,7 @@ import Event from './pages/Home/Event';
 // private Router
 import PrivateRoute from './middleware/PrivateRouter';
 import AddEbook from './pages/Add/AddEbook';
+import UpdateEvent from './pages/Update/UpdateEvent';
 
 
 // toast configuration method
@@ -275,6 +276,7 @@ function App() {
         } />
 
         <Route path="/add-events" element={<AddEvent />} />
+        <Route path='/edit-events/:id' element={<UpdateEvent />} />
 
         {/* event path ends */}
 
