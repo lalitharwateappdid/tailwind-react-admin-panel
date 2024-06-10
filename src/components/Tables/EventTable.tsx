@@ -88,6 +88,8 @@ function EventTable() {
         },
     }, 'dark');
 
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+
     const columns = [
         {
             name: 'Name',
@@ -96,7 +98,7 @@ function EventTable() {
 
         {
             name: 'Event Date',
-            selector: row => row.event_date,
+            selector: row => `${row.event_date.toLocaleDateString()}`,
         },
        
         {
