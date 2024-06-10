@@ -35,6 +35,7 @@ import UpdateHomeContent from './pages/Update/UpdateHomeContent';
 import Ebook from './pages/Home/Ebook';
 import AddEvent from './pages/Add/AddEvent';
 import Event from './pages/Home/Event';
+import Literature from './pages/Home/Literature';
 
 
 // private Router
@@ -279,6 +280,16 @@ function App() {
         <Route path='/edit-events/:id' element={<UpdateEvent />} />
 
         {/* event path ends */}
+
+
+        {/* literature path starts */}
+        <Route path='/literature' element={
+          <>
+            <PageTitle title="Literature" />
+            <Literature />
+          </>
+        } />
+        {/* literature path ends */}
 
       </Routes>
     </>

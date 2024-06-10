@@ -17,11 +17,13 @@ const ECommerce: React.FC = () => {
   const [subCategories, setSubCategories] = useState("")
   const [eBook, setEbook] = useState("")
   const [event,setEvent] = useState("")
+  const [literature,setLiterature] = useState("")
 
   const getCount = async () => {
     const response = await axios.get(`${apiLink}dashboard/get`)
     const count = response.data.data
-
+    console.log(count);
+    
     setBook(count.book)
     setMedia(count.media)
     setQuote(count.quote)
@@ -30,6 +32,7 @@ const ECommerce: React.FC = () => {
     setEbook(count.ebook)
     setCategories(count.subCategory)
     setEvent(count.event)
+    setLiterature(count.literature)
   }
 
   useEffect(() => {
@@ -98,7 +101,15 @@ const ECommerce: React.FC = () => {
         <Link to="/events">
         <CardDataStats title="Total Events" total={event} rate="" >
         <span className="material-symbols-outlined">
-            category
+            event
+          </span>
+        </CardDataStats>
+        </Link>
+
+        <Link to="/events">``
+        <CardDataStats title="Total Literature" total={literature} rate="" >
+        <span className="material-symbols-outlined">
+            draw
           </span>
         </CardDataStats>
         </Link>
