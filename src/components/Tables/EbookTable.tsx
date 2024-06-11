@@ -4,6 +4,7 @@ import axios from "axios";
 import Swal from 'sweetalert2';
 import DataTable, { createTheme } from 'react-data-table-component';
 import { Link } from "react-router-dom";
+import Notify from '../../components/toast_notify/Notify'
 
 
 
@@ -49,7 +50,7 @@ function EbookTable() {
             });
 
             if (result.isConfirmed) {
-                await axios.delete(`${apiLink}books/destroy`, {
+                await axios.delete(`${apiLink}ebook/delete`, {
                     data: { id: id }
                 });
                 fetchData();
@@ -71,6 +72,15 @@ function EbookTable() {
 
     const handleEdit = async(id: BigInteger) => {
         console.log(id);   
+    }
+
+    const handleStatus = async(id) => {
+        console.log(id)
+        const response = await axios.put(`${apiLink}ebook/status`,{
+            id:id
+        });
+        fetchData()
+        Notify(response.data.message)
     }
 
 
@@ -158,7 +168,9 @@ function EbookTable() {
             name: "Status",
             cell:(row) => (
                 <>
-                {/* <input type="checkbox" className="toggle" checked={row.status? true: false} /> */}
+               
+                  <input type="checkbox" className="toggle  toggle-success" checked={row.status ? true:false} onClick={()=>handleStatus(row.id)}  />
+
                 </>
             )
         },
@@ -179,7 +191,7 @@ function EbookTable() {
             <div className="float-right mb-4">
                 <Link to="/add-ebook" className="bg-primary text-white px-3 py-2 rounded-md hover:opacity-65">Add</Link>
             </div>
-          
+            
 
             <DataTable
                 // title="Books"
