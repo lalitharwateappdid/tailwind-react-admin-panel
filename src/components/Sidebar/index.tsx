@@ -62,7 +62,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
     <>
       <aside
         ref={sidebar}
-        className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-black duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        className={`absolute left-0 top-0 z-9999 flex h-screen w-72.5 flex-col overflow-y-hidden bg-white duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
       >
         {/* <!-- SIDEBAR HEADER --> */}
@@ -100,7 +100,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
           <nav className="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
             {/* <!-- Menu Group --> */}
             <div>
-              <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">
+              <h3 className="mb-4 ml-4 text-sm font-semibold text-black-900 dark:text-bodydark2">
                 MENU
               </h3>
 
@@ -122,7 +122,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <li>
                   <NavLink
                     to="/"
-                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
                       }`}
                   >
                     <span className="material-symbols-outlined">
@@ -135,7 +135,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <li>
                   <NavLink
                     to="/literature"
-                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
                       }`}
                   >
                     <span className="material-symbols-outlined">
@@ -147,7 +147,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <li>
                   <NavLink
                     to="/media"
-                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
                       }`}
                   >
                     <span className="material-symbols-outlined">
@@ -161,7 +161,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <li>
                   <NavLink
                     to="/home-content"
-                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
                       }`}
                   >
                     <span className="material-symbols-outlined">
@@ -176,7 +176,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <li>
                   <NavLink
                     to="/books"
-                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
                       }`}
                   >
                     <span className="material-symbols-outlined">
@@ -190,7 +190,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <li>
                   <NavLink
                     to="/ebook"
-                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
                       }`}
                   >
                     <span className="material-symbols-outlined">
@@ -204,7 +204,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <li>
                   <NavLink
                     to="/quotes"
-                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium   text-black dark:text-bodydark1 dark:text-bodydark1duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
                       }`}
                   >
                     <span className="material-symbols-outlined">
@@ -219,7 +219,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <li>
                   <NavLink
                     to="/category"
-                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
                       }`}
                   >
                    <span className="material-symbols-outlined">
@@ -233,7 +233,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <li>
                   <NavLink
                     to="/sub-category"
-                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
                       }`}
                   >
                     <span className="material-symbols-outlined">
@@ -247,7 +247,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <li>
                   <NavLink
                     to="/events"
-                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
                       }`}
                   >
                     <span className="material-symbols-outlined">

@@ -6,18 +6,26 @@ import DataTable, { createTheme } from 'react-data-table-component';
 import { Link } from "react-router-dom";
 
 
+
 function EbookTable() {
     const [apiData, setApiData] = useState([]);
+    const [theme,setTheme] = useState()
+    
+    
+
+    // setTheme(localStorage.getItem('color-theme'))
 
     useEffect(() => {
         fetchData();
+
+        setTheme(localStorage.getItem("color-theme"))
     }, []);
 
     const fetchData = async () => {
         try {
             const response = await fetch(`${apiLink}ebook/get`);
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             
             setApiData(data.data);
         }
@@ -65,30 +73,66 @@ function EbookTable() {
         console.log(id);   
     }
 
-    createTheme('solarized', {
+
+    
+    createTheme('light', {
         text: {
-            primary: '#fff',
-            secondary: '#fff',
+            primary: 'black',
+            secondary: 'black',
         },
         background: {
-            default: '#24303f',
+            className:"bg-dark"
         },
-        context: {
-            background: '#cb4b16',
-            text: '#FFFFFF',
-        },
+       
         divider: {
-            default: '#fff',
+            default: 'bg-slate-600',
         },
         action: {
             button: 'rgba(0,0,0,.54)',
             // button: "red",
-            hover: 'rgba(0,0,0,.08)',
+            hover: 'rgba(224, 31, 31, 0.08)',
             disabled: 'rgba(0,0,0,.12)',
         },
-    }, 'dark');
+    });
 
+
+
+
+    
+
+    const customStyles = {
+        rows: {
+            style: {
+                minHeight: '72px', // override the row height
+                
+            },
+        },
+        headCells: {
+            style: {
+                paddingLeft: '8px', // override the cell padding for head cells
+                paddingRight: '8px',
+            },
+        },
+        cells: {
+            style: {
+                paddingLeft: '8px', // override the cell padding for data cells
+                paddingRight: '8px',
+
+            },
+           
+        },
+    };
+
+    
+    
+    
     const columns = [
+        {
+            
+            name:"SR.No",
+            selector: (_, index) => index + 1
+        },
+
         {
             name: 'Name',
             selector: row => row.name,
@@ -110,13 +154,21 @@ function EbookTable() {
             name: 'PDF Path',
             selector: row => row.pdfPath,
         },
+        {
+            name: "Status",
+            cell:(row) => (
+                <>
+                {/* <input type="checkbox" className="toggle" checked={row.status? true: false} /> */}
+                </>
+            )
+        },
        
         {
             name: "Actions",
             cell: (row) => (
                 <div className="flex gap-4">
-                    <Link to={`/edit-book/${row.id}`} className="bg-primary px-2 py-1 rounded-md" >Edit</Link>
-                    <button className="bg-danger px-2 py-1 rounded-md" onClick={() => handleDelete(row.id)}>Delete</button>
+                    <Link to={`/edit-book/${row.id}`} className="bg-primary px-2 py-1 rounded-md text-white" >Edit</Link>
+                    <button className="bg-danger px-2 py-1 rounded-md text-white" onClick={() => handleDelete(row.id)}>Delete</button>
                 </div>
             )
         }
@@ -127,6 +179,8 @@ function EbookTable() {
             <div className="float-right mb-4">
                 <Link to="/add-ebook" className="bg-primary text-white px-3 py-2 rounded-md hover:opacity-65">Add</Link>
             </div>
+          
+
             <DataTable
                 // title="Books"
                 pagination
@@ -134,7 +188,9 @@ function EbookTable() {
                 fixedHeader
                 data={apiData}
                 highlightOnHover
-                theme="solarized"
+                theme="light"
+                className="shadow-2xl"
+                customStyles={customStyles}
             />
 
  
