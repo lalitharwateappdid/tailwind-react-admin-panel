@@ -30,8 +30,7 @@ const AddLiterature = () => {
     const [submit, setSubmit] = useState("Submit")
 
 
-    // function to store books
-    const createMedia = async () => {
+    const create = async () => {
 
         try {
             setSubmit("Submitting...")
@@ -154,26 +153,26 @@ const AddLiterature = () => {
                             <select value={subCategory} onChange={(e) => setSubCategory(e.target.value)}
                                 className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                             >
-                                
-                               
+
+
                                 <option value="" disabled selected className="text-body dark:text-bodydark">
                                     Select Sub Category
                                 </option>
                                 {
                                     (category === '') ?
-                                    
-                                    
-                                    '' :
+
+
+                                        '' :
                                         subCategoryData.map((category) => (
                                             <option key={category.id} value={category.id} className="text-body dark:text-bodydark">
                                                 {category.name} {category.id}
                                             </option>
-                                        )) 
+                                        ))
 
 
-                                    
-                                } 
-                            
+
+                                }
+
 
                             </select>
 
@@ -200,9 +199,165 @@ const AddLiterature = () => {
                     </div>
                     {/* sub category dropdown ends */}
 
+                    {/* literature english starts */}
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
+                            Literature English
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter Literature English"
+                            value={literatureEnglish}
+                            onChange={(e) => setLiteratureEnglish(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>
+                    {/* literature english ends */}
+
+                    {/* literature marathi starts */}
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
+                            Literature Marathi
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter Literature Marathi"
+                            value={literatureMarathi}
+                            onChange={(e) => setLiteratureMarathi(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>
+                    {/* literature marathi ends */}
+
+                    {/* literature description english */}
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
+                            Literature Description English
+                        </label>
+                        <textarea
+                            type="text"
+                            placeholder="Enter Literature Description English"
+                            value={literatureDescriptionEnglish}
+                            onChange={(e) => setLiteratureDescriptionEnglish(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />                    </div>
+                    {/* literature description english */}
+
+
+                    {/* literature description marathi */}
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
+                            Literature Description Marathi
+                        </label>
+                        <textarea
+                            type="text"
+                            placeholder="Enter Literature Description Marathi"
+                            value={literatureDescriptionMarathi}
+                            onChange={(e) => setLiteratureDescriptionMarathi(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />                    </div> 
+                    {/* literature description marathi ends */}
+
+                    {/* author name english */}
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
+                            Author Name English
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter Author Name"
+                            value={authorNameEnglish}
+                            onChange={(e) => setAuthorNameEnglish(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>     
+                    {/* author_name_english ends */}
+
+
+                    {/* author name marathi starts */}
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
+                            Author Name Marathi
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter Author Name"
+                            value={authorNameMarathi}
+                            onChange={(e) => setAuthorNameMarathi(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>    
+                    {/* author name marathi ends */}
+
+
+                    {/* saint name english starts */}
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
+                            Saint Name English
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter Saint Name"
+                            value={saintNameEnglish}
+                            onChange={(e) => setSaintNameEnglish(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>         
+                    {/* saint name english ends */}
+
+
+                    {/* saint name marathi */}
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
+                            Saint Name Marathi
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter Saint Name"
+                            value={saintNameMarathi}
+                            onChange={(e) => setSaintNameMarathi(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>             
+                    {/* saint name marathi ends */}
+
+                    {/* audio_file_path */}
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
+                            Audio File Path
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter Audio File Path"
+                            value={audioFilePath}
+                            onChange={(e) => setAudioFilePath(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>   
+                    {/* audio_file_path */}
+
+                    {/* literature content */}
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
+                            Literature Content
+                        </label>
+                        <textarea
+                            type="text"
+                            placeholder="Enter Literature Content"
+                            value={literatureContent}
+                            onChange={(e) => setLiteratureContent(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>        
+                    {/* literature content ends */}
+
+
+
+
+
                 </div>
                 <div className="w-50 mx-auto mt-5">
-                    <button onClick={() => createMedia()}
+                    <button onClick={() => create()}
                         className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                     >{submit}</button>
 
