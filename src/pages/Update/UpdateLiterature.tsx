@@ -30,7 +30,6 @@ const UpdateLiterature = () => {
     const [subCategoryData,setSubCategoryData] = useState([])
 
     const { id } = useParams();
-    console.log(id)
 
     
 
@@ -40,7 +39,6 @@ const UpdateLiterature = () => {
         try {
             const response = await axios.get(`${apiLink}literature/edit/${id}`);
             const data = response.data.data
-            // console.log(response)
 
             setCategory(data.category_id)
             setSubCategory(data.sub_category_id)
