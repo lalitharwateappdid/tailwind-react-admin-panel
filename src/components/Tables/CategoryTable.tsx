@@ -63,28 +63,53 @@ function CategoryTable() {
         console.log(id);   
     }
 
-    createTheme('solarized', {
+    createTheme('light', {
         text: {
-            primary: '#fff',
-            secondary: '#fff',
+            primary: 'black',
+            secondary: 'black',
         },
         background: {
-            default: '#24303f',
+            className:"bg-dark"
         },
-        context: {
-            background: '#cb4b16',
-            text: '#FFFFFF',
-        },
+       
         divider: {
-            default: '#fff',
+            default: 'bg-slate-600',
         },
         action: {
             button: 'rgba(0,0,0,.54)',
             // button: "red",
-            hover: 'rgba(0,0,0,.08)',
+            hover: 'rgba(224, 31, 31, 0.08)',
             disabled: 'rgba(0,0,0,.12)',
         },
-    }, 'dark');
+    });
+
+
+
+
+    
+
+    const customStyles = {
+        rows: {
+            style: {
+                minHeight: '72px', // override the row height
+                
+            },
+        },
+        headCells: {
+            style: {
+                paddingLeft: '8px', // override the cell padding for head cells
+                paddingRight: '8px',
+            },
+        },
+        cells: {
+            style: {
+                paddingLeft: '8px', // override the cell padding for data cells
+                paddingRight: '8px',
+
+            },
+           
+        },
+    };
 
     const columns = [
         {
@@ -120,7 +145,7 @@ function CategoryTable() {
                 fixedHeader
                 data={apiData}
                 highlightOnHover
-                theme="solarized"
+                theme="light"
             />
 
  
