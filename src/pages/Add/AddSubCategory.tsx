@@ -103,15 +103,7 @@ const AddSubCategory = () => {
                                         </option>
                                     ))
                                 }
-                                {/* <option value="USA" className="text-body dark:text-bodydark">
-                                    USA
-                                </option>
-                                <option value="UK" className="text-body dark:text-bodydark">
-                                    UK
-                                </option>
-                                <option value="Canada" className="text-body dark:text-bodydark">
-                                    Canada
-                                </option> */}
+                    
                             </select>
 
                             <span className="absolute top-1/2 right-4 z-30 -translate-y-1/2">
