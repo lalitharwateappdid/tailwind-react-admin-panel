@@ -92,9 +92,6 @@ const AddLiterature = () => {
 
     return (
         <>
-
-
-
             <DefaultLayout>
                 <Breadcrumb pageName="Add Literature" />
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
@@ -167,7 +164,6 @@ const AddLiterature = () => {
                                     
                                     
                                     '' :
-                                        
                                         subCategoryData.map((category) => (
                                             <option key={category.id} value={category.id} className="text-body dark:text-bodydark">
                                                 {category.name} {category.id}
