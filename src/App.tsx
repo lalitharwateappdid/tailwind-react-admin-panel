@@ -36,6 +36,7 @@ import Ebook from './pages/Home/Ebook';
 import AddEvent from './pages/Add/AddEvent';
 import Event from './pages/Home/Event';
 import Literature from './pages/Home/Literature';
+import AddLiterature from './pages/Add/AddLiterature';
 
 
 // private Router
@@ -289,6 +290,8 @@ function App() {
             <Literature />
           </>
         } />
+
+        <Route path='/add-literature' element={<AddLiterature />} />
         {/* literature path ends */}
 
       </Routes>

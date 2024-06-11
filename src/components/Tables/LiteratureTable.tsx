@@ -15,7 +15,7 @@ function LiteratureTable() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch(`${apiLink}media/get`);
+            const response = await fetch(`${apiLink}literature/get`);
             const data = await response.json();
             setApiData(data.data);
         }
@@ -59,8 +59,8 @@ function LiteratureTable() {
         }
     }
 
-    const handleEdit = async(id: BigInteger) => {
-        console.log(id);   
+    const handleEdit = async (id: BigInteger) => {
+        console.log(id);
     }
 
     createTheme('solarized', {
@@ -118,24 +118,24 @@ function LiteratureTable() {
         },
 
         {
-            name:"Saint Name (ENG)",
+            name: "Saint Name (ENG)",
             selector: row => row.saint_name_english,
         },
         {
-            name:"Saint Name (MAR)",
+            name: "Saint Name (MAR)",
             selector: row => row.saint_name_marathi,
         },
         {
-            name:"literature content",
-            selector:row => row.literature_content
+            name: "literature content",
+            selector: row => row.literature_content
         },
 
-       
+
         {
             name: "Actions",
             cell: (row) => (
                 <div className="flex gap-4">
-                    <Link to={`/edit-media/${row.id}`} className="bg-primary px-2 py-1 rounded-md" >Edit</Link>
+                    <Link to={`/edit-literature/${row.id}`} className="bg-primary px-2 py-1 rounded-md" >Edit</Link>
                     <button className="bg-danger px-2 py-1 rounded-md" onClick={() => handleDelete(row.id)}>Delete</button>
                 </div>
             )
@@ -145,7 +145,7 @@ function LiteratureTable() {
     return (
         <>
             <div className="float-right mb-4">
-                <Link to="/add-media" className="bg-primary text-white px-3 py-2 rounded-md hover:opacity-65">Add</Link>
+                <Link to="/add-literature" className="bg-primary text-white px-3 py-2 rounded-md hover:opacity-65">Add</Link>
             </div>
             <DataTable
                 // title="Books"
@@ -157,7 +157,7 @@ function LiteratureTable() {
                 theme="solarized"
             />
 
- 
+
         </>
 
     );
