@@ -22,6 +22,7 @@ const UpdateLiterature = () => {
     const [saintNameMarathi, setSaintNameMarathi] = useState("")
     const [literatureContent, setLiteratureContent] = useState("")
     const [audioFilePath, setAudioFilePath] = useState("")
+   
 
 
     // third party
@@ -29,9 +30,9 @@ const UpdateLiterature = () => {
     const [subCategoryData,setSubCategoryData] = useState([])
 
     const { id } = useParams();
+    console.log(id)
 
-    const [image, setImage] = useState('');
-    const [description, setDescription] = useState('');
+    
 
     const [update, setUpdate] = useState("Update")
 
@@ -39,6 +40,7 @@ const UpdateLiterature = () => {
         try {
             const response = await axios.get(`${apiLink}literature/edit/${id}`);
             const data = response.data.data
+            // console.log(response)
 
             setCategory(data.category_id)
             setSubCategory(data.sub_category_id)
@@ -64,7 +66,7 @@ const UpdateLiterature = () => {
         const result = await data.data.data
         setCategoryData(result)
 
-        const subFetch = await axios.get(`${apiLink}/sub-category/get`)
+        const subFetch = await axios.get(`${apiLink}sub-category/get`)
         const subResult = await subFetch.data.data
         setSubCategoryData(subResult)
     }
@@ -79,8 +81,18 @@ const UpdateLiterature = () => {
             setUpdate("Updating...")
             const response = await axios.put(`${apiLink}literature/update`, {
                 id: id,
-                description: description,
-                image_path: image
+                category_id: category,
+                sub_category_id: subCategory,
+                literature_english: literatureEnglish,
+                literature_marathi: literatureMarathi,
+                literature_description_english: literatureDescriptionEnglish,
+                literature_description_marathi: literatureDescriptionMarathi,
+                author_name_english: authorNameEnglish,
+                author_name_marathi: authorNameMarathi,
+                saint_name_english: saintNameEnglish,
+                saint_name_marathi: saintNameMarathi,
+                literature_content: literatureContent,
+                audio_file_path: audioFilePath
 
             });
             Notify(response.data.message);
@@ -370,7 +382,7 @@ const UpdateLiterature = () => {
                 <div className="w-50 mx-auto mt-5">
                     <button onClick={() => handleUpdate()}
                         className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
-                    >{submit}</button>
+                    >{update}</button>
 
                 </div>
 
