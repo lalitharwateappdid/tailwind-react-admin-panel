@@ -37,6 +37,7 @@ import AddEvent from './pages/Add/AddEvent';
 import Event from './pages/Home/Event';
 import Literature from './pages/Home/Literature';
 import AddLiterature from './pages/Add/AddLiterature';
+import UpdateLiterature from './pages/Update/UpdateLiterature';
 
 
 // private Router
@@ -292,6 +293,7 @@ function App() {
         } />
 
         <Route path='/add-literature' element={<AddLiterature />} />
+        <Route path='edit-literature/:id' element={<UpdateLiterature/>}/>
         {/* literature path ends */}
 
       </Routes>
