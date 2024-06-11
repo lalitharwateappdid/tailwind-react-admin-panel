@@ -45,7 +45,7 @@ function LiteratureTable() {
                     text: "Your file has been deleted.",
                     icon: "success"
                 });
-                await axios.delete(`${apiLink}media/destroy`, {
+                await axios.delete(`${apiLink}literature/delete`, {
                     data: { id: id }
                 });
 
