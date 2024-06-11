@@ -385,8 +385,6 @@ const UpdateLiterature = () => {
                 </div>
 
             </DefaultLayout>
-
-
         </>
     );
 }
