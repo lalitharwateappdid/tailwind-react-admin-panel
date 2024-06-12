@@ -1,12 +1,12 @@
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
-import LiteratureTable from '../../components/Tables/LiteratureTable';
+import MasterImageTable from '../../components/Tables/MasterImage';
 import DefaultLayout from '../../layout/DefaultLayout';
 
 const Literature = () => {
   return (
     <DefaultLayout>
       <Breadcrumb pageName="Master Image" />
-      <LiteratureTable />
+      <MasterImageTable />
     </DefaultLayout>
   );
 };

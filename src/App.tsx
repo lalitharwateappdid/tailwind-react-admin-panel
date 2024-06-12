@@ -38,7 +38,8 @@ import Event from './pages/Home/Event';
 import Literature from './pages/Home/Literature';
 import AddLiterature from './pages/Add/AddLiterature';
 import UpdateLiterature from './pages/Update/UpdateLiterature';
-
+import MasterImage from "./pages/Home/MasterImage";
+import AddMasterImage from "./pages/Add/AddMasterImage"
 
 // private Router
 import PrivateRoute from './middleware/PrivateRouter';
@@ -297,14 +298,14 @@ function App() {
         {/* literature path ends */}
 
         {/* master image path starts */}
-        <Route path='/literature' element={
+        <Route path='/master-image' element={
           <>
-            <PageTitle title="Literature" />
-            <Literature />
+            <PageTitle title="Master Image" />
+            <MasterImage />
           </>
         } />
 
-        <Route path='/add-literature' element={<AddLiterature />} />
+        <Route path='/add-master-image' element={<AddMasterImage />} />
         <Route path='edit-literature/:id' element={<UpdateLiterature/>}/>
         {/* master image path ends */}
 
