@@ -8,6 +8,7 @@ import { Column } from "primereact/column";
 import { Link } from "react-router-dom";
 import Notify from "../toast_notify/Notify";
 import ModalImage from "react-modal-image";
+import { ToggleButton } from "primereact/togglebutton";
 
 
 function MasterImageTable() {
@@ -115,7 +116,11 @@ function MasterImageTable() {
                 )} />
 
                 <Column field="status" header="Status" body={(rowData) => (
+                    <>
                     <InputSwitch className="p-invalid" checked={rowData.status} onClick={() => handleStatus(rowData.id)} />
+                    <ToggleButton onLabel="I confirm" offLabel="I reject" onIcon="pi pi-check" offIcon="pi pi-times" 
+                    checked={rowData.status} onClick={() => handleStatus(rowData.id)} />
+                    </>
                 )
                 }>
                 </Column>
