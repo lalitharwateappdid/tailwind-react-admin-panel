@@ -296,6 +296,18 @@ function App() {
         <Route path='edit-literature/:id' element={<UpdateLiterature/>}/>
         {/* literature path ends */}
 
+        {/* master image path starts */}
+        <Route path='/literature' element={
+          <>
+            <PageTitle title="Literature" />
+            <Literature />
+          </>
+        } />
+
+        <Route path='/add-literature' element={<AddLiterature />} />
+        <Route path='edit-literature/:id' element={<UpdateLiterature/>}/>
+        {/* master image path ends */}
+
       </Routes>
     </>
   );
