@@ -27,7 +27,7 @@ const packageData: Package[] = [
   },
 ];
 
-const TableThree = () => {
+const TableThree = (props) => {
   return (
     <div className="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <div className="max-w-full overflow-x-auto">
@@ -40,6 +40,10 @@ const TableThree = () => {
               <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
                 Invoice date
               </th>
+
+              <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
+                Invoice date
+              </th>
               <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                 Status
               </th>
@@ -49,7 +53,8 @@ const TableThree = () => {
             </tr>
           </thead>
           <tbody>
-            {packageData.map((packageItem, key) => (
+           
+            {props.data.map((packageItem, key) => (
               <tr key={key}>
                 <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                   <h5 className="font-medium text-black dark:text-white">

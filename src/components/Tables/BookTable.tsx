@@ -6,11 +6,11 @@ import Swal from 'sweetalert2';
 import { Link } from "react-router-dom";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
-import { Button } from "primereact/button";
-import { Toolbar } from 'primereact/toolbar';
+import { ToggleButton } from "primereact/togglebutton";
 
 function BookTable() {
     const [apiData, setApiData] = useState([]);
+    const [checked,setChecked] = useState()
 
     useEffect(() => {
         fetchData();
@@ -136,9 +136,8 @@ function BookTable() {
             /> */}
 
            <div>
-           <Toolbar className="mb-4" right={<>
-                <Link  to="/add-book" className="bg-primary opacity-90 text-white px-3 py-2 rounded-md hover:opacity-100" >Add</Link>
-                </>}></Toolbar>
+        
+                
             <DataTable value={apiData} stripedRows paginator rows={10}
             rowsPerPageOptions={[5, 10, 25, 50]}
             tableStyle={{ minWidth: '50rem' }}>
@@ -148,7 +147,8 @@ function BookTable() {
                 <Column field="pages_in_books" header="Pages in Book"></Column>
                 <Column field="price" header="Price"></Column>
                 <Column header="Status">
-                
+                {/* <ToggleButton checked={t} onChange={(e) => )} /> */}
+
                 </Column>
                 <Column field="id" header="Action" body={<div className="flex gap-2">
                 <Link to="/edit-book/{id}" className="bg-primary opacity-90 text-white px-3 py-2 rounded-md hover:opacity-100">Edit</Link>

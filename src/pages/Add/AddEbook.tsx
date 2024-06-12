@@ -56,7 +56,8 @@ const AddEbook = () => {
 
             <DefaultLayout>
                 <Breadcrumb pageName="Add Ebook" />
-                <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-white shadow-lg p-4 rounded dark:bg-transparent">
+                <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8 ">
                   
                     <div>
                         <label className="mb-3 block text-black dark:text-white">
@@ -64,6 +65,7 @@ const AddEbook = () => {
                         </label>
                         <input
                             type="text"
+                           
                             placeholder="Enter Name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -107,6 +109,7 @@ const AddEbook = () => {
                         className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                     >{submit}</button>
 
+                </div>
                 </div>
 
             </DefaultLayout>

@@ -62,9 +62,7 @@ function SubCategory() {
         }
     }
 
-    const handleEdit = async(id: BigInteger) => {
-        console.log(id);   
-    }
+   
 
     createTheme('solarized', {
         text: {
