@@ -8,7 +8,7 @@ import 'jsvectormap/dist/css/jsvectormap.css';
 import 'flatpickr/dist/flatpickr.min.css';
 import Tailwind from 'primereact/passthrough/tailwind';
 import { PrimeReactProvider } from 'primereact/api';
-import 'primeicons/primeicons.css';
+
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

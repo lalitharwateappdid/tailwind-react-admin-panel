@@ -10,23 +10,33 @@ import axios from 'axios';
 const AddMasterImage = () => {
 
 
-   
-    const [image, setImage] = useState("");
-    const [submit,setSubmit] = useState("Submit")
-  
+
+    const [image, setImage] = useState(null);
+    const [submit, setSubmit] = useState("Submit")
+
+    const formData = new FormData();
+    const handleFileChange = (e) => {
+        const file = e.target.files[0]; // Get the first selected file
+        // setImage(file);
+        formData.append("image", file);
+       
+        // createMedia(file)// Set the selected file to the image state
+    };
 
     // function to store books
     const createMedia = async () => {
-       
+        
         try {
             console.log(image)
             setSubmit("Submitting...")
-            const response = await axios.post(`${apiLink}masterimage/create`, {  
-                image:image
+            const response = await axios.post(`${apiLink}masterimage/create`,  formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             });
             Notify(response.data.message);
-           
-            setImage("")
+
+            setImage(null)
             setSubmit("Submit")
         }
         catch (err) {
@@ -40,6 +50,8 @@ const AddMasterImage = () => {
         }
     }
 
+
+
     return (
         <>
 
@@ -48,8 +60,8 @@ const AddMasterImage = () => {
             <DefaultLayout>
                 <Breadcrumb pageName="Add Home Content" />
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
-                
-                  
+                    
+
                     <div>
                         <label className="mb-3 block text-black dark:text-white">
                             Link
@@ -57,12 +69,12 @@ const AddMasterImage = () => {
                         <input
                             type="file"
                             placeholder="Upload Image"
-                            value={image}
-                            onChange={(e) => setImage(e.target.value)}
+
+                            onChange={(e) => handleFileChange(e)}
                             className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         />
                     </div>
-                   
+
                 </div>
                 <div className="w-50 mx-auto mt-5">
                     <button onClick={() => createMedia()}
