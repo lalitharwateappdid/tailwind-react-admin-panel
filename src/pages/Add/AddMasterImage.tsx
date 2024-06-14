@@ -58,7 +58,7 @@ const AddMasterImage = () => {
 
 
             <DefaultLayout>
-                <Breadcrumb pageName="Add Home Content" />
+                <Breadcrumb pageName="Add Master Image" />
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                     
 

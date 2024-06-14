@@ -11,6 +11,7 @@ import ModalImage from "react-modal-image";
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from "primereact/button";
 import copy from "copy-to-clipboard";
+import { InputSwitch } from "primereact/inputswitch";
 
 
 
@@ -106,7 +107,8 @@ function MasterImageTable() {
 
     return (
         <>
-  <Sidebar className="shadow" visible={visible} onHide={() => setVisible(false)}>
+        
+  <Sidebar className="shadow" visible={visible} onHide={() => setVisible(false)} >
                     <h2 className="font-bold text-2xl dark:text-black">Select Image</h2>
                     <div className="flex flex-col justify-center ">
                     {
@@ -139,22 +141,28 @@ function MasterImageTable() {
             <br />
             <br />
 
-            <DataTable value={apiData} className="shadow-xl " stripedRows paginator rows={10}
+            <DataTable value={apiData} className="shadow-xl dark:text-red-900" showGridlines stripedRows paginator rows={10}
                 rowsPerPageOptions={[5, 10, 25, 50]}
                 tableStyle={{
                     minWidth: '50rem',
+                    color:'red'
 
                 }}
+                emptyMessage={"No Images Found"}
+          
+              
+                
+                
 
             >
-                <Column field="id" header="Sr.No" body={(item, key) => (
+                <Column field="id" className="dark:text-white dark:bg-black" header="Sr.No" body={(item, key) => (
                     <>
                         <span>{key.rowIndex + 1}</span>
                     </>
                 )} ></Column>
 
 
-                <Column field="image" header="Image" body={(item, key) => (
+                <Column field="image" className="dark:text-white dark:bg-black"  header="Image" body={(item, key) => (
                     <>
                         <ModalImage className="w-10  z-9999"
                             small={`${apiLink}${item.image}`}
@@ -165,21 +173,19 @@ function MasterImageTable() {
                     </>
                 )} />
 
-                <Column field="status" header="Status" body={(rowData) => (
+                <Column field="status" header="Status"className="dark:text-white dark:bg-black"  body={(rowData) => (
                     <>
-                        {/* <InputSwitch className="p-invalid border" checked={rowData.status}  
-                   
-                }} onClick={() => handleStatus(rowData.id)} /> */}
+                        <InputSwitch className="p-invalid " checked={rowData.status}   onClick={() => handleStatus(rowData.id)} />
                         {/* <Checkbox onClick={() => handleStatus(rowData.id)} checked={rowData.status}></Checkbox> */}
-                        <label className="inline-flex items-center cursor-pointer">
+                        {/* <label className="inline-flex items-center cursor-pointer">
                             <input type="checkbox" value="" className="sr-only peer" onClick={() => handleStatus(rowData.id)} checked={rowData.status} />
                             <div className="relative w-11 h-6 bg-blue-100 rounded-full peer peer-focus:ring-4  dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-gray after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600 peer"></div>
-                        </label>
+                        </label> */}
                     </>
                 )
                 }>
                 </Column>
-                <Column field="id" header="Action" body={(rowData) => (
+                <Column field="id" header="Action" className="dark:text-white dark:bg-black"  body={(rowData) => (
                     <div className="flex items-center gap-2">
                         <Link to={`/edit-content/${rowData.id}`} className="bg-primary opacity-90  p-2     text-white rounded-full hover:opacity-100 "><i className="fa-solid fa-pen"></i></Link>
                         <span onClick={() => handleDelete(rowData.id)} className="bg-red-700 opacity-90 hover:opacity-100 p-2  rounded-full text-white" ><i className="fa-solid fa-trash"></i></span>
