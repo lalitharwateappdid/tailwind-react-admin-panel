@@ -61,6 +61,7 @@ const AddHomeContent = () => {
 
             <DefaultLayout>
                 <Breadcrumb pageName="Add Home Content" />
+                <div className="bg-[#fff] rounded-lg px-5 py-3 shadow-xl dark:bg-transparent">
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                         <label className="mb-3 block text-black dark:text-white">
@@ -87,6 +88,7 @@ const AddHomeContent = () => {
                         className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                     >{submit}</button>
 
+                </div>
                 </div>
 
             </DefaultLayout>

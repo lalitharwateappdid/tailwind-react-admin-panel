@@ -46,6 +46,8 @@ const AddCategory = () => {
 
             <DefaultLayout>
                 <Breadcrumb pageName="Add Category" />
+
+                <div className="px-5 py-3 rounded-lg bg-[#fff] dark:bg-transparent shadow-xl">
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                   
                     <div>
@@ -74,6 +76,7 @@ const AddCategory = () => {
                         className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                     >{submit}</button>
 
+                </div>
                 </div>
 
             </DefaultLayout>

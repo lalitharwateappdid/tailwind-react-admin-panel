@@ -166,7 +166,7 @@ function MasterImageTable() {
 
                 <Column headerClassName={"dark:text-[#fff] dark:border-[#fff]   dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"}  field="image" className="dark:text-white dark:bg-black"  header="Image" body={(item, key) => (
                     <> 
-                        <ModalImage className="w-10  z-9999"
+                        <ModalImage className="w-20  z-9999"
                             small={`${apiLink}${item.image}`}
                             large={`${apiLink}${item.image}`}
 

@@ -70,7 +70,8 @@ const AddSubCategory = () => {
 
 
             <DefaultLayout>
-                <Breadcrumb pageName="Add Quote" />
+                <Breadcrumb pageName="Add Sub Category" />
+                <div className="shadow-xl py-3 px-5 bg-[#fff] rounded-lg dark:bg-transparent">
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <label className="mb-3 block text-black dark:text-white">
@@ -144,6 +145,7 @@ const AddSubCategory = () => {
                         className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                     >{submit}</button>
 
+                </div>
                 </div>
 
             </DefaultLayout>

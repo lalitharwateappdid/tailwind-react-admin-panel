@@ -11,6 +11,7 @@ const AddQuotes = () => {
 
 
     const [quote, setQuote] = useState("");
+    const [dayOfYear,setDayOfYear] = useState("");
     const [submit,setSubmit] = useState("Submit")
   
 
@@ -46,21 +47,50 @@ const AddQuotes = () => {
 
             <DefaultLayout>
                 <Breadcrumb pageName="Add Quote" />
-                <div className="grid lg:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-[#fff] shadow-xl dark:bg-transparent px-5 py-3 rounded-lg">
+                <div className="grid lg:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8 ">
                     <div>
                         <label className="mb-3 block text-black dark:text-white">
                             Quote
                         </label>
                         <textarea rows="6" value={quote} onChange={(e) => setQuote(e.target.value)}  placeholder="Enter quote" class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"></textarea>
                     </div>
-                 
-                   
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-8 mt-6">
+                <div>
+                        <label className="mb-3 block text-black dark:text-white">
+                            Day Of Year
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter Title"
+                            value={dayOfYear}
+                            onChange={(e) => setDayOfYear(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>
+
+
+                <div>
+                <label className="mb-3 block text-black dark:text-white">
+                            Year
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter Title"
+                            value={dayOfYear}
+                            onChange={(e) => setDayOfYear(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                </div>
                 </div>
                 <div className="w-50 mx-auto mt-5">
                     <button onClick={() => createMedia()}
                         className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                     >{submit}</button>
 
+                </div>
                 </div>
 
             </DefaultLayout>

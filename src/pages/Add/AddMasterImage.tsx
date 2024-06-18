@@ -59,20 +59,16 @@ const AddMasterImage = () => {
 
             <DefaultLayout>
                 <Breadcrumb pageName="Add Master Image" />
+
+                <div className="bg-[#fff] rounded-lg px-5 py-10 shadow-lg dark:bg-transparent">
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                     
 
                     <div>
                         <label className="mb-3 block text-black dark:text-white">
-                            Link
+                            Image
                         </label>
-                        <input
-                            type="file"
-                            placeholder="Upload Image"
-
-                            onChange={(e) => handleFileChange(e)}
-                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
+                        <input type="file" onChange={(e) => handleFileChange(e)} className="w-full cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-whiter file:py-3 file:px-5 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-form-strokedark dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary"/>
                     </div>
 
                 </div>
@@ -81,6 +77,7 @@ const AddMasterImage = () => {
                         className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                     >{submit}</button>
 
+                </div>
                 </div>
 
             </DefaultLayout>
