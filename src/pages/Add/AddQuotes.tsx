@@ -12,6 +12,7 @@ const AddQuotes = () => {
 
     const [quote, setQuote] = useState("");
     const [dayOfYear,setDayOfYear] = useState("");
+    const [year,setYear] = useState("");
     const [submit,setSubmit] = useState("Submit")
   
 
@@ -22,10 +23,14 @@ const AddQuotes = () => {
             setSubmit("Submitting...")
             const response = await axios.post(`${apiLink}quote/create`, {
                 quote:quote,
-                
+                year:year,
+                day_of_year:dayOfYear 
             });
+            
             Notify(response.data.message);
             setQuote("")
+            setDayOfYear("")
+            setYear("")
            
             setSubmit("Submit")
         }
@@ -63,8 +68,8 @@ const AddQuotes = () => {
                             Day Of Year
                         </label>
                         <input
-                            type="text"
-                            placeholder="Enter Title"
+                            type="number"
+                            placeholder="Enter Day of Year"
                             value={dayOfYear}
                             onChange={(e) => setDayOfYear(e.target.value)}
                             className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
@@ -77,10 +82,10 @@ const AddQuotes = () => {
                             Year
                         </label>
                         <input
-                            type="text"
-                            placeholder="Enter Title"
-                            value={dayOfYear}
-                            onChange={(e) => setDayOfYear(e.target.value)}
+                            type="number"
+                            placeholder="Enter Year"
+                            value={year}
+                            onChange={(e) => setYear(e.target.value)}
                             className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         />
                 </div>
