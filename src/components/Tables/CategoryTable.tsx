@@ -76,7 +76,10 @@ function CategoryTable() {
         }
     }
     return (
+
         <>
+
+        
             <div className="float-right mb-4">
                 <Link to="/add-category" className="bg-primary text-white px-3 py-2 rounded-md hover:opacity-65">Add</Link>
             </div>
