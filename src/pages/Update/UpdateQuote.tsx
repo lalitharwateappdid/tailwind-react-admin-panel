@@ -14,6 +14,8 @@ const UpdateQuote = () => {
         const { id } = useParams();
         
         const [quote, setQuote] = useState('');
+        const [year,setYear] = useState("");
+        const [day_of_year,setDayOfYear] = useState("")
        
     
         const [update,setUpdate] = useState("Update")
@@ -23,6 +25,8 @@ const UpdateQuote = () => {
                 const response = await axios.get(`${apiLink}quote/edit/${id}`);
                 const data = response.data.data
                 console.log(data)
+                setDayOfYear(data.day_of_year)
+                setYear(data.year)
                 setQuote(data.quote)
               
             }
@@ -40,7 +44,9 @@ const UpdateQuote = () => {
             setUpdate("Updating...")
             const response = await axios.put(`${apiLink}quote/update`,{
                 id:id,
-                quote:quote
+                quote:quote,
+                year:year,
+                day_of_year:day_of_year
         });
             Notify(response.data.message);
             setUpdate("Update")
@@ -64,6 +70,7 @@ const UpdateQuote = () => {
             <DefaultLayout>
                 <Breadcrumb pageName="Update Quote" />
                
+               <div className='bg-[#fff] rounded-lg px-5 py-10 dark:bg-transparent shadow-xl'>
                 <div className="grid lg:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <label className="mb-3 block text-black dark:text-white">
@@ -80,11 +87,41 @@ const UpdateQuote = () => {
                     </div>
                   
                 </div>
+
+                <div className="grid sm:grid-cols-2 gap-8 mt-10">
+                <div>
+                        <label className="mb-3 block text-black dark:text-white">
+                            Day Of Year
+                        </label>
+                        <input
+                            type="number"
+                            placeholder="Enter Day of Year"
+                            value={day_of_year}
+                            onChange={(e) => setDayOfYear(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="mb-3 block text-black dark:text-white">
+                            Year
+                        </label>
+                        <input
+                            type="number"
+                            placeholder="Enter Year"
+                            value={year}
+                            onChange={(e) => setYear(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>
+                </div>
+
                 <div className="w-50 mx-auto mt-5">
                     <button onClick={() => handleUpdate()}
                         className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                     >{update}</button>
 
+                </div>
                 </div>
 
             </DefaultLayout>
