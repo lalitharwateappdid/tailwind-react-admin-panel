@@ -88,7 +88,7 @@ function EbookTable() {
             </div>
             <br />
             <br />
-            <DataTable value={apiData} paginatorClassName={"dark:bg-[#243141]"}  paginator rows={10}
+            <DataTable value={apiData} paginatorClassName={"dark:bg-[#243141] dark:text-[#fff]"}  paginator rows={10}
 
                 rowsPerPageOptions={[5, 10, 25, 50]}
                 tableStyle={{ minWidth: '50rem' }}
