@@ -91,11 +91,12 @@ function EventTable() {
            
            <br/>
            <br/>
-                <DataTable paginatorClassName={"dark:bg-[#243141] dark:text-[#fff]"}  value={apiData} className="shadow-xl" stripedRows paginator rows={10}
+                <DataTable  ptOptions={{ mergeSections: false }} paginatorClassName={"dark:bg-[#243141] dark:text-[#fff]"} 
+                pt={{emptyMessage:'bg-blue-400 dark:text-[#111]'}}  value={apiData} className="shadow-xl" stripedRows paginator rows={10}
                 rowsPerPageOptions={[5, 10, 25, 50]}
                 tableStyle={{ minWidth: '50rem' }} 
                 emptyMessage="No Results Found"
-                tableClassName="dar"
+                tableClassName="dark:text-red-600"
                 >
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13] dark:bg-[#243141]"} field="id" header="Sr.No" body={(item,key) => (
                     <>
