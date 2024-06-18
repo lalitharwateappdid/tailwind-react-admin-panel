@@ -10,9 +10,12 @@ import axios from 'axios';
 
 const UpdateHomeContent = () => {
 
+    const { id } = useParams();
 
-        const { id } = useParams();
-        
+        function handleImage(e){
+            setImage(e.target.files[0])
+        }
+
         const [image, setImage] = useState('');
         const [description, setDescription] = useState('');
         
@@ -22,7 +25,7 @@ const UpdateHomeContent = () => {
             try{
                 const response = await axios.get(`${apiLink}home-content/edit/${id}`);
                 const data = response.data.data
-                console.log(data);
+                // console.log(data);
             
                 setDescription(data.description)
                 setImage(data.image_path)
@@ -38,13 +41,17 @@ const UpdateHomeContent = () => {
     },[]);
 
     const handleUpdate = async () => {
+        const formData  = new FormData();
+        formData.append("id",id)
+        formData.append("image_path",image)
+        formData.append("description",description)
+
         try{
             setUpdate("Updating...")
-            const response = await axios.put(`${apiLink}home-content/update`,{
-                id:id,
-                description:description,
-                image_path:image
-
+            const response = await axios.put(`${apiLink}home-content/update`,formData,{
+                headers:{
+                    'Content-Type':"multipart/form-data"
+                }
             });
             Notify(response.data.message);
             setUpdate("Update")
@@ -67,7 +74,8 @@ const UpdateHomeContent = () => {
         <>
             <DefaultLayout>
                 <Breadcrumb pageName="Update Home Content " />
-               
+
+                <div className="bg-[#fff] rounded-lg px-5 py-10 shadow-xl dark:bg-transparent">
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                   
                     <div>
@@ -81,13 +89,15 @@ const UpdateHomeContent = () => {
                         <label className="mb-3 block text-black dark:text-white">
                             Image
                         </label>
-                        <input
-                            type="text"
-                            placeholder="Enter Pages in Book"
-                            value={image}
-                            onChange={(e) => setImage(e.target.value)}
-                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
+                        <div>
+               
+                <input
+                  type="file"
+                  onChange={handleImage}
+                  className="w-full cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-whiter file:py-3 file:px-5 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-form-strokedark dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary"
+                />
+              </div>
+                        {/* <img src={`${apiLink}${image}`} className='w-20' alt="" /> */}
                     </div>
 
                   
@@ -100,7 +110,7 @@ const UpdateHomeContent = () => {
                     >{update}</button>
 
                 </div>
-
+                </div>
             </DefaultLayout>
 
 
