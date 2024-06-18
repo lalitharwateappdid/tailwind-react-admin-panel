@@ -63,8 +63,9 @@ const UpdateMedia = () => {
        
         <>
             <DefaultLayout>
-                <Breadcrumb pageName="Update Book " />
-               
+                <Breadcrumb pageName="Update Media " />
+
+                <div className="bg-[#fff] rounded-lg px-5 py-10 shadow-xl dark:bg-transparent">
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <label className="mb-3 block text-black dark:text-white">
@@ -96,6 +97,7 @@ const UpdateMedia = () => {
                         className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                     >{update}</button>
 
+                </div>
                 </div>
 
             </DefaultLayout>
