@@ -17,16 +17,34 @@ const AddEbook = () => {
     const [pdfPath, setPdfPath] = useState("")
     const [submit, setSubmit] = useState("Submit")
 
+    function handlePdf(e){
+        // console.log(e.target.files)
+        setPdfPath(e.target.files[0])
+    }
+
+    function handleImage(e){
+        // console.log(e.target.files)
+        setCoverPath(e.target.files[0])
+    }
+
     // function to store books
     const createEBook = async () => {
         try {
+            const formData = new FormData();
+            
+            formData.append("coverPath",coverPath);
+            formData.append("pdfPath",pdfPath);
+            formData.append("name",name);
+            formData.append("description",description);
+            formData.append("authorName",authorName);
+            console.log(formData)
+
+
             setSubmit("Submitting...")
-            const response = await axios.post(`${apiLink}ebook/create`, {
-                name: name,
-                description:description,
-                authorName: authorName,
-                coverPath: coverPath,
-                pdfPath:pdfPath
+            const response = await axios.post(`${apiLink}ebook/create`, formData, {
+                headers:{
+                    "Content-Type":"multipart-form"
+                }
             });
             Notify(response.data.message);
             setName('');
@@ -90,7 +108,7 @@ const AddEbook = () => {
 
                     <div>
                         
-                        <div><label className="mb-3 block text-black dark:text-white">Upload Image</label><input type="file" onChange={(e) => setCoverPath(e.target.value)} className="w-full cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-whiter file:py-3 file:px-5 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-form-strokedark dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary"/></div>
+                        <div><label className="mb-3 block text-black dark:text-white">Upload Image</label><input type="file" onChange={handleImage} className="w-full cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-whiter file:py-3 file:px-5 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-form-strokedark dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary"/></div>
                       
                          {/* <textarea rows="1" value={coverPath} onChange={(e) => setCoverPath(e.target.value)}  placeholder="Enter Description" className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"></textarea> */}
                     </div>
@@ -100,7 +118,7 @@ const AddEbook = () => {
                             PDF Path
                         </label>
                       
-                         <textarea rows="1" value={pdfPath} onChange={(e) => setPdfPath(e.target.value)}  placeholder="Enter Description" class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"></textarea>
+                         <input type="file" onChange={handlePdf}  placeholder="Enter Description" className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"/>
                     </div>
                     
                 </div>

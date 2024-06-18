@@ -14,16 +14,30 @@ const AddHomeContent = () => {
     const [image, setImage] = useState("");
     const [submit,setSubmit] = useState("Submit")
   
+    function handleImage(e){
+        console.log(e.target.files);
+        setImage(e.target.files[0])
+    }
 
+    function handleDescription(e){
+        console.log(e.target.value);
+        setDescription(e.target.value)
+    }
     // function to store books
     const createMedia = async () => {
        
         try {
+            const formData = new FormData()
+            formData.append("image_path",image);
+            formData.append("description",description);
             setSubmit("Submitting...")
-            const response = await axios.post(`${apiLink}home-content/create`, {
-                description:description,
-                image_path:image
-            });
+            const response = await axios.post(`${apiLink}home-content/create`, formData,
+                {
+                    headers:{
+                        "Content-Type":"multipart/form-data"
+                    }
+                }
+            );
             Notify(response.data.message);
             setDescription("")
             setImage("")
@@ -52,7 +66,7 @@ const AddHomeContent = () => {
                         <label className="mb-3 block text-black dark:text-white">
                             Description
                         </label>
-                        <textarea rows="1" value={description} onChange={(e) => setDescription(e.target.value)}  placeholder="Enter Description" class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"></textarea>
+                        <textarea rows="1"  onChange={handleDescription}  placeholder="Enter Description" class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"></textarea>
                    </div>
                   
                     <div>
@@ -60,10 +74,9 @@ const AddHomeContent = () => {
                             Link
                         </label>
                         <input
-                            type="text"
+                            type="file"
                             placeholder="Upload Image"
-                            value={image}
-                            onChange={(e) => setImage(e.target.value)}
+                            onChange={handleImage}
                             className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         />
                     </div>

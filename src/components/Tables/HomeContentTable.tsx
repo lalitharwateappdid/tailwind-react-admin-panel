@@ -7,6 +7,7 @@ import { InputSwitch } from "primereact/inputswitch";
 import { Column } from "primereact/column";
 import { Link } from "react-router-dom";
 import Notify from "../toast_notify/Notify";
+import ModalImage from "react-modal-image";
 
 
 function HomeContentTable() {
@@ -101,7 +102,15 @@ function HomeContentTable() {
                 )} ></Column>
             
                 <Column field="description" header="Description" />
-                <Column field="image" header="image_path" />
+                <Column field="image" header="image_path" body={(item,key) => (
+                    <>
+                         <ModalImage className="w-10  z-9999"
+                            small={`${apiLink}${item.image_path}`}
+                            large={`${apiLink}${item.image_path}`}
+
+                        />
+                    </>
+                )} />
               
                 <Column field="status" header="Status" body={(rowData) => (
                     <InputSwitch className="p-invalid" checked={rowData.status} onClick={() => handleStatus(rowData.id)} />

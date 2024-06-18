@@ -91,24 +91,27 @@ function EventTable() {
            
            <br/>
            <br/>
-                <DataTable value={apiData} className="shadow-xl" stripedRows paginator rows={10}
+                <DataTable paginatorClassName={"dark:bg-[#243141] dark:text-[#fff]"}  value={apiData} className="shadow-xl" stripedRows paginator rows={10}
                 rowsPerPageOptions={[5, 10, 25, 50]}
-                tableStyle={{ minWidth: '50rem' }}>
-                <Column field="id" header="Sr.No" body={(item,key) => (
+                tableStyle={{ minWidth: '50rem' }} 
+                emptyMessage="No Results Found"
+                tableClassName="dar"
+                >
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13] dark:bg-[#243141]"} field="id" header="Sr.No" body={(item,key) => (
                     <>
                     <span>{key.rowIndex + 1}</span>
                     </>
                 )} ></Column>
             
-                <Column field="event_name" header="Event Name" />
-                <Column field="event_date" header="Event Date" />
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13] dark:bg-[#243141]"} field="event_name" header="Event Name"  />
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13] dark:bg-[#243141]"} field="event_date" header="Event Date" />
               
-                <Column field="status" header="Status" body={(rowData) => (
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13] dark:bg-[#243141]"} field="status" header="Status" body={(rowData) => (
                     <InputSwitch className="p-invalid" checked={rowData.status} onClick={() => handleStatus(rowData.id)} />
                 )
                 }>
                 </Column>
-                <Column field="id" header="Action" body={(rowData) => (
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13] dark:bg-[#243141]"} field="id" header="Action" body={(rowData) => (
                     <div className="flex gap-2">
                         <Link to={`/edit-events/${rowData.id}`} className="bg-primary opacity-90  p-2     text-white rounded-full hover:opacity-100 "><i className="fa-solid fa-pen"></i></Link>
                         <span onClick={() =>  handleDelete(rowData.id)} className="bg-red-700 opacity-90 hover:opacity-100 p-2  rounded-full text-white" ><i className="fa-solid fa-trash"></i></span>

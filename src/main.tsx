@@ -8,14 +8,18 @@ import 'jsvectormap/dist/css/jsvectormap.css';
 import 'flatpickr/dist/flatpickr.min.css';
 import Tailwind from 'primereact/passthrough/tailwind';
 import { PrimeReactProvider } from 'primereact/api';
+// import ThemeSwitcher from './components/themeSwitcher';
+
+import "primereact/resources/themes/lara-light-cyan/theme.css";
 
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   
   <React.StrictMode>
-      <PrimeReactProvider >
+    <PrimeReactProvider value={{ pt: Tailwind }}>
     <Router>
+    {/* <ThemeSwitcher /> */}
       <App />
     </Router>
     </PrimeReactProvider>

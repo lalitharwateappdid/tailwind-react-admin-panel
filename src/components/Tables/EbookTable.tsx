@@ -8,6 +8,7 @@ import Notify from '../../components/toast_notify/Notify'
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputSwitch } from 'primereact/inputswitch';
+import ModalImage from "react-modal-image";
 
 
 
@@ -83,32 +84,44 @@ function EbookTable() {
     return (
         <>
             <div className="float-right mb-4">
-                <Link to="/add-ebook" className="bg-primary text-white px-3 py-2 rounded-md hover:opacity-65">Add</Link>
+                <Link to="/add-ebook" className="bg-primary text-white px-3 py-2 rounded-lg hover:opacity-65">Add</Link>
             </div>
             <br />
             <br />
-            <DataTable value={apiData} className="shadow-xl" stripedRows paginator rows={10}
+            <DataTable value={apiData} paginatorClassName={"dark:bg-[#243141]"}  paginator rows={10}
+
                 rowsPerPageOptions={[5, 10, 25, 50]}
-                tableStyle={{ minWidth: '50rem' }}>
-                <Column field="id" header="Sr.No" body={(item,key) => (
+                tableStyle={{ minWidth: '50rem' }}
+               
+                >
+                <Column field="id" header="Sr.No" headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13] dark:bg-[#243141]"} body={(item,key) => (
                     <>
                     <span>{key.rowIndex + 1}</span>
                     </>
                 )} ></Column>
-                <Column field="name" header="Name"></Column>
-                <Column field="description" header="Description"></Column>
-                <Column field="authorName" header="Author Name"></Column>
-                <Column field="coverPath" header="Cover Path"></Column>
-                <Column field="pdfPath" header="PDF Path"></Column>
-                <Column field="status" header="Status" body={(rowData) => (
+                <Column field="name" header="Name" headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"}></Column>
+                <Column field="description" header="Description" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"}></Column>
+                <Column field="authorName" header="Author Name" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"}></Column>
+                <Column field="coverPath" header="Cover Path" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} body={(item,key) => (
+                     <ModalImage className="w-10  z-9999"
+                     small={`${apiLink}${item.coverPath}`}
+                     large={`${apiLink}${item.coverPath}`}
+
+                 />
+                )}></Column>
+                <Column field="pdfPath" header="PDF Path" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} body={(item,key) => (
+                    <a href={`${apiLink}${item.pdfPath}`} target="_blank"><i className="bg-primary hover:opacity-70 transition text-white p-3 rounded-full fa-solid fa-eye"></i></a>
+
+                )}></Column>
+                <Column field="status" header="Status" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} body={(rowData) => (
                     <InputSwitch className="p-invalid" checked={rowData.status} onClick={() => handleStatus(rowData.id)} />
                 )
                 }>
                 </Column>
-                <Column field="id" header="Action" body={(rowData) => (
+                <Column field="id" header="Action" headerClassName={"dark:text-[#fff] dark:border-[#fff]   dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} body={(rowData) => (
                     <div className="flex gap-2">
                         <Link to={`/edit-book/${rowData.id}`} className="bg-primary opacity-90  p-2     text-white rounded-full hover:opacity-100 "><i className="fa-solid fa-pen"></i></Link>
-                        <span onClick={() =>  handleDelete(rowData.id)} className="bg-red-700 opacity-90 hover:opacity-100 p-2  rounded-full text-white" ><i className="fa-solid fa-trash"></i></span>
+                        <span onClick={() =>  handleDelete(rowData.id)} className="bg-red-700 opacity-90 hover:opacity-100 p-2   rounded-full text-white" ><i className="fa-solid fa-trash"></i></span>
                     </div>
                 )} />
 
