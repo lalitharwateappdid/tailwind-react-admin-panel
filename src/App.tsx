@@ -41,6 +41,7 @@ import UpdateLiterature from './pages/Update/UpdateLiterature';
 import MasterImage from "./pages/Home/MasterImage";
 import AddMasterImage from "./pages/Add/AddMasterImage"
 
+import UpdateEbook from './pages/Update/UpdateEBook';
 // private Router
 import PrivateRoute from './middleware/PrivateRouter';
 import AddEbook from './pages/Add/AddEbook';
@@ -267,6 +268,7 @@ function App() {
 
         } />
         <Route path="/add-ebook" element={<AddEbook />} />
+        <Route path="/edit-ebook/:id" element={<UpdateEbook/>}/>
 
 
 
