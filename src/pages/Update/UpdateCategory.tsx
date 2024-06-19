@@ -63,9 +63,9 @@ const UpdateCategory = () => {
        
         <>
             <DefaultLayout>
-                <Breadcrumb pageName="Update Book " />
+                <Breadcrumb pageName="Update Category" />
 
-                <div className='bg-[#fff] shadow-xl rounded-lg py-10 px-5'>
+                <div className='bg-[#fff] shadow-xl rounded-lg py-10 px-5 dark:bg-transparent'>
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <label className="mb-3 block text-black dark:text-white">

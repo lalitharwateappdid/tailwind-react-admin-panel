@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { apiLink } from "../../api_link";
 import axios from "axios";
 import Swal from 'sweetalert2';
-import DataTable, { createTheme } from 'react-data-table-component';
 import { Link } from "react-router-dom";
-
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import { InputSwitch } from 'primereact/inputswitch';
 
 function SubCategory() {
     const [apiData, setApiData] = useState([]);
@@ -17,12 +18,26 @@ function SubCategory() {
     const fetchData = async () => {
         try {
             const response = await fetch(`${apiLink}sub-category/get`);
-    
+
             const data = await response.json();
             setApiData(data.data);
         }
         catch (error) {
             console.error("Something went wrong try again later");
+        }
+    }
+
+    async function handleStatus(id) {
+        try {
+            await axios.put(`${apiLink}sub-category/status`, {
+                data: { id: id }
+            });
+
+            fetchData()
+        }
+
+        catch (err) {
+            console.log("Error delete ", err);
         }
     }
 
@@ -50,9 +65,9 @@ function SubCategory() {
                     text: "Your file has been deleted.",
                     icon: "success"
                 });
-                
 
-                
+
+
 
             };
 
@@ -62,73 +77,45 @@ function SubCategory() {
         }
     }
 
-   
 
-    createTheme('solarized', {
-        text: {
-            primary: '#fff',
-            secondary: '#fff',
-        },
-        background: {
-            default: '#24303f',
-        },
-        context: {
-            background: '#cb4b16',
-            text: '#FFFFFF',
-        },
-        divider: {
-            default: '#fff',
-        },
-        action: {
-            button: 'rgba(0,0,0,.54)',
-            // button: "red",
-            hover: 'rgba(0,0,0,.08)',
-            disabled: 'rgba(0,0,0,.12)',
-        },
-    }, 'dark');
 
-    const columns = [
-        {
-            name: 'Name',
-            selector: row => row.name,
-        },
-        {
-            name: 'description',
-            selector: row => row.description,
-        },
-        {
-            name: "Category",
-            selector: row => row.Category.name,
-        },
-       
-       
-        {
-            name: "Actions",
-            cell: (row) => (
-                <div className="flex gap-4">
-                    <Link to={`/edit-sub-category/${row.id}`} className="bg-primary px-2 py-1 rounded-md" >Edit</Link>
-                    <button className="bg-danger px-2 py-1 rounded-md" onClick={() => handleDelete(row.id)}>Delete</button>
-                </div>
-            )
-        }
-    ];
+
+
 
     return (
         <>
             <div className="float-right mb-4">
                 <Link to="/add-sub-category" className="bg-primary text-white px-3 py-2 rounded-md hover:opacity-65">Add</Link>
             </div>
-            <DataTable
-                // title="Books"
-                pagination
-                columns={columns}
-                fixedHeader
-                data={apiData}
-                highlightOnHover
-                theme="solarized"
-            />
+            <br />
+            <br />
+            <DataTable paginatorClassName={"dark:bg-[#243141] dark:text-[#fff]"} value={apiData} className="shadow-xl" stripedRows paginator rows={10}
+                rowsPerPageOptions={[5, 10, 25, 50]}
+                tableStyle={{ minWidth: '50rem' }}>
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="id" header="Sr.No" body={(item, key) => (
+                    <>
+                        <span>{key.rowIndex + 1}</span>
+                    </>
+                )} ></Column>
 
- 
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="name" header="name" />
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="description" header="description" />
+
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="status" header="Status" body={(rowData) => (
+                    <InputSwitch className="p-invalid" checked={rowData.status} onClick={() => handleStatus(rowData.id)} />
+                )
+                }>
+                </Column>
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="id" header="Action" body={(rowData) => (
+                    <div className="flex gap-2">
+                        <Link to={`/edit-sub-category/${rowData.id}`} className="bg-primary opacity-90  p-2     text-white rounded-full hover:opacity-100 "><i className="fa-solid fa-pen"></i></Link>
+                        <span onClick={() => handleDelete(rowData.id)} className="bg-red-700 opacity-90 hover:opacity-100 p-2  rounded-full text-white" ><i className="fa-solid fa-trash"></i></span>
+                    </div>
+                )} />
+
+            </DataTable>
+
+
         </>
 
     );

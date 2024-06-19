@@ -78,7 +78,7 @@ const UpdateSubCategory = () => {
         <>
             <DefaultLayout>
                 <Breadcrumb pageName="Update Sub Category " />
-               
+                <div className="bg-[#fff] rounded-lg shadow-xl py-10 px-5 dark:bg-transparent">
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <label className="mb-3 block text-black dark:text-white">
@@ -159,6 +159,7 @@ const UpdateSubCategory = () => {
                         className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                     >{update}</button>
 
+                </div>
                 </div>
 
             </DefaultLayout>
