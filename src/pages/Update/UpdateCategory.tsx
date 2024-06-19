@@ -64,7 +64,8 @@ const UpdateCategory = () => {
         <>
             <DefaultLayout>
                 <Breadcrumb pageName="Update Book " />
-               
+
+                <div className='bg-[#fff] shadow-xl rounded-lg py-10 px-5'>
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <label className="mb-3 block text-black dark:text-white">
@@ -90,6 +91,7 @@ const UpdateCategory = () => {
                         className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                     >{update}</button>
 
+                </div>
                 </div>
 
             </DefaultLayout>
