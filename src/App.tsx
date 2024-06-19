@@ -268,7 +268,7 @@ function App() {
 
         } />
         <Route path="/add-ebook" element={<AddEbook />} />
-        <Route path="/edit-ebook/:id" element={<UpdateEbook/>}/>
+        {/* <Route path="/edit-ebook/:id" element={<UpdateEbook/>}/> */}
 
 
 
