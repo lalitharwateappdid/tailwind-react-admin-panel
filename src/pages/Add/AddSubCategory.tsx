@@ -5,8 +5,8 @@ import { useState,useEffect } from 'react';
 import { apiLink } from '../../api_link';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import SelectGroupTwo from '../../components/Forms/SelectGroup/SelectGroupTwo';
-
+// import SelectGroupTwo from '../../components/Forms/SelectGroup/SelectGroupTwo';
+import { MultiSelect } from 'primereact/multiselect';
 
 const AddSubCategory = () => {
 
@@ -112,6 +112,7 @@ const AddSubCategory = () => {
 
                         </div>
                     </div>
+                   
 
 
                 </div>

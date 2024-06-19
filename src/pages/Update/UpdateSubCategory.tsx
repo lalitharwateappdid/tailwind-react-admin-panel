@@ -145,6 +145,7 @@ const UpdateSubCategory = () => {
                         </div>
                     </div>
                 </div>
+                
 
                     <div className="grid lg:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8 mt-10" >
                         <div>
