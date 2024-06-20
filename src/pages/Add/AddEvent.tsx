@@ -1,12 +1,11 @@
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import DefaultLayout from '../../layout/DefaultLayout';
 import Notify from '../../components/toast_notify/Notify';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { apiLink } from '../../api_link';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import DatePickerOne from '../../components/Forms/DatePicker/DatePickerOne';
-import SelectGroupOne from '../../components/Forms/SelectGroup/SelectGroupOne';
+
 
 
 const AddEvent = () => {
@@ -15,24 +14,27 @@ const AddEvent = () => {
 
     const [eventName, setEventName] = useState("");
     const [eventDate, setEventDate] = useState("")
-    const [day, setDay] = useState("")
-    const [year, setYear] = useState("")
-    const [month, setMonth] = useState("")
+    // const [day, setDay] = useState("")
+    // const [year, setYear] = useState("")
+    // const [month, setMonth] = useState("")
     const [submit, setSubmit] = useState("Submit")
+
+
 
     // function to store books
     const createEBook = async () => {
         try {
             setSubmit("Submitting...")
+            
             const response = await axios.post(`${apiLink}events/create`, {
                 event_name: eventName,
                 event_date: eventDate,
-             
+
             });
             Notify(response.data.message);
             setEventDate('');
             setEventName('');
-            
+
 
 
             setSubmit("Submit")
@@ -48,6 +50,22 @@ const AddEvent = () => {
         }
     }
 
+    useEffect(() => {
+        // Init flatpickr
+        flatpickr('.form-datepicker', {
+            mode: 'single',
+            static: true,
+            monthSelectorType: 'static',
+            dateFormat: 'm/d/Y',
+            prevArrow:
+                '<svg className="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M5.4 10.8l1.4-1.4-4-4 4-4L5.4 0 0 5.4z" /></svg>',
+            nextArrow:
+                '<svg className="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
+        });
+
+
+    }, []);
+
     return (
         <>
 
@@ -57,28 +75,55 @@ const AddEvent = () => {
                 <Breadcrumb pageName="Add Events" />
 
                 <div className='rounded-lg bg-[#fff] px-5 py-10 shadow-xl dark:bg-transparent'>
-                <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
 
-                    <div>
-                        <label className="mb-3 block text-black dark:text-white">
-                            Event Name
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Enter Name"
-                            value={eventName}
-                            onChange={(e) => setEventName(e.target.value)}
-                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                    </div>
-                    <div>
-                        <label className="mb-3 block text-black dark:text-white">
-                            Event Date
-                        </label>
-                        <DatePickerOne />
-                    </div>
+                        <div>
+                            <label className="mb-3 block text-black dark:text-white">
+                                Event {eventDate ? "df":"asf"} Name
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Enter Name"
+                                value={eventName}
+                                onChange={(e) => setEventName(e.target.value)}
+                                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                            />
+                        </div>
+                        <div>
+                            <label className="mb-3 block text-black dark:text-white">
+                                Event Date
+                            </label>
+                            <div>
 
-                    <div>
+                                <div className="relative">
+                                    <input
+                                        className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                                        placeholder="mm/dd/yyyy"
+                                        data-class="flatpickr-right"
+                                        value={eventDate}
+                                        onChange={(e) => setEventDate(e.target.value)}
+
+                                    />
+
+                                    <div className="pointer-events-none absolute inset-0 left-auto right-5 flex items-center">
+                                        <svg
+                                            width="18"
+                                            height="18"
+                                            viewBox="0 0 18 18"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M15.7504 2.9812H14.2879V2.36245C14.2879 2.02495 14.0066 1.71558 13.641 1.71558C13.2754 1.71558 12.9941 1.99683 12.9941 2.36245V2.9812H4.97852V2.36245C4.97852 2.02495 4.69727 1.71558 4.33164 1.71558C3.96602 1.71558 3.68477 1.99683 3.68477 2.36245V2.9812H2.25039C1.29414 2.9812 0.478516 3.7687 0.478516 4.75308V14.5406C0.478516 15.4968 1.26602 16.3125 2.25039 16.3125H15.7504C16.7066 16.3125 17.5223 15.525 17.5223 14.5406V4.72495C17.5223 3.7687 16.7066 2.9812 15.7504 2.9812ZM1.77227 8.21245H4.16289V10.9968H1.77227V8.21245ZM5.42852 8.21245H8.38164V10.9968H5.42852V8.21245ZM8.38164 12.2625V15.0187H5.42852V12.2625H8.38164V12.2625ZM9.64727 12.2625H12.6004V15.0187H9.64727V12.2625ZM9.64727 10.9968V8.21245H12.6004V10.9968H9.64727ZM13.8379 8.21245H16.2285V10.9968H13.8379V8.21245ZM2.25039 4.24683H3.71289V4.83745C3.71289 5.17495 3.99414 5.48433 4.35977 5.48433C4.72539 5.48433 5.00664 5.20308 5.00664 4.83745V4.24683H13.0504V4.83745C13.0504 5.17495 13.3316 5.48433 13.6973 5.48433C14.0629 5.48433 14.3441 5.20308 14.3441 4.83745V4.24683H15.7504C16.0316 4.24683 16.2566 4.47183 16.2566 4.75308V6.94683H1.77227V4.75308C1.77227 4.47183 1.96914 4.24683 2.25039 4.24683ZM1.77227 14.5125V12.2343H4.16289V14.9906H2.25039C1.96914 15.0187 1.77227 14.7937 1.77227 14.5125ZM15.7504 15.0187H13.8379V12.2625H16.2285V14.5406C16.2566 14.7937 16.0316 15.0187 15.7504 15.0187Z"
+                                                fill="#64748B"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* <div>
                         <label className="mb-3 block text-black dark:text-white">
                             Event Day
                         </label>
@@ -96,7 +141,6 @@ const AddEvent = () => {
 
                         <div><label className="mb-3 block text-black dark:text-white">Upload Image</label><input type="file" onChange={(e) => setCoverPath(e.target.value)} className="w-full cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-stroke file:bg-whiter file:py-3 file:px-5 file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-form-strokedark dark:file:bg-white/30 dark:file:text-white dark:focus:border-primary" /></div>
 
-                        {/* <textarea rows="1" value={coverPath} onChange={(e) => setCoverPath(e.target.value)}  placeholder="Enter Description" className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"></textarea> */}
                     </div>
 
                     <div>
@@ -105,15 +149,15 @@ const AddEvent = () => {
                         </label>
 
                         <textarea rows="1" value={year} onChange={(e) => setYear(e.target.value)} placeholder="Enter Description" class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"></textarea>
+                    </div> */}
+
                     </div>
+                    <div className="w-50 mx-auto mt-5">
+                        <button onClick={() => createEBook()}
+                            className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
+                        >{submit}</button>
 
-                </div>
-                <div className="w-50 mx-auto mt-5">
-                    <button onClick={() => createEBook()}
-                        className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
-                    >{submit}</button>
-
-                </div>
+                    </div>
                 </div>
 
             </DefaultLayout>

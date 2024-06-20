@@ -1,13 +1,14 @@
 import flatpickr from 'flatpickr';
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import moment from 'moment';
 
-const DatePickerOne = ({date,state}) => {
-  const [getdate,setDate] = useState(date);
-  
-  // const handleDateChange = (selectedDate) => {
-  //   (selectedDate)
-  // }
+const DatePickerOne = ({ sendDataToParent }) => {
+  const [date, setDate] = useState("");
+
+  const handleDateChange = (e) => {
+    setDate(e.target.value)
+    sendDataToParent(date)
+  }
   useEffect(() => {
     // Init flatpickr
     flatpickr('.form-datepicker', {
@@ -21,7 +22,7 @@ const DatePickerOne = ({date,state}) => {
         '<svg className="fill-current" width="7" height="11" viewBox="0 0 7 11"><path d="M1.4 10.8L0 9.4l4-4-4-4L1.4 0l5.4 5.4z" /></svg>',
     });
 
-    
+
   }, []);
 
   return (
@@ -34,8 +35,8 @@ const DatePickerOne = ({date,state}) => {
           className="form-datepicker w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
           placeholder="mm/dd/yyyy"
           data-class="flatpickr-right"
-          value={(date)}
-          onChange={(e) => setDate(e.target.value)}
+          value={date}
+          onChange={handleDateChange}
         />
 
         <div className="pointer-events-none absolute inset-0 left-auto right-5 flex items-center">

@@ -47,7 +47,7 @@ const AddCategory = () => {
             <DefaultLayout>
                 <Breadcrumb pageName="Add Category" />
 
-                <div className="px-5 py-3 rounded-lg bg-[#fff] dark:bg-transparent shadow-xl">
+                <div className="px-5 py-10 rounded-lg bg-[#fff] dark:bg-transparent shadow-xl">
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                   
                     <div>
