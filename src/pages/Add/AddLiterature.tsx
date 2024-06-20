@@ -93,6 +93,7 @@ const AddLiterature = () => {
         <>
             <DefaultLayout>
                 <Breadcrumb pageName="Add Literature" />
+                <div className='bg-[#fff] px-5 py-10 rounded-lg shadow-xl dark:bg-transparent'>
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                     {/* category_id dropdown */}
                     <div>
@@ -361,6 +362,7 @@ const AddLiterature = () => {
                         className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                     >{submit}</button>
 
+                </div>
                 </div>
 
             </DefaultLayout>
