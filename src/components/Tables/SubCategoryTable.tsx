@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputSwitch } from 'primereact/inputswitch';
+import ModalImage from "react-modal-image";
+import { apiImageLink } from "../../api_link";
 
 function SubCategory() {
     const [apiData, setApiData] = useState([]);
@@ -104,6 +106,17 @@ function SubCategory() {
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="Category" header="Category" body={(item,key) => (
                         <span className="bg-slate-600 p-2 rounded-full">{item.Category.name}</span>
                 ) }/>
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="cover_image" header="Image" body={(item,key) => (
+                    <>
+                    <>
+                         <ModalImage className="w-10  z-9999"
+                            small={`${apiImageLink}${item.cover_image}`}
+                            large={`${apiImageLink}${item.cover_image}`}
+
+                        />
+                    </>
+                    </>
+                )} />
 
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="status" header="Status" body={(rowData) => (
                     <InputSwitch className="p-invalid" checked={rowData.status} onClick={() => handleStatus(rowData.id)} />

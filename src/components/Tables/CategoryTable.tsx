@@ -8,6 +8,7 @@ import { InputSwitch } from 'primereact/inputswitch';
 import { Link } from "react-router-dom";
 import ModalImage from "react-modal-image";
 import Notify from "../toast_notify/Notify";
+import { apiImageLink } from "../../api_link";
 
 
 function CategoryTable() {
@@ -101,8 +102,8 @@ function CategoryTable() {
                     <>
                     <>
                          <ModalImage className="w-10  z-9999"
-                            small={`${apiLink}${item.cover_image}`}
-                            large={`${apiLink}${item.cover_image}`}
+                            small={`${apiImageLink}${item.cover_image}`}
+                            large={`${apiImageLink}${item.cover_image}`}
 
                         />
                     </>

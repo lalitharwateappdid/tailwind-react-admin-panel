@@ -17,8 +17,16 @@ const UpdateSubCategory = () => {
         const [description, setDescription] = useState('');
         const [categoryData,setCategory] = useState([])
         const [category_id,setCategory_id] = useState("")
+        const [coverImage,setImage] = useState("")
+
+        const handleImage = (e) => {
+            console.log(e.target.files)
+            setImage(e.target.files[0])
+        }
     
         const [update,setUpdate] = useState("Update")
+
+       
       
         const getData =  async () => {
             try{
@@ -50,12 +58,18 @@ const UpdateSubCategory = () => {
 
     const handleUpdate = async () => {
         try{
+            
+            const formData = new FormData()
+            formData.append("coverImage",coverImage)
+            formData.append("category_id",category_id);
+            formData.append("description",description);
+            formData.append("name",name)
+            formData.append("id",`${id}`)
             setUpdate("Updating...")
-            const response = await axios.put(`${apiLink}sub-category/update`,{
-                id:id,
-                name:name,
-                description:description,
-                category_id:category_id
+            const response = await axios.put(`${apiLink}sub-category/update`,formData,{
+                headers:{
+                    "Content-Type":"multipart/form-data"
+                }
             });
             Notify(response.data.message);
             setUpdate("Update")
@@ -153,6 +167,16 @@ const UpdateSubCategory = () => {
                             Category Description
                         </label>
                         <textarea rows="5" value={description} onChange={(e) => setDescription(e.target.value)}  placeholder="Enter quote" class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"></textarea>
+                   </div>
+                   <div>
+                   <label className="mb-3 block text-black dark:text-white">
+                            Image
+                        </label>
+                        <input
+                  type="file"
+                  onChange={handleImage}
+                  className="w-full rounded-md border border-stroke p-3 outline-none transition file:mr-4 file:rounded file:border-[0.5px] file:border-stroke file:bg-[#EEEEEE] file:py-1 file:px-2.5 file:text-sm focus:border-primary file:focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-strokedark dark:file:bg-white/30 dark:file:text-white"
+                />
                    </div>
                    </div>
                 <div className="w-50 mx-auto mt-5">
