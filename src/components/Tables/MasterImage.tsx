@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { apiLink } from "../../api_link";
+import { apiImageLink, apiLink } from "../../api_link";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import { DataTable } from "primereact/datatable";
@@ -12,6 +12,7 @@ import { Sidebar } from 'primereact/sidebar';
 import { Button } from "primereact/button";
 import copy from "copy-to-clipboard";
 import { InputSwitch } from "primereact/inputswitch";
+// import { apiImageLink } from "../../api_link";
 
 
 
@@ -118,8 +119,8 @@ function MasterImageTable() {
                             <>
                                 <p className="my-10 flex justify-center">
                                     <ModalImage key={key} className="w-40 "
-                                        small={`${apiLink}${item.image}`}
-                                        large={`${apiLink}${item.image}`}
+                                        small={`${apiImageLink}${item.image}`}
+                                        large={`${apiImageLink}${item.image}`}
 
                                     />
                                 </p >
@@ -167,8 +168,8 @@ function MasterImageTable() {
                 <Column headerClassName={"dark:text-[#fff] dark:border-[#fff]   dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="image" className="dark:text-white dark:bg-black" header="Image" body={(item, key) => (
                     <>
                         <ModalImage className="w-20  z-9999"
-                            small={`${apiLink}${item.image}`}
-                            large={`${apiLink}${item.image}`}
+                            small={`${apiImageLink}${item.image}`}
+                            large={`${apiImageLink}${item.image}`}
 
                         />
                         {/* <img className="w-10 rounded-full" src={`${apiLink}${item.image}`} alt="Your Image Alt Text" /> */}
