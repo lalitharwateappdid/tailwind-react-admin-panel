@@ -16,19 +16,30 @@ const AddSubCategory = () => {
     const [category, setCategory] = useState("")
     const [categoryData, setCategoryData] = useState([])
     const [submit, setSubmit] = useState("Submit")
+    const [coverImage,setImage] = useState("")
 
+    const handleImage = (e) => {
+        console.log(e.target.files)
+        setImage(e.target.files[0])
+    }
 
     // function to store books
     const createMedia = async () => {
 
         try {
+            const formData = new FormData();
+            formData.append("coverImage",coverImage)
+            formData.append("category_id",category);
+            formData.append("description",description);
+       
+            // formData.append("id",`${id}`)
+
             setSubmit("Submitting...")
             
-            const response = await axios.post(`${apiLink}sub-category/create`, {
-                name: name,
-                description: description,
-                category_id: category
-
+            const response = await axios.post(`${apiLink}sub-category/create`,formData, {
+                headers:{
+                    "Content-Type":"multipart/form-data"
+                }
             });
 
             
@@ -111,6 +122,17 @@ const AddSubCategory = () => {
                             </select>
 
                         </div>
+
+                        <div>
+                   <label className="mb-3 block text-black dark:text-white">
+                            Image
+                        </label>
+                        <input
+                  type="file"
+                  onChange={handleImage}
+                  className="w-full rounded-md border border-stroke p-3 outline-none transition file:mr-4 file:rounded file:border-[0.5px] file:border-stroke file:bg-[#EEEEEE] file:py-1 file:px-2.5 file:text-sm focus:border-primary file:focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:file:border-strokedark dark:file:bg-white/30 dark:file:text-white"
+                />
+                   </div>
                     </div>
                    
 

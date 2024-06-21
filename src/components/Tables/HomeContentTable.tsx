@@ -8,6 +8,7 @@ import { Column } from "primereact/column";
 import { Link } from "react-router-dom";
 import Notify from "../toast_notify/Notify";
 import ModalImage from "react-modal-image";
+import { apiImageLink } from "../../api_link";
 
 
 function HomeContentTable() {
@@ -105,8 +106,8 @@ function HomeContentTable() {
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="image" header="image_path" body={(item,key) => (
                     <>
                          <ModalImage className="w-10  z-9999"
-                            small={`${apiLink}${item.image_path}`}
-                            large={`${apiLink}${item.image_path}`}
+                            small={`${apiImageLink}${item.image_path}`}
+                            large={`${apiImageLink}${item.image_path}`}
 
                         />
                     </>
