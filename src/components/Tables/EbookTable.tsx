@@ -72,7 +72,7 @@ function EbookTable() {
 
 
     const handleStatus = async (id) => {
-       
+
         const response = await axios.put(`${apiLink}ebook/status`, {
             id: id
         });
@@ -88,28 +88,29 @@ function EbookTable() {
             </div>
             <br />
             <br />
-            <DataTable value={apiData} paginatorClassName={"dark:bg-[#243141] dark:text-[#fff]"}  paginator rows={10}
+            <DataTable value={apiData} paginatorClassName={"dark:bg-[#243141] dark:text-[#fff]"} paginator rows={10}
 
                 rowsPerPageOptions={[5, 10, 25, 50]}
                 tableStyle={{ minWidth: '50rem' }}
-               
-                >
-                <Column field="id" header="Sr.No" headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13] dark:bg-[#243141]"} body={(item,key) => (
+
+            >
+                <Column field="id" header="Sr.No" headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13] dark:bg-[#243141]"} body={(item, key) => (
                     <>
-                    <span>{key.rowIndex + 1}</span>
+                        <span>{key.rowIndex + 1}</span>
                     </>
                 )} ></Column>
                 <Column field="name" header="Name" headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"}></Column>
                 <Column field="description" header="Description" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"}></Column>
                 <Column field="authorName" header="Author Name" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"}></Column>
-                <Column field="coverPath" header="Cover Path" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} body={(item,key) => (
-                     <ModalImage className="w-10  z-9999"
-                     small={`${apiLink}${item.coverPath}`}
-                     large={`${apiLink}${item.coverPath}`}
+                <Column field="coverPath" header="Cover Path" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} body={(item, key) => (
 
-                 />
+                    <ModalImage className="w-10  z-9999"
+                        small={`${apiLink}${item.coverPath}`}
+                        large={`${apiLink}${item.coverPath}`}
+
+                    />
                 )}></Column>
-                <Column field="pdfPath" header="PDF Path" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} body={(item,key) => (
+                <Column field="pdfPath" header="PDF Path" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} body={(item, key) => (
                     <a href={`${apiLink}${item.pdfPath}`} target="_blank"><i className="bg-primary hover:opacity-70 transition text-white p-3 rounded-full fa-solid fa-eye"></i></a>
 
                 )}></Column>
@@ -120,8 +121,8 @@ function EbookTable() {
                 </Column>
                 <Column field="id" header="Action" headerClassName={"dark:text-[#fff] dark:border-[#fff]   dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} body={(rowData) => (
                     <div className="flex gap-2">
-                        <Link to={`/edit-book/${rowData.id}`} className="bg-primary opacity-90  p-2     text-white rounded-full hover:opacity-100 "><i className="fa-solid fa-pen"></i></Link>
-                        <span onClick={() =>  handleDelete(rowData.id)} className="bg-red-700 opacity-90 hover:opacity-100 p-2   rounded-full text-white" ><i className="fa-solid fa-trash"></i></span>
+                        <Link to={`/edit-ebook/${rowData.id}`} className="bg-primary opacity-90  p-2     text-white rounded-full hover:opacity-100 "><i className="fa-solid fa-pen"></i></Link>
+                        <span onClick={() => handleDelete(rowData.id)} className="bg-red-700 opacity-90 hover:opacity-100 p-2   rounded-full text-white" ><i className="fa-solid fa-trash"></i></span>
                     </div>
                 )} />
 
