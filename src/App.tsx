@@ -39,7 +39,9 @@ import Literature from './pages/Home/Literature';
 import AddLiterature from './pages/Add/AddLiterature';
 import UpdateLiterature from './pages/Update/UpdateLiterature';
 import MasterImage from "./pages/Home/MasterImage";
-import AddMasterImage from "./pages/Add/AddMasterImage"
+import AddMasterImage from "./pages/Add/AddMasterImage";
+
+im
 
 // import UpdateEbook from './pages/Update/UpdateEBook';
 // private Router
@@ -312,6 +314,8 @@ function App() {
         <Route path="/edit-master-image/:id" element={<UpdateMasterImage />} />
         <Route path='edit-literature/:id' element={<UpdateLiterature />} />
         {/* master image path ends */}
+
+        <Route path="/business-settings" element={} />
 
       </Routes>
     </>
