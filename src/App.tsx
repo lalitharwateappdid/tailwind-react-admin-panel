@@ -88,7 +88,7 @@ function App() {
           element={
             <>
               <PrivateRoute>
-                <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <PageTitle title="SadhanaAnand" />
                 <Calendar />
               </PrivateRoute>
             </>
@@ -99,7 +99,7 @@ function App() {
           element={
             <>
               <PrivateRoute>
-                <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <PageTitle title="SadhanaAnand" />
                 <Profile />
               </PrivateRoute>
             </>
@@ -109,7 +109,7 @@ function App() {
           path="/forms/form-elements"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="SadhanaAnand" />
               <FormElements />
             </>
           }
@@ -118,7 +118,7 @@ function App() {
           path="/forms/form-layout"
           element={
             <>
-              <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="SadhanaAnand" />
               <FormLayout />
             </>
           }
@@ -138,7 +138,7 @@ function App() {
           path="/settings"
           element={
             <>
-              <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="SadhanaAnand" />
               <Settings />
             </>
           }
@@ -174,8 +174,8 @@ function App() {
           path="/auth/signin"
           element={
             <>
-              <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <SignIn />
+              <PageTitle title="SadhanaAnand" />
+              <SignIn />late
             </>
           }
         />
@@ -183,7 +183,7 @@ function App() {
           path="/auth/signup"
           element={
             <>
-              <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="SadhanaAnand" />
               <SignUp />
             </>
           }
