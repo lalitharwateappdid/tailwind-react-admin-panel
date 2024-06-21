@@ -41,7 +41,7 @@ import UpdateLiterature from './pages/Update/UpdateLiterature';
 import MasterImage from "./pages/Home/MasterImage";
 import AddMasterImage from "./pages/Add/AddMasterImage";
 
-im
+import BusinessSettings from "./pages/Add/BusinessSettings";
 
 // import UpdateEbook from './pages/Update/UpdateEBook';
 // private Router
@@ -315,7 +315,7 @@ function App() {
         <Route path='edit-literature/:id' element={<UpdateLiterature />} />
         {/* master image path ends */}
 
-        <Route path="/business-settings" element={} />
+        <Route path="/business-settings" element={<BusinessSettings/>} />
 
       </Routes>
     </>
