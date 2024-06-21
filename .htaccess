@@ -1,17 +1,6 @@
-# Use UTF-8 encoding for anything served text/plain or text/html
-AddDefaultCharset UTF-8
-
-# Enable the Rewrite Engine
 RewriteEngine On
-
-# Redirect Trailing Slashes If Not A Folder...
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)/$ /$1 [L,R=301]
-
-# Send Requests To index.html
+RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ /index.html [L,QSA]
-
-# Custom 404 Error Page
-ErrorDocument 404 /index.html
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^.*$ / [L,QSA]
