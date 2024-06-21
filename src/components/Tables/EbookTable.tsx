@@ -9,6 +9,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputSwitch } from 'primereact/inputswitch';
 import ModalImage from "react-modal-image";
+import { apiImageLink } from "../../api_link";
 
 
 
@@ -105,8 +106,8 @@ function EbookTable() {
                 <Column field="coverPath" header="Cover Path" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} body={(item, key) => (
 
                     <ModalImage className="w-10  z-9999"
-                        small={`${apiLink}${item.coverPath}`}
-                        large={`${apiLink}${item.coverPath}`}
+                        small={`${apiImageLink}${item.coverPath}`}
+                        large={`${apiImageLink}${item.coverPath}`}
 
                     />
                 )}></Column>

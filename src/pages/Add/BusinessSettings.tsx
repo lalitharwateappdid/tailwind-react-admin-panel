@@ -5,38 +5,27 @@ import { useState, useEffect } from 'react';
 import { apiLink } from '../../api_link';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import MDEditor from '@uiw/react-md-editor';
 
 const BusinessSettings = () => {
 
 
-    const [name, setName] = useState("");
+    const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [category, setCategory] = useState("")
-    const [categoryData, setCategoryData] = useState([])
-    const [submit, setSubmit] = useState("Submit")
-    const [coverImage, setImage] = useState("")
-    const [value, setValue] = useState("**Hello world!!!**");
-
-    const handleImage = (e) => {
-        console.log(e.target.files)
-        setImage(e.target.files[0])
-    }
-
+    const [submit,setSubmit] = useState("Submit")
+  
     // function to store books
     const createMedia = async () => {
 
         try {
             const formData = new FormData();
-            formData.append("coverImage", coverImage)
-            formData.append("category_id", category);
+            formData.append("title", title)
             formData.append("description", description);
 
             // formData.append("id",`${id}`)
 
             setSubmit("Submitting...")
 
-            const response = await axios.post(`${apiLink}sub-category/create`, formData, {
+            const response = await axios.post(`${apiLink}business-settings/create`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
@@ -44,9 +33,9 @@ const BusinessSettings = () => {
 
 
             Notify(response.data.message);
-            setName("")
+            setTitle("")
             setDescription("")
-            setCategory("")
+            
             setSubmit("Submit")
         }
         catch (err) {
@@ -63,10 +52,10 @@ const BusinessSettings = () => {
     useEffect(() => {
         const fetchCategoryData = async () => {
             try {
-                const category_response = await fetch(`${apiLink}category/get`);
+                const category_response = await fetch(`${apiLink}business-settings/get`);
                 const category_data = await category_response.json();
-                console.log(category_data);
-                setCategoryData(category_data.data);
+                setTitle(category_data.data.about)                
+                // setCategoryData(category_data.data);
             } catch (error) {
                 console.error("Error fetching category data:", error);
                 // Handle error as needed
