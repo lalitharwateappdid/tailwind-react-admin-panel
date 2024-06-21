@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { apiLink } from '../../api_link';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import DatePickerTwo from '../../components/Forms/DatePicker/DatePickerTwo';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -86,14 +85,19 @@ const AddEvent = () => {
                                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             />
                         </div>
-                        <div>
+
+                        <div className='grid md:grid-cols-1 '>
+                            {/* <label className="mb-3 block text-black dark:text-white">
+                                Event Date
+                            </label>
+                            <div className='w-screen'> */}
+
+
                             <label className="mb-3 block text-black dark:text-white">
                                 Event Date
                             </label>
-                            <div className='w-screen'>
-
-                                <DatePicker placeholderText='Select Event Date' selected={eventDate} onChange={(date) => setEventDate(date)} className='w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary' />
-                            </div>
+                            <DatePicker placeholderText='Select Event Date' selected={eventDate} onChange={(date) => setEventDate(date)} className='w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary' />
+                            {/* </div> */}
                         </div>
 
                         {/* <div>
