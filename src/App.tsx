@@ -77,7 +77,7 @@ function App() {
           element={
             <>
               <PrivateRoute>
-                <PageTitle title="eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <PageTitle title="SadhanaAnand" />
                 <ECommerce />
               </PrivateRoute>
             </>
