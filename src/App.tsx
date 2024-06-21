@@ -47,6 +47,7 @@ import PrivateRoute from './middleware/PrivateRouter';
 import AddEbook from './pages/Add/AddEbook';
 import UpdateEvent from './pages/Update/UpdateEvent';
 import UpdateEbook from './pages/Update/UpdateEbook';
+import UpdateMasterImage from './pages/Update/UpdateMasterImage';
 
 // toast configuration method
 
@@ -268,7 +269,7 @@ function App() {
 
         } />
         <Route path="/add-ebook" element={<AddEbook />} />
-        <Route path="/edit-ebook/:id" element={<UpdateEbook/>}/>
+        <Route path="/edit-ebook/:id" element={<UpdateEbook />} />
 
 
 
@@ -296,7 +297,7 @@ function App() {
         } />
 
         <Route path='/add-literature' element={<AddLiterature />} />
-        <Route path='edit-literature/:id' element={<UpdateLiterature/>}/>
+        <Route path='edit-literature/:id' element={<UpdateLiterature />} />
         {/* literature path ends */}
 
         {/* master image path starts */}
@@ -308,7 +309,8 @@ function App() {
         } />
 
         <Route path='/add-master-image' element={<AddMasterImage />} />
-        <Route path='edit-literature/:id' element={<UpdateLiterature/>}/>
+        <Route path="/edit-master-image/:id" element={<UpdateMasterImage />} />
+        <Route path='edit-literature/:id' element={<UpdateLiterature />} />
         {/* master image path ends */}
 
       </Routes>
