@@ -317,7 +317,7 @@ const BusinessSettings = () => {
 
 
 
-                    <div className="w-50 mx-auto mt-5">
+                <div className="w-50 mx-auto mt-5">
                         <button onClick={() => createMedia()}
                             className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                         >{submit}</button>
