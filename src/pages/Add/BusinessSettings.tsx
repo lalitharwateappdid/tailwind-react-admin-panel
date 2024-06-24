@@ -312,7 +312,7 @@ const BusinessSettings = () => {
                     {/* contact us section starts */}
                     <h3 className="dark:text-white font-bold underline text-center my-5">Contact Us</h3>
                     <MarkdownEditor
-                        height='200px' value={contact}value={appInfo} onChange={(value, viewUpdate) => setContact(value)} />
+                        height='200px' value={contact} onChange={(value, viewUpdate) => setContact(value)} />
                     {/* contact us section ends */}
 
 

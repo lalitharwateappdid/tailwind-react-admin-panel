@@ -291,37 +291,7 @@ const AddLiterature = () => {
                     {/* author name marathi ends */}
 
 
-                    {/* saint name english starts */}
-                    <div>
-                        <label className="mb-2.5 block text-black dark:text-white">
-                            Saint Name English
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Enter Saint Name"
-                            value={saintNameEnglish}
-                            onChange={(e) => setSaintNameEnglish(e.target.value)}
-                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                    </div>         
-                    {/* saint name english ends */}
-
-
-                    {/* saint name marathi */}
-                    <div>
-                        <label className="mb-2.5 block text-black dark:text-white">
-                            Saint Name Marathi
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Enter Saint Name"
-                            value={saintNameMarathi}
-                            onChange={(e) => setSaintNameMarathi(e.target.value)}
-                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                    </div>             
-                    {/* saint name marathi ends */}
-
+                   
                     {/* audio_file_path */}
                     <div>
                         <label className="mb-2.5 block text-black dark:text-white">
