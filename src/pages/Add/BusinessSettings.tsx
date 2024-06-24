@@ -28,6 +28,7 @@ const BusinessSettings = () => {
     const [app, setApp] = useState("")
     const [forceUpdate, setForceUpdate] = useState("")
     const [appInfo, setAppInfo] = useState("")
+    const [alternativeWebsite,SetalternativeWebsite] = useState("")
 
     const handleImage = (e) => {
         setAboutImage(e.target.files[0]);
@@ -44,11 +45,12 @@ const BusinessSettings = () => {
             formData.append("website", website)
             formData.append("privacyPolicy", privacyPolicy)
             formData.append("terms", terms)
-            formData.append("contact", 'contact')
-            formData.append("android_version", 'android_version')
+            formData.append("contact", contact)
+            formData.append("android_version", android_version)
             formData.append("image", image);
             formData.append("app_link", app)
             formData.append("app_info", appInfo)
+            formData.append("my_wants",alternativeWebsite)
 
             setSubmit("Submitting...")
 
@@ -218,7 +220,7 @@ const BusinessSettings = () => {
                         <div>
 
                         <MarkdownEditor
-                        height='200px' value={appInfo} onChange={(e => setAppInfo(e.target.value))} />
+                        height='200px' value={appInfo} onChange={(value, viewUpdate) => setAppInfo(value)} />
                         </div>
 
 
@@ -240,6 +242,24 @@ const BusinessSettings = () => {
                         </div>
                     </div>
                     {/* website section ends */}
+
+                    {/* माझी आवड माझी गरज section starts */}
+                    <h3 className="dark:text-white font-bold underline text-center my-5">माझी आवड माझी गरज</h3>
+                    <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+
+                            <input
+                                type="text"
+                                placeholder="Enter Website Link "
+                                value={alternativeWebsite}
+                                onChange={(e) => SetalternativeWebsite(e.target.value)}
+                                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                            />
+                        </div>
+                    </div>
+                    {/* माझी आवड माझी गरज section ends */}
+
+
 
                     {/* app link section starts */}
                     <h3 className="dark:text-white font-bold underline text-center my-5">App Link</h3>
@@ -292,7 +312,7 @@ const BusinessSettings = () => {
                     {/* contact us section starts */}
                     <h3 className="dark:text-white font-bold underline text-center my-5">Contact Us</h3>
                     <MarkdownEditor
-                        height='200px' value={contact} onChange={(e => setContact(e.target.value))} />
+                        height='200px' value={contact}value={appInfo} onChange={(value, viewUpdate) => setContact(value)} />
                     {/* contact us section ends */}
 
 
