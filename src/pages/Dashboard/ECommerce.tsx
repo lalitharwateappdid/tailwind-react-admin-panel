@@ -43,7 +43,7 @@ const ECommerce: React.FC = () => {
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
         <Link to="/home-content">
-          <CardDataStats title="Total Sliders" total={slider} rate="" >
+          <CardDataStats title="Total Sliders again" total={slider} rate="" >
             <span className="material-symbols-outlined">
               inventory_2
             </span>
