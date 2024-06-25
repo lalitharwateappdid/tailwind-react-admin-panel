@@ -6,7 +6,7 @@ const Calendar = () => {
     <DefaultLayout>
       <Breadcrumb pageName="Calendar" />
 
-      {/* <!-- ====== Calendar Section Start ====== --> */}
+      {/* <!-- ====== Calendar Section Start rest ====== --> */}
       <div className="w-full max-w-full rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <table className="w-full">
           <thead>
