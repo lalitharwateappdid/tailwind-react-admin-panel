@@ -109,36 +109,12 @@ function MasterImageTable() {
     return (
         <>
 
-            <Sidebar pt={{
-                root: "dark:bg-[#243141] dark:text-red-600"
-            }} visible={visible} onHide={() => setVisible(false)} >
-                <h2 className="font-bold text-2xl dark:text-white">Select Image</h2>
-                <div className="flex flex-col justify-center">
-                    {
-                        apiData.map((item, key) => (
-                            <>
-                                <p className="my-10 flex justify-center">
-                                    <ModalImage key={key} className="w-40 "
-                                        small={`${apiImageLink}${item.image}`}
-                                        large={`${apiImageLink}${item.image}`}
-
-                                    />
-                                </p >
-                                {/* <p  className=" text-sm max-w-[1rem]" value={copyText} onChange={handleText}>{`${apiLink}${item.image}`}</p>
-
-                            <button  onClick={copyToClipBoard}>Copy</button> */}
-                            </>
-                        ))
-                    }
-                </div>
-
-            </Sidebar>
+          
             <div className="float-right mb-4">
                 <Link to="/add-master-image" className="bg-primary text-white px-3 py-2 rounded-md hover:opacity-65">Add</Link>
 
 
             </div>
-            <Button className="bg-purple-200 dark:bg-primary" label="Select Image" icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
 
 
             <br />
