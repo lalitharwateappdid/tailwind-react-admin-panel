@@ -22,7 +22,7 @@ function CategoryTable() {
         try {
             const response = await fetch(`${apiLink}category/get`);
             const data = await response.json();
-            setApiData(data.data);
+            setApiData(data);
         }
         catch (error) {
             console.error("Soemthing went wrong try again later");
@@ -80,14 +80,12 @@ function CategoryTable() {
     return (
 
         <>
-
-        
             <div className="float-right mb-4">
                 <Link to="/add-category" className="bg-primary text-white px-3 py-2 rounded-md hover:opacity-65">Add</Link>
             </div>
             <br />
             <br />
-            <DataTable  paginatorClassName={"dark:bg-[#243141] dark:text-[#fff]"}s value={apiData} className="shadow-xl" stripedRows paginator rows={10}
+            <DataTable  paginatorClassName={"dark:bg-[#243141] dark:text-[#fff]"} value={apiData} className="shadow-xl" stripedRows paginator rows={10}
                 rowsPerPageOptions={[5, 10, 25, 50]}
                 tableStyle={{ minWidth: '50rem' }}>
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="id" header="Sr.No" body={(item, key) => (
@@ -96,7 +94,7 @@ function CategoryTable() {
                     </>
                 )} ></Column>
 
-                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="name" header="name" />
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="title" header="title" />
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="description" header="description" />
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="cover_image" header="Image" body={(item,key) => (
                     <>

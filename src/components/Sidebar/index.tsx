@@ -258,7 +258,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     <span className="material-symbols-outlined">
                       image
                     </span>
-                    Master Image
+                    Category Images
                   </NavLink>
                 </li>
                 {/* master image ends */}
