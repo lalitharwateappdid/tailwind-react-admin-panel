@@ -36,7 +36,8 @@ const AddLiterature = () => {
             setSubmit("Submitting...")
             const formData = new FormData();
             formData.append("literature_pdf",LiteraturePDF)
-            const response = await axios.post(`${apiLink}literature/create`,{
+            const response = await axios.post(`${apiLink}literature/create`,
+                formData,{
                 headers:{
                     "Content-Type": "multipart/form-data"
                 }
@@ -46,7 +47,8 @@ const AddLiterature = () => {
 
         catch(error){
             setSubmit("Submit")
-            console.log("Something went wrong");
+            Notify(error);
+            console.log("Something went wrong "+error);
         }
         // try {
         //     setSubmit("Submitting...")
@@ -315,7 +317,7 @@ const AddLiterature = () => {
                         <input
                          
                             placeholder="Add Literature PDF"
-                            value={audioFilePath}
+                            
                             onChange={(e) => setLiteraturePDF(e.target.files[0])}
                             type="file"
                             accept='image/*'
