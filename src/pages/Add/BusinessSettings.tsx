@@ -26,12 +26,19 @@ const BusinessSettings = () => {
     const [android_version, SetAndroidVersion] = useState("")
     const [image, setAboutImage] = useState("")
     const [app, setApp] = useState("")
-    const [forceUpdate, setForceUpdate] = useState("")
+    const [forceUpdate, setForceUpdate] = useState(true)
     const [appInfo, setAppInfo] = useState("")
     const [alternativeWebsite,SetalternativeWebsite] = useState("")
 
     const handleImage = (e) => {
         setAboutImage(e.target.files[0]);
+    }
+
+
+    // handle forceupdate input
+    function handleForceUpdate(e){
+        setForceUpdate(e.target.value)
+        
     }
 
     // function to store books
@@ -47,9 +54,10 @@ const BusinessSettings = () => {
             formData.append("terms", terms)
             formData.append("contact", contact)
             formData.append("android_version", android_version)
-            formData.append("image", image);
+            // formData.append("image", image);
             formData.append("app_link", app)
             formData.append("app_info", appInfo)
+            formData.append("force_update",forceUpdate)
             formData.append("my_wants",alternativeWebsite)
 
             setSubmit("Submitting...")
@@ -94,6 +102,8 @@ const BusinessSettings = () => {
                 SetAndroidVersion(category_data.data['android_version'])
                 setApp(category_data.data['app_link'])
                 setAppInfo(category_data.data['app_info'])
+                setForceUpdate(category_data.data["force_update"])
+                console.log(category_data.data["force_update"])
                 // setCategoryData(category_data.data);
             } catch (error) {
                 console.error("Error fetching category data:", error);
@@ -133,7 +143,7 @@ const BusinessSettings = () => {
                             <label className="mb-3 block text-black dark:text-white">
                                 Force Update
                             </label>
-                            <InputSwitch className="p-invalid" checked={forceUpdate == "1" ? true : false} />
+                            <InputSwitch className="p-invalid" onChange={handleForceUpdate} checked={forceUpdate == "true" ? true: false} />
 
                         </div>
 
@@ -141,7 +151,7 @@ const BusinessSettings = () => {
                             <label className="mb-3 block text-black dark:text-white">
                                 Maintenance Mode
                             </label>
-                            <InputSwitch className="p-invalid" checked={true} />
+                            <InputSwitch className="p-invalid" onChange={handleForceUpdate} checked={forceUpdate == "true" ? true : false} />
 
                         </div>
                     </div>
