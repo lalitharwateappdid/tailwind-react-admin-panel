@@ -54,7 +54,7 @@ const UpdateCategory = () => {
         try{
             const formData = new FormData()
             formData.append("coverImage",coverImage)
-            formData.append("name",name);
+            formData.append("title",name);
             formData.append("description",description)
             formData.append("id",`${id}`)
 

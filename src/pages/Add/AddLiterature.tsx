@@ -22,6 +22,7 @@ const AddLiterature = () => {
     const [saintNameMarathi, setSaintNameMarathi] = useState("")
     const [literatureContent, setLiteratureContent] = useState("")
     const [audioFilePath, setAudioFilePath] = useState("")
+    const [LiteraturePDF,setLiteraturePDF] = useState("")
 
     // third party
     const [categoryData, setCategoryData] = useState([])
@@ -31,47 +32,63 @@ const AddLiterature = () => {
 
 
     const create = async () => {
-
-        try {
+        try{
             setSubmit("Submitting...")
-            const response = await axios.post(`${apiLink}literature/create`, {
-                category_id: category,
-                sub_category_id: subCategory,
-                literature_english: literatureEnglish,
-                literature_marathi: literatureMarathi,
-                literature_description_english: literatureDescriptionEnglish,
-                literature_description_marathi: literatureDescriptionMarathi,
-                author_name_english: authorNameEnglish,
-                author_name_marathi: authorNameMarathi,
-                saint_name_english: saintNameEnglish,
-                saint_name_marathi: saintNameMarathi,
-                literature_content: literatureContent,
-                audio_file_path: audioFilePath
-            });
+            const formData = new FormData();
+            formData.append("literature_pdf",LiteraturePDF)
+            const response = await axios.post(`${apiLink}literature/create`,{
+                headers:{
+                    "Content-Type": "multipart/form-data"
+                }
+            })
             Notify(response.data.message);
-            setCategory("")
-            setSubCategory('')
-            setLiteratureEnglish("")
-            setLiteratureMarathi("")
-            setLiteratureDescriptionEnglish("")
-            setLiteratureDescriptionMarathi("")
-            setAuthorNameEnglish("")
-            setAuthorNameMarathi("")
-            setSaintNameEnglish("")
-            setSaintNameMarathi("")
-            setLiteratureContent("")
-            setAudioFilePath("")
-            setSubmit("Submit")
         }
-        catch (err) {
+
+        catch(error){
             setSubmit("Submit")
-            Swal.fire({
-                title: "Error!",
-                text: `${err}`,
-                icon: "warning"
-            });
-            console.log("Something went wrong please try again later");
+            console.log("Something went wrong");
         }
+        // try {
+        //     setSubmit("Submitting...")
+        //     const response = await axios.post(`${apiLink}literature/create`, {
+        //         category_id: category,
+        //         sub_category_id: subCategory,
+        //         literature_english: literatureEnglish,
+        //         literature_marathi: literatureMarathi,
+        //         literature_description_english: literatureDescriptionEnglish,
+        //         literature_description_marathi: literatureDescriptionMarathi,
+        //         author_name_english: authorNameEnglish,
+        //         author_name_marathi: authorNameMarathi,
+        //         saint_name_english: saintNameEnglish,
+        //         saint_name_marathi: saintNameMarathi,
+        //         literature_content: literatureContent,
+        //         audio_file_path: audioFilePath
+        //     });
+        //     Notify(response.data.message);
+        //     setCategory("")
+        //     setSubCategory('')
+        //     setLiteratureEnglish("")
+        //     setLiteratureMarathi("")
+        //     setLiteratureDescriptionEnglish("")
+        //     setLiteratureDescriptionMarathi("")
+        //     setAuthorNameEnglish("")
+        //     setAuthorNameMarathi("")
+        //     setSaintNameEnglish("")
+        //     setSaintNameMarathi("")
+        //     setLiteratureContent("")
+        //     setAudioFilePath("")
+        //     setLiteraturePDF("")
+        //     setSubmit("Submit")
+        // }
+        // catch (err) {
+        //     setSubmit("Submit")
+        //     Swal.fire({
+        //         title: "Error!",
+        //         text: `${err}`,
+        //         icon: "warning"
+        //     });
+        //     console.log("Something went wrong please try again later");
+        // }
     }
 
     const fetchData = async () => {
@@ -109,13 +126,13 @@ const AddLiterature = () => {
                                 <option value="" disabled selected className="text-body dark:text-bodydark">
                                     Select Category
                                 </option>
-                                {
+                                {/* {
                                     categoryData.map((category) => (
                                         <option key={category.id} value={category.id} className="text-body dark:text-bodydark">
                                             {category.name}
                                         </option>
                                     ))
-                                }
+                                } */}
 
                             </select>
 
@@ -290,6 +307,21 @@ const AddLiterature = () => {
                     </div>    
                     {/* author name marathi ends */}
 
+
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
+                            Literature PDF
+                        </label>
+                        <input
+                         
+                            placeholder="Add Literature PDF"
+                            value={audioFilePath}
+                            onChange={(e) => setLiteraturePDF(e.target.files[0])}
+                            type="file"
+                            accept='image/*'
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>  
 
                    
                     {/* audio_file_path */}
