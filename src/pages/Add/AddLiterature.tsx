@@ -22,7 +22,7 @@ const AddLiterature = () => {
     const [saintNameMarathi, setSaintNameMarathi] = useState("")
     const [literatureContent, setLiteratureContent] = useState("")
     const [audioFilePath, setAudioFilePath] = useState("")
-    const [LiteraturePDF,setLiteraturePDF] = useState(null)
+    const [literaturePDF,setLiteraturePDF] = useState("")
 
     // third party
     const [categoryData, setCategoryData] = useState([])
@@ -30,47 +30,53 @@ const AddLiterature = () => {
 
     const [submit, setSubmit] = useState("Submit")
 
+    const handlePDF = (e) => {
+        setLiteraturePDF(e.target.files[0]); // Update selected PDF file
+    };
 
     const create = async () => {
         try{
-            setSubmit("Submitting...")
+            
+            
             const formData = new FormData();
-            formData.append("literature_pdf",LiteraturePDF)
-            const response = await axios.post(`${apiLink}literature/create`,formData,{
-                headers:{
-                    "Content-Type": "multipart/form-data"
+            formData.append("literature_pdf",literaturePDF)
+            console.log(formData);
+            setSubmit("Submitting...")
+            const response = await axios.post(`${apiLink}literature/create`, formData, 
+                {
+                headers: {
+                    "Content-Type": "multipart-form"
                 }
-            })
+            });
             Notify(response.data.message);
+            setSubmit("Submit")
         }
 
         catch(error){
             setSubmit("Submit")
-            Notify(error);
+            Notify("Something went wrong");
             console.log("Something went wrong "+error);
         }
       
     }
 
-    const handleFileChange = (e) => {
-        setLiteraturePDF(e.target.files[0]); // Update selected PDF file
-    };
+   
 
 
-    const fetchData = async () => {
-        const response = await axios.get(`${apiLink}category/get`);
-        const result = await response.data.data
-        setCategoryData(result)
+    // const fetchData = async () => {
+    //     const response = await axios.get(`${apiLink}category/get`);
+    //     const result = await response.data.data
+    //     setCategoryData(result)
 
-        const sub_category_response = await axios.get(`${apiLink}sub-category/get`);
-        const sub_category_result = await sub_category_response.data.data
-        setSubCategoryData(sub_category_result)
-    }
+    //     const sub_category_response = await axios.get(`${apiLink}sub-category/get`);
+    //     const sub_category_result = await sub_category_response.data.data
+    //     setSubCategoryData(sub_category_result)
+    // }
 
 
-    useEffect(() => {
-        fetchData()
-    }, [])
+    // useEffect(() => {
+    //     fetchData()
+    // }, [])
 
     return (
         <>
@@ -282,9 +288,9 @@ const AddLiterature = () => {
                          
                             placeholder="Add Literature PDF"
                             
-                            onChange={handleFileChange}
                             type="file"
-                            accept='image/*'
+                            onChange={handlePDF}
+                            
                             className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         />
                     </div>  
