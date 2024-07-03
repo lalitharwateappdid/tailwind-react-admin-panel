@@ -28,7 +28,7 @@ const ECommerce: React.FC = () => {
     setMedia(count.media)
     setQuote(count.quote)
     setSubCategories(count.subCategory)
-    setSlider(count.media)
+    setSlider(count.homeContent)
     setEbook(count.ebook)
     setCategories(count.subCategory)
     setEvent(count.event)
@@ -43,7 +43,7 @@ const ECommerce: React.FC = () => {
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
         <Link to="/home-content">
-          <CardDataStats title="Total Sliders again" total={slider} rate="" >
+          <CardDataStats title="Total Sliders" total={slider} rate="" >
             <span className="material-symbols-outlined">
               inventory_2
             </span>
@@ -58,13 +58,7 @@ const ECommerce: React.FC = () => {
           </CardDataStats>
         </Link>
 
-        <Link to="/books">
-          <CardDataStats title="Total Books" total={book} rate="" >
-            <span className="material-symbols-outlined">
-              import_contacts
-            </span>
-          </CardDataStats>
-        </Link>
+       
 
         <Link to="quotes">
           <CardDataStats title="Total Quotesss" total={quote} rate="" >
@@ -90,13 +84,13 @@ const ECommerce: React.FC = () => {
           </CardDataStats>
         </Link>
 
-        <Link to="/sub-category">
+        {/* <Link to="/sub-category">
           <CardDataStats title="Total SubCategories" total={subCategories} rate="" >
             <span className="material-symbols-outlined">
               category
             </span>
           </CardDataStats>
-        </Link>
+        </Link> */}
 
         <Link to="/events">
           <CardDataStats title="Total Events" total={event} rate="" >

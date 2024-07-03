@@ -58,7 +58,7 @@ const AddMasterImage = () => {
 
 
             <DefaultLayout>
-                <Breadcrumb pageName="Add Master Image" />
+                <Breadcrumb pageName="Add Category Image" />
 
                 <div className="bg-[#fff] rounded-lg px-5 py-10 shadow-lg dark:bg-transparent">
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">

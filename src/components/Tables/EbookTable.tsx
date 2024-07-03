@@ -112,7 +112,7 @@ function EbookTable() {
                     />
                 )}></Column>
                 <Column field="pdfPath" header="PDF Path" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} body={(item, key) => (
-                    <a href={`${apiLink}${item.pdfPath}`} target="_blank"><i className="bg-primary hover:opacity-70 transition text-white p-3 rounded-full fa-solid fa-eye"></i></a>
+                    <a href={`${apiImageLink}${item.pdfPath}`} target="_blank"><i className="bg-primary hover:opacity-70 transition text-white p-3 rounded-full fa-solid fa-eye"></i></a>
 
                 )}></Column>
                 <Column field="status" header="Status" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} body={(rowData) => (

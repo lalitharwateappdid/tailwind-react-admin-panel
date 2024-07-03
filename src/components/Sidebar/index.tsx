@@ -132,6 +132,53 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   </NavLink>
                 </li>
                 {/* <!-- Menu Item Tables --> */}
+
+                       {/* home content */}
+                <li>
+                  <NavLink
+                    to="/home-content"
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                      }`}
+                  >
+                    <span className="material-symbols-outlined">
+                      inventory_2
+                    </span>
+                   
+                    Slider
+                  </NavLink>
+                </li>
+
+                {/* quote */}
+                <li>
+                  <NavLink
+                    to="/quotes"
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium   text-black dark:text-bodydark1 dark:text-bodydark1duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                      }`}
+                  >
+                    <span className="material-symbols-outlined">
+                      format_quote
+                    </span>
+                    Quotes
+                  </NavLink>
+                </li>
+
+
+                 {/* ebooks */}
+                 <li>
+                  <NavLink
+                    to="/ebook"
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                      }`}
+                  >
+                    <span className="material-symbols-outlined">
+                      play_lesson
+                    </span>
+                    Ebooks
+                  </NavLink>
+                </li>
+
+
+
                 <li>
                   <NavLink
                     to="/literature"
@@ -157,20 +204,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   </NavLink>
                 </li>
 
-                {/* home content */}
-                <li>
-                  <NavLink
-                    to="/home-content"
-                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
-                      }`}
-                  >
-                    <span className="material-symbols-outlined">
-                      inventory_2
-                    </span>
-                   
-                    Home Content
-                  </NavLink>
-                </li>
+               
 
                 {/* quote */}
                 {/* <li>
@@ -186,34 +220,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   </NavLink>
                 </li> */}
 
-                {/* ebooks */}
-                <li>
-                  <NavLink
-                    to="/ebook"
-                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
-                      }`}
-                  >
-                    <span className="material-symbols-outlined">
-                      play_lesson
-                    </span>
-                    Ebooks
-                  </NavLink>
-                </li>
-
-                {/* quote */}
-                <li>
-                  <NavLink
-                    to="/quotes"
-                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium   text-black dark:text-bodydark1 dark:text-bodydark1duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
-                      }`}
-                  >
-                    <span className="material-symbols-outlined">
-                      format_quote
-                    </span>
-                    Quotes
-                  </NavLink>
-                </li>
-
+               
+                
 
                 {/* Categories */}
                 <li>

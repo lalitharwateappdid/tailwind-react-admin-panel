@@ -84,7 +84,7 @@ const UpdateMasterImage = () => {
 
 
             <DefaultLayout>
-                <Breadcrumb pageName="Update Master Image" />
+                <Breadcrumb pageName="Update Category Image" />
 
                 <div className="bg-[#fff] rounded-lg px-5 py-10 shadow-lg dark:bg-transparent">
                     <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">

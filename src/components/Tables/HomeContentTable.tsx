@@ -102,8 +102,8 @@ function HomeContentTable() {
                     </>
                 )} ></Column>
             
-                <Column field="description" header="Description" headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} />
-                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="image" header="image_path" body={(item,key) => (
+                {/* <Column field="description" header="Description" headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} /> */}
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="image" header="Image" body={(item,key) => (
                     <>
                          <ModalImage className="w-10  z-9999"
                             small={`${apiImageLink}${item.image_path}`}

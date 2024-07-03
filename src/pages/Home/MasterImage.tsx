@@ -5,7 +5,7 @@ import DefaultLayout from '../../layout/DefaultLayout';
 const Literature = () => {
   return (
     <DefaultLayout>
-      <Breadcrumb pageName="Master Image" />
+      <Breadcrumb pageName="Category Image" />
       <MasterImageTable />
     </DefaultLayout>
   );
