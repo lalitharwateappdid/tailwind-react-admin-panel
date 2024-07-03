@@ -5,7 +5,7 @@ import HomeContentTable from '../../components/Tables/HomeContentTable';
 const HomeContent = () => {
   return (
     <DefaultLayout>
-      <Breadcrumb pageName="Home Content" />
+      <Breadcrumb pageName="Slider" />
       <HomeContentTable />
     </DefaultLayout>
   );

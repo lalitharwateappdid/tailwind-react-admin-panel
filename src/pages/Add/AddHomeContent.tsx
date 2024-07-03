@@ -60,15 +60,10 @@ const AddHomeContent = () => {
 
 
             <DefaultLayout>
-                <Breadcrumb pageName="Add Home Content" />
+                <Breadcrumb pageName="Add Slider" />
                 <div className="bg-[#fff] rounded-lg px-5 py-10 shadow-xl dark:bg-transparent">
                     <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <label className="mb-3 block text-black dark:text-white">
-                                Description
-                            </label>
-                            <textarea rows="1" value={description} onChange={handleDescription} placeholder="Enter Description" class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"></textarea>
-                        </div>
+                        
 
                         <div>
                             <label className="mb-3 block text-black dark:text-white">

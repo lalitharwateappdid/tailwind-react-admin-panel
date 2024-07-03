@@ -26,9 +26,11 @@ const BusinessSettings = () => {
     const [android_version, SetAndroidVersion] = useState("")
     const [image, setAboutImage] = useState("")
     const [app, setApp] = useState("")
-    const [forceUpdate, setForceUpdate] = useState(true)
+    const [forceUpdate, setForceUpdate] = useState("")
+    const [maintenanaceMode, setMaintenanceMode] = useState("")
     const [appInfo, setAppInfo] = useState("")
     const [alternativeWebsite,SetalternativeWebsite] = useState("")
+    const [mywants,setMyWants] = useState("")
 
     const handleImage = (e) => {
         setAboutImage(e.target.files[0]);
@@ -36,9 +38,22 @@ const BusinessSettings = () => {
 
 
     // handle forceupdate input
-    function handleForceUpdate(e){
-        setForceUpdate(e.target.value)
-        
+    function handleForceUpdate(){
+        if(forceUpdate == "1"){
+            setForceUpdate("0")
+        }
+        else{
+            setForceUpdate("1")
+        }
+    }
+
+    function handleMaintenanceMode(){
+        if(maintenanaceMode == "1"){
+            setMaintenanceMode("0")
+        }
+        else{
+            setMaintenanceMode("1")
+        }
     }
 
     // function to store books
@@ -54,11 +69,12 @@ const BusinessSettings = () => {
             formData.append("terms", terms)
             formData.append("contact", contact)
             formData.append("android_version", android_version)
-            // formData.append("image", image);
+            formData.append("image", image);
             formData.append("app_link", app)
             formData.append("app_info", appInfo)
             formData.append("force_update",forceUpdate)
-            formData.append("my_wants",alternativeWebsite)
+            formData.append("maintenance_mode",maintenanaceMode)
+            formData.append("my_wants",mywants)
 
             setSubmit("Submitting...")
 
@@ -103,7 +119,9 @@ const BusinessSettings = () => {
                 setApp(category_data.data['app_link'])
                 setAppInfo(category_data.data['app_info'])
                 setForceUpdate(category_data.data["force_update"])
-                console.log(category_data.data["force_update"])
+                setMaintenanceMode(category_data.data['maintenance_mode'])
+                setMyWants(category_data.data['my_wants'])
+                // console.log(category_data.data["force_update"])
                 // setCategoryData(category_data.data);
             } catch (error) {
                 console.error("Error fetching category data:", error);
@@ -143,7 +161,7 @@ const BusinessSettings = () => {
                             <label className="mb-3 block text-black dark:text-white">
                                 Force Update
                             </label>
-                            <InputSwitch className="p-invalid" onChange={handleForceUpdate} checked={forceUpdate == "true" ? true: false} />
+                            <InputSwitch className="p-invalid" onChange={handleForceUpdate} checked={forceUpdate == "1" ? true: false} />
 
                         </div>
 
@@ -151,7 +169,7 @@ const BusinessSettings = () => {
                             <label className="mb-3 block text-black dark:text-white">
                                 Maintenance Mode
                             </label>
-                            <InputSwitch className="p-invalid" onChange={handleForceUpdate} checked={forceUpdate == "true" ? true : false} />
+                            <InputSwitch className="p-invalid" onChange={handleMaintenanceMode} checked={maintenanaceMode == "1" ? true : false} />
 
                         </div>
                     </div>
@@ -178,8 +196,7 @@ const BusinessSettings = () => {
                                 Image
                             </label>
                             <input
-                                type="upload"
-                                placeholder="Enter About Title"
+                                type="file"
                                 onChange={handleImage}
                                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             />
@@ -261,8 +278,8 @@ const BusinessSettings = () => {
                             <input
                                 type="text"
                                 placeholder="Enter Website Link "
-                                value={alternativeWebsite}
-                                onChange={(e) => SetalternativeWebsite(e.target.value)}
+                                value={mywants}
+                                onChange={(e) => setMyWants(e.target.value)}
                                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             />
                         </div>

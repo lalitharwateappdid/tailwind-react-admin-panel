@@ -28,7 +28,7 @@ const ECommerce: React.FC = () => {
     setMedia(count.media)
     setQuote(count.quote)
     setSubCategories(count.subCategory)
-    setSlider(count.media)
+    setSlider(count.homeContent)
     setEbook(count.ebook)
     setCategories(count.subCategory)
     setEvent(count.event)
@@ -84,13 +84,13 @@ const ECommerce: React.FC = () => {
           </CardDataStats>
         </Link>
 
-        <Link to="/sub-category">
+        {/* <Link to="/sub-category">
           <CardDataStats title="Total SubCategories" total={subCategories} rate="" >
             <span className="material-symbols-outlined">
               category
             </span>
           </CardDataStats>
-        </Link>
+        </Link> */}
 
         <Link to="/events">
           <CardDataStats title="Total Events" total={event} rate="" >
