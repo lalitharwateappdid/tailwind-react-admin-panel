@@ -9,5 +9,5 @@ export const apiImageLink = 'https://api.shripethekaka.com/';
 
 
 // host
-// export const apiLink = 'http://192.168.1.18:5000/api/';
-// export const apiImageLink = 'http://192.168.1.18:5000/';
+// export const apiLink = 'http://192.168.19.112:5000/api/';
+// export const apiImageLink = 'http://192.168.19.112:5000/';
