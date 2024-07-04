@@ -11,14 +11,14 @@ const AddMasterImage = () => {
 
 
 
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState("");
     const [submit, setSubmit] = useState("Submit")
 
     const formData = new FormData();
     const handleFileChange = (e) => {
         const file = e.target.files[0]; // Get the first selected file
         // setImage(file);
-        formData.append("image", file);
+        setImage(file)
        
         // createMedia(file)// Set the selected file to the image state
     };
@@ -27,6 +27,8 @@ const AddMasterImage = () => {
     const createMedia = async () => {
         
         try {
+            const formData = new FormData();
+            formData.append("image",image)
             console.log(image)
             setSubmit("Submitting...")
             const response = await axios.post(`${apiLink}masterimage/create`,  formData, {

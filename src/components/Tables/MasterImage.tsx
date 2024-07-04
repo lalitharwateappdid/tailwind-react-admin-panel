@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { apiImageLink, apiLink } from "../../api_link";
+'import { apiImageLink, apiLink } from "../../api_link";'
 import axios from "axios";
 import Swal from 'sweetalert2';
 import { DataTable } from "primereact/datatable";
@@ -11,7 +11,7 @@ import ModalImage from "react-modal-image";
 
 import copy from "copy-to-clipboard";
 import { InputSwitch } from "primereact/inputswitch";
-// import { apiImageLink } from "../../api_link";
+import { apiLink } from "../../api_link";
 
 
 
@@ -144,8 +144,8 @@ function MasterImageTable() {
                 <Column headerClassName={"dark:text-[#fff] dark:border-[#fff]   dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="image" className="dark:text-white dark:bg-black" header="Image" body={(item, key) => (
                     <>
                         <ModalImage className="w-20  z-9999"
-                            small={`${apiImageLink}${item.cover_image}`}
-                            large={`${apiImageLink}${item.cover_image}`}
+                            small={`${item.cover_image}`}
+                            large={`${item.cover_image}`}
 
                         />
                         {/* <img className="w-10 rounded-full" src={`${apiLink}${item.image}`} alt="Your Image Alt Text" /> */}
