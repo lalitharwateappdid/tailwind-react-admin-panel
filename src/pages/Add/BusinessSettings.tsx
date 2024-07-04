@@ -32,6 +32,7 @@ const BusinessSettings = () => {
     const [appInfo, setAppInfo] = useState("")
     const [quoteTitle,setQuoteTitle] = useState("")
     const [alternativeWebsite,SetalternativeWebsite] = useState("")
+    const [textContent,setTextContent] = useState("")
     const [mywants,setMyWants] = useState("")
 
     const handleImage = (e) => {
@@ -78,6 +79,7 @@ const BusinessSettings = () => {
             formData.append("maintenance_mode",maintenanaceMode)
             formData.append("my_wants",mywants)
             formData.append("quote_title",quoteTitle)
+            formData.append("text_content",textContent)
 
             setSubmit("Submitting...")
 
@@ -125,6 +127,7 @@ const BusinessSettings = () => {
                 setMaintenanceMode(category_data.data['maintenance_mode'])
                 setMyWants(category_data.data['my_wants'])
                 setQuoteTitle(category_data.data['quote_title'])
+                setTextContent(category_data.data['text_content'])
                 // console.log(category_data.data["force_update"])
                 // setCategoryData(category_data.data);
             } catch (error) {
@@ -178,7 +181,7 @@ const BusinessSettings = () => {
                         </div>
                     </div>
                     {/* android section ends */}
-                    <div className="grid grid-cols-2 gap-8 mt-15">
+                    <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8 mt-15">
                     <div>
                             <label className="mb-3 block text-black dark:text-white">
                                 Quote Title
@@ -190,6 +193,15 @@ const BusinessSettings = () => {
                                 onChange={(e) => setQuoteTitle(e.target.value)}
                                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             />
+                        </div>
+                   
+
+                    <div>
+                            <label className="mb-3 block text-black dark:text-white">
+                                Text Content
+                            </label>
+                           
+                            <textarea rows="1" value={textContent} onChange={(e) => setTextContent(e.target.value)} placeholder="Enter Text Content" class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"></textarea>
                         </div>
                     </div>
                     {/* about app section starts */}
