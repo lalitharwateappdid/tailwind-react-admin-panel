@@ -60,7 +60,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
   return (
     <>
-      <aside 
+      <aside
         ref={sidebar}
         className={` absolute left-0 top-0  z-9995 flex h-screen w-72.5 flex-col overflow-y-hidden bg-white duration-300 ease-linear dark:bg-boxdark lg:static lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
@@ -133,7 +133,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 </li>
                 {/* <!-- Menu Item Tables --> */}
 
-                       {/* home content */}
+                {/* home content */}
                 <li>
                   <NavLink
                     to="/home-content"
@@ -143,8 +143,23 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     <span className="material-symbols-outlined">
                       inventory_2
                     </span>
-                   
+
                     Slider
+                  </NavLink>
+                </li>
+
+                {/* text content */}
+                <li>
+                  <NavLink
+                    to="/home-content"
+                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
+                      }`}
+                  >
+                    <span className="material-symbols-outlined">
+                      inventory_2
+                    </span>
+
+                    Text Content
                   </NavLink>
                 </li>
 
@@ -163,8 +178,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 </li>
 
 
-                 {/* ebooks */}
-                 <li>
+                {/* ebooks */}
+                <li>
                   <NavLink
                     to="/ebook"
                     className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
@@ -198,13 +213,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       }`}
                   >
                     <span className="material-symbols-outlined">
-                    play_circle
+                      play_circle
                     </span>
                     Youtube Media
                   </NavLink>
                 </li>
 
-               
+
 
                 {/* quote */}
                 {/* <li>
@@ -220,8 +235,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   </NavLink>
                 </li> */}
 
-               
-                
+
+
 
                 {/* Categories */}
                 <li>
@@ -230,7 +245,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium  text-black dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-meta-4 ${pathname.includes('tables') && 'bg-graydark dark:bg-meta-4'
                       }`}
                   >
-                   <span className="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                       category
                     </span>
                     Categories
@@ -238,7 +253,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 </li>
 
                 {/* sub-category */}
-                
+
 
                 {/* event link */}
                 <li>

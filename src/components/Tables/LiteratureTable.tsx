@@ -7,10 +7,13 @@ import { Column } from 'primereact/column';
 import { InputSwitch } from 'primereact/inputswitch';
 import { Link } from "react-router-dom";
 import Notify from "../toast_notify/Notify";
+import Parser from 'html-react-parser';
+
 
 
 function LiteratureTable() {
     const [apiData, setApiData] = useState([]);
+    const [value, setValue] = useState("")
 
     useEffect(() => {
         fetchData();
@@ -62,15 +65,15 @@ function LiteratureTable() {
         }
     }
 
-    const handleStatus = async(id) => {
-        try{
-            const response = await axios.put(`${apiLink}literature/status`,{
+    const handleStatus = async (id) => {
+        try {
+            const response = await axios.put(`${apiLink}literature/status`, {
                 data: { id: id }
             });
             fetchData()
             Notify(response.data.message)
         }
-        catch(err){
+        catch (err) {
             console.error(err)
         }
     }
@@ -79,7 +82,7 @@ function LiteratureTable() {
         console.log(id);
     }
 
-   
+
 
     return (
         <>
@@ -88,7 +91,7 @@ function LiteratureTable() {
             </div>
             <br />
             <br />
-            <DataTable  paginatorClassName={"dark:bg-[#243141] dark:text-[#fff]"} value={apiData} className="shadow-xl" stripedRows paginator rows={10}
+            <DataTable paginatorClassName={"dark:bg-[#243141] dark:text-[#fff]"} value={apiData} className="shadow-xl" stripedRows paginator rows={10}
                 rowsPerPageOptions={[5, 10, 25, 50]}
                 tableStyle={{ minWidth: '150rem' }}>
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="id" header="Sr.No" body={(item, key) => (
@@ -96,16 +99,23 @@ function LiteratureTable() {
                         <span>{key.rowIndex + 1}</span>
                     </>
                 )} ></Column>
+                <Column field="audio_file_path" header="Audio" headerClassName={"dark:text-[#fff] dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} body={(item, key) => (
+                    <a href={`${item.audio_file_path}`} target="_blank"><i className="bg-primary hover:opacity-70 transition text-white p-3 rounded-full fa-solid fa-headphones"></i></a>
 
+                )}></Column>
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="literature_content" header="Literature Content" body={(item, key) => (
+                    <>
+                        {Parser(item.literature_content)}
+                    </>
+                )} />
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="literature_english" header="Literature English" />
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="literature_marathi" header="Literature Marathi" />
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="literature_description_english" header="Literature Description English" />
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="literature_description_marathi" header="Literature Description Marathi" />
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="author_name_english" header="Author Name English" />
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="author_name_marathi" header="Author Name Marathi" />
-               
-                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="literature_content" header="Literature Content" />
-                
+
+
 
 
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="status" header="Status" body={(rowData) => (
