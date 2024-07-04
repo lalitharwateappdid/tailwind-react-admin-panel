@@ -56,8 +56,8 @@ const AddLiterature = () => {
             formData.append("literatureAudio", audioFilePath)
             formData.append("literature_english", literatureEnglish)
             formData.append("literature_marathi", literatureMarathi)
-            formData.append("literature_description_english", literatureDescriptionEnglish)
-            formData.append("literature_description_marathi", literatureDescriptionMarathi)
+            // formData.append("literature_description_english", literatureDescriptionEnglish)
+            // formData.append("literature_description_marathi", literatureDescriptionMarathi)
             formData.append("author_name_marathi", authorNameMarathi)
             formData.append("author_name_english", authorNameEnglish)
             formData.append("literature_content", literatureContent)
@@ -66,7 +66,7 @@ const AddLiterature = () => {
             const response = await axios.post(`${apiLink}literature/create`, formData,
                 {
                     headers: {
-                        "Content-Type": "multipart-form"
+                        "Content-Type": "multipart/form-data"
                     }
                 });
             Notify(response.data.message);
@@ -75,7 +75,7 @@ const AddLiterature = () => {
 
         catch (error) {
             setSubmit("Submit")
-            Notify("Something went wrong");
+            Notify("Something went wrong" + error);
             console.log("Something went wrong " + error);
         }
 
@@ -84,20 +84,7 @@ const AddLiterature = () => {
 
 
 
-    // const fetchData = async () => {
-    //     const response = await axios.get(`${apiLink}category/get`);
-    //     const result = await response.data.data
-    //     setCategoryData(result)
-
-    //     const sub_category_response = await axios.get(`${apiLink}sub-category/get`);
-    //     const sub_category_result = await sub_category_response.data.data
-    //     setSubCategoryData(sub_category_result)
-    // }
-
-
-    // useEffect(() => {
-    //     fetchData()
-    // }, [])
+    
 
     return (
         <>
@@ -241,7 +228,7 @@ const AddLiterature = () => {
                         {/* literature marathi ends */}
 
                         {/* literature description english */}
-                        <div>
+                        {/* <div>
                             <label className="mb-2.5 block text-black dark:text-white">
                                 Literature Description English
                             </label>
@@ -251,12 +238,12 @@ const AddLiterature = () => {
                                 value={literatureDescriptionEnglish}
                                 onChange={(e) => setLiteratureDescriptionEnglish(e.target.value)}
                                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            />                    </div>
+                            />                    </div> */}
                         {/* literature description english */}
 
 
                         {/* literature description marathi */}
-                        <div>
+                        {/* <div>
                             <label className="mb-2.5 block text-black dark:text-white">
                                 Literature Description Marathi
                             </label>
@@ -266,7 +253,7 @@ const AddLiterature = () => {
                                 value={literatureDescriptionMarathi}
                                 onChange={(e) => setLiteratureDescriptionMarathi(e.target.value)}
                                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            />                    </div>
+                            />                    </div> */}
                         {/* literature description marathi ends */}
 
                         {/* author name english */}

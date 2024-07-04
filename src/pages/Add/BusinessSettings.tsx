@@ -8,6 +8,8 @@ import { InputSwitch } from "primereact/inputswitch";
 import axios from 'axios';
 import MarkdownEditor from '@uiw/react-markdown-editor';
 import { set } from 'react-datepicker/dist/date_utils';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 
 
@@ -34,9 +36,14 @@ const BusinessSettings = () => {
     const [alternativeWebsite,SetalternativeWebsite] = useState("")
     const [textContent,setTextContent] = useState("")
     const [mywants,setMyWants] = useState("")
+    
 
     const handleImage = (e) => {
         setAboutImage(e.target.files[0]);
+    }
+    
+    const handleContact = (value) => {
+        setContact(value)
     }
 
 
@@ -86,7 +93,7 @@ const BusinessSettings = () => {
             const response = await axios.post(`${apiLink}business-settings/create`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
-                    "Accept": "appplication/json"
+                    "Accept": "application/json"
                 }
             });
 
@@ -128,6 +135,7 @@ const BusinessSettings = () => {
                 setMyWants(category_data.data['my_wants'])
                 setQuoteTitle(category_data.data['quote_title'])
                 setTextContent(category_data.data['text_content'])
+
                 // console.log(category_data.data["force_update"])
                 // setCategoryData(category_data.data);
             } catch (error) {
@@ -367,8 +375,7 @@ const BusinessSettings = () => {
 
                     {/* contact us section starts */}
                     <h3 className="dark:text-white font-bold underline text-center my-5">Contact Us</h3>
-                    <MarkdownEditor
-                        height='200px' value={contact} onChange={(value, viewUpdate) => setContact(value)} />
+                    <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={contact} onChange={handleContact} />
                     {/* contact us section ends */}
 
 
