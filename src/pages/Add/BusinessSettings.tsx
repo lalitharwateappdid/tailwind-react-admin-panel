@@ -36,6 +36,7 @@ const BusinessSettings = () => {
     const [alternativeWebsite,SetalternativeWebsite] = useState("")
     const [textContent,setTextContent] = useState("")
     const [mywants,setMyWants] = useState("")
+    const [share,setShare] = useState("")
     
 
     const handleImage = (e) => {
@@ -55,6 +56,10 @@ const BusinessSettings = () => {
         else{
             setForceUpdate("1")
         }
+    }
+
+    function handleShare(value){
+        setShare(value)
     }
 
     function handleMaintenanceMode(){
@@ -87,6 +92,7 @@ const BusinessSettings = () => {
             formData.append("my_wants",mywants)
             formData.append("quote_title",quoteTitle)
             formData.append("text_content",textContent)
+            formData.append("share",share)
 
             setSubmit("Submitting...")
 
@@ -377,6 +383,9 @@ const BusinessSettings = () => {
                     <h3 className="dark:text-white font-bold underline text-center my-5">Contact Us</h3>
                     <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={contact} onChange={handleContact} />
                     {/* contact us section ends */}
+
+                    <h3 className="dark:text-white font-bold underline text-center my-5">Share Content</h3>
+                    <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={share} onChange={handleShare} />
 
 
 
