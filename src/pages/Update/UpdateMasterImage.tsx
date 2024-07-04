@@ -2,10 +2,11 @@ import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import DefaultLayout from '../../layout/DefaultLayout';
 import Notify from '../../components/toast_notify/Notify';
 import { useState, useEffect } from 'react';
-import { apiLink } from '../../api_link';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import ModalImage from "react-modal-image";
+import { apiImageLink, apiLink } from "../../api_link";
 
 
 const UpdateMasterImage = () => {
@@ -35,7 +36,7 @@ const UpdateMasterImage = () => {
             console.log(data)
 
 
-            setImage(data.date)
+            setImage(data.cover_image)
 
         }
         catch (err) {
@@ -87,6 +88,13 @@ const UpdateMasterImage = () => {
                 <Breadcrumb pageName="Update Category Image" />
 
                 <div className="bg-[#fff] rounded-lg px-5 py-10 shadow-lg dark:bg-transparent">
+                    <div className="w-[190px]">
+                    <ModalImage className="w-20  z-9999"
+                            small={`${apiImageLink}`+image}
+                            large={`${apiImageLink}`+image}
+
+                        />
+                    </div>
                     <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
 
 

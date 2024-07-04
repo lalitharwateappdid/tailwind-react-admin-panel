@@ -6,12 +6,17 @@ import { apiImageLink, apiLink } from '../../api_link';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { InputSwitch } from 'primereact/inputswitch';
-import ModalImage from "react-modal-image";
-import { Sidebar } from 'primereact/sidebar';
+// import ModalImage from "react-modal-image";
+import Select from 'react-select'
 
 
 const AddCategory = () => {
 
+    const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+      ]
 
     const [name, setName] = useState("");
     const [description, setDescription] = useState("")
@@ -77,7 +82,7 @@ const AddCategory = () => {
 
                 <div className="px-5 py-10 rounded-lg bg-[#fff] dark:bg-transparent shadow-xl">
                     <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
-
+                    <Select options={options} />
                         <div>
                             <label className="mb-3 block text-black dark:text-white">
                                 Category Name

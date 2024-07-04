@@ -4,12 +4,13 @@
   "version": "1.3.0",
   "type": "module",
   "scripts": {
+    "start": "react-scripts start --host 0.0.0.0",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "author": {
-    "name": "TailAdmin",
+    "name": "Sadha",
     "email": "hello@tailadmin.com",
     "url": "https://tailadmin.com"
   },
@@ -45,6 +46,7 @@
     "react-modal-image": "^2.6.0",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.23.1",
+    "react-select": "^5.8.0",
     "react-simple-repeater": "^0.1.10",
     "react-toastify": "^9.1.3",
     "sort-by": "^0.0.2",
