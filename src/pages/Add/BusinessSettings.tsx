@@ -58,6 +58,14 @@ const BusinessSettings = () => {
         }
     }
 
+    function handleTerms(value){
+        setTerms(value)
+    }
+
+    function handlePrivacy(value){
+        setPrivacyPolicy(value)
+    }
+
     function handleShare(value){
         setShare(value)
     }
@@ -349,34 +357,12 @@ const BusinessSettings = () => {
 
                     {/* privacy policy section starts */}
                     <h3 className="dark:text-white font-bold underline text-center my-5">Privacy Policy</h3>
-                    <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-
-                            <input
-                                type="text"
-                                placeholder="Enter Privacy Policy Link "
-                                value={privacyPolicy}
-                                onChange={(e) => setPrivacyPolicy(e.target.value)}
-                                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            />
-                        </div>
-                    </div>
+                    <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={privacyPolicy} onChange={handlePrivacy} />
                     {/* privacy policy section ends */}
 
                     {/* terms and condition section starts */}
                     <h3 className="dark:text-white font-bold underline text-center my-5">Terms & Conditions</h3>
-                    <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-
-                            <input
-                                type="text"
-                                placeholder="Enter Terms & Condition  Link "
-                                value={terms}
-                                onChange={(e => setTerms(e.target.value))}
-                                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            />
-                        </div>
-                    </div>
+                    <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={terms} onChange={handleTerms} />
                     {/* terms and condition section ends */}
 
                     {/* contact us section starts */}
