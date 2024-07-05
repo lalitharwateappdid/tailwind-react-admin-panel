@@ -37,7 +37,6 @@ const AddEbook = () => {
             formData.append("name", name);
             formData.append("description", description);
             formData.append("authorName", authorName);
-            console.log(formData)
 
 
             setSubmit("Submitting...")
@@ -59,7 +58,7 @@ const AddEbook = () => {
         catch (err) {
             setSubmit("Submit")
             Swal.fire({
-                title: "Deleted!",
+                title: "Error!",
                 text: `${err}`,
                 icon: "warning"
             });
