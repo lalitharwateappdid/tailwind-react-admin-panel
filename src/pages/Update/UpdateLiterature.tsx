@@ -101,6 +101,7 @@ const UpdateLiterature = () => {
             formData.append("literature_content", literatureContent)
             formData.append("literatureAudio", audioFilePath)
             formData.append("literature_pdf", "asdf")
+            formData.append("sr_no", srno)
             setUpdate("Updating...")
             const response = await axios.put(`${apiLink}literature/update`, formData, {
                 headers: {
@@ -136,7 +137,7 @@ const UpdateLiterature = () => {
                         </label>
                         <input
                             type="text"
-                            placeholder="Enter Literature English"
+                            placeholder="Enter Sr No"
                             value={srno}
                             onChange={(e) => setSrno(e.target.value)}
                             className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
