@@ -107,7 +107,7 @@ const AddCategory = () => {
             ...provided,
             display: 'flex',
             alignItems: 'center',
-            color: state.isSelected ? '#3b82f6' : '#000000', // Tailwind text-primary and text-black
+            color: state.isSelected ? '#3b82f6' : '#000000', // Tailwind text-primary and text-blackasd
             backgroundColor: state.isFocused ? '#e0f2fe' : 'transparent', // Tailwind bg-primary-light
             padding: '0.75rem 1.25rem',
         }),
