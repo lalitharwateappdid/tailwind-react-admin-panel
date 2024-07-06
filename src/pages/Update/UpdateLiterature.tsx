@@ -79,24 +79,31 @@ const UpdateLiterature = () => {
         fetch()
     }, []);
 
+    const handlePdf = (e) => {
+        setAudioFilePath(e.target.files[0])
+    }
+
     const handleUpdate = async () => {
         try {
+            const formData = new FormData()
+            formData.append("category_id", category)
+            formData.append("sub_category_id", subCategory),
+                formData.append("literature_english", literatureEnglish)
+            formData.append("literature_marathi", literatureMarathi)
+            formData.append("literature_description_english", literatureDescriptionEnglish)
+            formData.append("literature_description_marathi", literatureDescriptionMarathi)
+            formData.append("author_name_english", authorNameEnglish)
+            formData.append("author_name_marathi", authorNameMarathi)
+            formData.append("saint_name_english", saintNameEnglish)
+            formData.append("saint_name_marathi", saintNameMarathi)
+            formData.append("literature_content", literatureContent)
+            formData.append("literatureAudio", audioFilePath)
+            formData.append("literature_pdf", "asdf")
             setUpdate("Updating...")
-            const response = await axios.put(`${apiLink}literature/update`, {
-                id: id,
-                category_id: category,
-                sub_category_id: subCategory,
-                literature_english: literatureEnglish,
-                literature_marathi: literatureMarathi,
-                literature_description_english: literatureDescriptionEnglish,
-                literature_description_marathi: literatureDescriptionMarathi,
-                author_name_english: authorNameEnglish,
-                author_name_marathi: authorNameMarathi,
-                saint_name_english: saintNameEnglish,
-                saint_name_marathi: saintNameMarathi,
-                literature_content: literatureContent,
-                audio_file_path: audioFilePath
-
+            const response = await axios.put(`${apiLink}literature/update`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
             });
             Notify(response.data.message);
             setUpdate("Update")
@@ -308,7 +315,7 @@ const UpdateLiterature = () => {
                         <input
                             type="file"
                             placeholder="Enter Audio File Path"
-                            onChange={(e) => setAudioFilePath(e.target.value)}
+                            onChange={handlePdf}
                             className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         />
                     </div>
