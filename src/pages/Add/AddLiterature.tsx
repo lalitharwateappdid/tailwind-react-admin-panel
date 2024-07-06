@@ -25,6 +25,7 @@ const AddLiterature = () => {
     const [literatureContent, setLiteratureContent] = useState("")
     const [audioFilePath, setAudioFilePath] = useState("")
     const [literaturePDF, setLiteraturePDF] = useState("")
+    const [sr_no, setSrNo] = useState("")
     console.log(literatureContent)
 
     // third party
@@ -61,6 +62,7 @@ const AddLiterature = () => {
             formData.append("author_name_marathi", authorNameMarathi)
             formData.append("author_name_english", authorNameEnglish)
             formData.append("literature_content", literatureContent)
+            formData.append("sr_no", sr_no)
             console.log(formData);
             setSubmit("Submitting...")
             const response = await axios.post(`${apiLink}literature/create`, formData,
@@ -93,6 +95,18 @@ const AddLiterature = () => {
                 <div className='bg-[#fff] px-5 py-10 rounded-lg shadow-xl dark:bg-transparent'>
                     <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                         {/* category_id dropdown */}
+                        <div>
+                            <label className="mb-2.5 block text-black dark:text-white">
+                                Sr No
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Enter Literature English"
+                                value={sr_no}
+                                onChange={(e) => setSrNo(e.target.value)}
+                                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                            />
+                        </div>
                         <div>
                             <label className="mb-2.5 block text-black dark:text-white">
                                 Select Category
@@ -141,7 +155,7 @@ const AddLiterature = () => {
 
 
                         {/* sub category dropdown */}
-                        <div>
+                        {/* <div>
                             <label className="mb-2.5 block text-black dark:text-white">
                                 Select Sub Category
 
@@ -194,7 +208,7 @@ const AddLiterature = () => {
                                     </svg>
                                 </span>
                             </div>
-                        </div>
+                        </div> */}
                         {/* sub category dropdown ends */}
 
                         {/* literature english starts */}

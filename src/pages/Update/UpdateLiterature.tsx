@@ -25,6 +25,7 @@ const UpdateLiterature = () => {
     const [saintNameMarathi, setSaintNameMarathi] = useState("")
     const [literatureContent, setLiteratureContent] = useState("")
     const [audioFilePath, setAudioFilePath] = useState("")
+    const [srno, setSrno] = useState("")
 
 
 
@@ -57,6 +58,7 @@ const UpdateLiterature = () => {
             setSaintNameMarathi(data.saint_name_marathi)
             setLiteratureContent(data.literature_content)
             setAudioFilePath(data.audio_file_path)
+            setSrno(data.sr_no)
 
         }
         catch (err) {
@@ -130,6 +132,18 @@ const UpdateLiterature = () => {
                     {/* category_id dropdown */}
                     <div>
                         <label className="mb-2.5 block text-black dark:text-white">
+                            Sr No
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter Literature English"
+                            value={srno}
+                            onChange={(e) => setSrno(e.target.value)}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
                             Select Category
 
                         </label>
@@ -176,7 +190,7 @@ const UpdateLiterature = () => {
 
 
                     {/* sub category dropdown */}
-                    <div>
+                    {/* <div>
                         <label className="mb-2.5 block text-black dark:text-white">
                             Select Sub Category
 
@@ -229,7 +243,7 @@ const UpdateLiterature = () => {
                                 </svg>
                             </span>
                         </div>
-                    </div>
+                    </div> */}
                     {/* sub category dropdown ends */}
 
                     {/* literature english starts */}
