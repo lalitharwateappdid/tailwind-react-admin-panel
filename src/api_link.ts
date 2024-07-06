@@ -1,11 +1,11 @@
 // production
-// export const apiLink = 'https://api.shripethekaka.com/api/';
-// export const apiImageLink = 'https://api.shripethekaka.com/';
+export const apiLink = 'https://api.shripethekaka.com/api/';
+export const apiImageLink = 'https://api.shripethekaka.com/';
 
 
-// local 
-export const apiLink = 'http://localhost:5000/api/';
-export const apiImageLink = 'http://localhost:5000/';
+// local
+// export const apiLink = 'http://localhost:5000/api/';
+// export const apiImageLink = 'http://localhost:5000/';
 
 
 // host
