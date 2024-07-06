@@ -58,7 +58,7 @@ const UpdateLiterature = () => {
             setSaintNameMarathi(data.saint_name_marathi)
             setLiteratureContent(data.literature_content)
             setAudioFilePath(data.audio_file_path)
-            setSrno(data.sr_no)
+            setSrno(data.sr_number)
 
         }
         catch (err) {
