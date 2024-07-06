@@ -54,7 +54,6 @@ const UpdateMasterImage = () => {
         try {
 
 
-            console.log(image)
             setSubmit("Updating...")
             const response = await axios.put(`${apiLink}masterimage/update`, formData, {
                 headers: {
@@ -88,14 +87,14 @@ const UpdateMasterImage = () => {
                 <Breadcrumb pageName="Update Category Image" />
 
                 <div className="bg-[#fff] rounded-lg px-5 py-10 shadow-lg dark:bg-transparent">
-                    <div className="w-[190px]">
-                    <ModalImage className="w-20  z-9999"
-                            small={`${apiImageLink}`+image}
-                            large={`${apiImageLink}`+image}
+                    <div className="w-[140px]">
+                        <ModalImage className="w-100  z-9999"
+                            small={image}
+                            large={image}
 
                         />
                     </div>
-                    <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8 mt-6">
 
 
                         <div>

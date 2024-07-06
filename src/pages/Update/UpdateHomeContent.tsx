@@ -86,16 +86,16 @@ const UpdateHomeContent = () => {
 
                 <div className="bg-[#fff] rounded-lg px-5 py-10 shadow-xl dark:bg-transparent">
 
-                <div className='flex items-center mb-4'>
+                    <div className='flex items-center mb-4'>
                         <ModalImage className="w-[200px]  z-9999"
-                            small={`${apiImageLink}`+image}
-                            large={`${apiImageLink}`+image}
+                            small={image}
+                            large={image}
 
                         />
-                        </div>
+                    </div>
                     <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
 
-                       
+
 
                         <div>
                             <label className="mb-3 block text-black dark:text-white">
@@ -113,7 +113,7 @@ const UpdateHomeContent = () => {
                             {/* <img src={`${apiLink}${image}`} className='w-20' alt="" /> */}
                         </div>
 
-                        
+
 
 
 

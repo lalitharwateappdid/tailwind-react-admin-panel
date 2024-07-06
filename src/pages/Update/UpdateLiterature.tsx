@@ -6,9 +6,12 @@ import { useParams } from 'react-router-dom';
 import { apiLink } from '../../api_link';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const UpdateLiterature = () => {
+
+
 
     const [category, setCategory] = useState('')
     const [subCategory, setSubCategory] = useState("")
@@ -22,16 +25,18 @@ const UpdateLiterature = () => {
     const [saintNameMarathi, setSaintNameMarathi] = useState("")
     const [literatureContent, setLiteratureContent] = useState("")
     const [audioFilePath, setAudioFilePath] = useState("")
-   
+
 
 
     // third party
-    const [categoryData,setCategoryData] = useState([])
-    const [subCategoryData,setSubCategoryData] = useState([])
+    const [categoryData, setCategoryData] = useState([])
+    const [subCategoryData, setSubCategoryData] = useState([])
 
     const { id } = useParams();
 
-    
+    const handleContent = (value) => {
+        setLiteratureContent(value)
+    }
 
     const [update, setUpdate] = useState("Update")
 
@@ -59,8 +64,8 @@ const UpdateLiterature = () => {
         }
     }
 
-    const fetch = async() => {
-        const data  = await axios.get(`${apiLink}category/get`)
+    const fetch = async () => {
+        const data = await axios.get(`${apiLink}category/get`)
         const result = await data.data.data
         setCategoryData(result)
 
@@ -74,24 +79,31 @@ const UpdateLiterature = () => {
         fetch()
     }, []);
 
+    const handlePdf = (e) => {
+        setAudioFilePath(e.target.files[0])
+    }
+
     const handleUpdate = async () => {
         try {
+            const formData = new FormData()
+            formData.append("category_id", category)
+            formData.append("sub_category_id", subCategory),
+                formData.append("literature_english", literatureEnglish)
+            formData.append("literature_marathi", literatureMarathi)
+            formData.append("literature_description_english", literatureDescriptionEnglish)
+            formData.append("literature_description_marathi", literatureDescriptionMarathi)
+            formData.append("author_name_english", authorNameEnglish)
+            formData.append("author_name_marathi", authorNameMarathi)
+            formData.append("saint_name_english", saintNameEnglish)
+            formData.append("saint_name_marathi", saintNameMarathi)
+            formData.append("literature_content", literatureContent)
+            formData.append("literatureAudio", audioFilePath)
+            formData.append("literature_pdf", "asdf")
             setUpdate("Updating...")
-            const response = await axios.put(`${apiLink}literature/update`, {
-                id: id,
-                category_id: category,
-                sub_category_id: subCategory,
-                literature_english: literatureEnglish,
-                literature_marathi: literatureMarathi,
-                literature_description_english: literatureDescriptionEnglish,
-                literature_description_marathi: literatureDescriptionMarathi,
-                author_name_english: authorNameEnglish,
-                author_name_marathi: authorNameMarathi,
-                saint_name_english: saintNameEnglish,
-                saint_name_marathi: saintNameMarathi,
-                literature_content: literatureContent,
-                audio_file_path: audioFilePath
-
+            const response = await axios.put(`${apiLink}literature/update`, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
             });
             Notify(response.data.message);
             setUpdate("Update")
@@ -113,7 +125,7 @@ const UpdateLiterature = () => {
 
         <>
             <DefaultLayout>
-                <Breadcrumb pageName="Add Literature" />
+                <Breadcrumb pageName="Update Literature" />
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                     {/* category_id dropdown */}
                     <div>
@@ -129,13 +141,13 @@ const UpdateLiterature = () => {
                                 <option value="" disabled selected className="text-body dark:text-bodydark">
                                     Select Category
                                 </option>
-                                {
+                                {/* {
                                     categoryData.map((category) => (
                                         <option key={category.id} value={category.id} className="text-body dark:text-bodydark">
                                             {category.name}
                                         </option>
                                     ))
-                                }
+                                } */}
 
                             </select>
 
@@ -251,32 +263,12 @@ const UpdateLiterature = () => {
                     {/* literature marathi ends */}
 
                     {/* literature description english */}
-                    <div>
-                        <label className="mb-2.5 block text-black dark:text-white">
-                            Literature Description English
-                        </label>
-                        <textarea
-                            type="text"
-                            placeholder="Enter Literature Description English"
-                            value={literatureDescriptionEnglish}
-                            onChange={(e) => setLiteratureDescriptionEnglish(e.target.value)}
-                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />                    </div>
+
                     {/* literature description english */}
 
 
                     {/* literature description marathi */}
-                    <div>
-                        <label className="mb-2.5 block text-black dark:text-white">
-                            Literature Description Marathi
-                        </label>
-                        <textarea
-                            type="text"
-                            placeholder="Enter Literature Description Marathi"
-                            value={literatureDescriptionMarathi}
-                            onChange={(e) => setLiteratureDescriptionMarathi(e.target.value)}
-                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />                    </div> 
+
                     {/* literature description marathi ends */}
 
                     {/* author name english */}
@@ -291,7 +283,7 @@ const UpdateLiterature = () => {
                             onChange={(e) => setAuthorNameEnglish(e.target.value)}
                             className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         />
-                    </div>     
+                    </div>
                     {/* author_name_english ends */}
 
 
@@ -307,39 +299,12 @@ const UpdateLiterature = () => {
                             onChange={(e) => setAuthorNameMarathi(e.target.value)}
                             className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         />
-                    </div>    
+                    </div>
                     {/* author name marathi ends */}
 
 
                     {/* saint name english starts */}
-                    <div>
-                        <label className="mb-2.5 block text-black dark:text-white">
-                            Saint Name English
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Enter Saint Name"
-                            value={saintNameEnglish}
-                            onChange={(e) => setSaintNameEnglish(e.target.value)}
-                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                    </div>         
-                    {/* saint name english ends */}
 
-
-                    {/* saint name marathi */}
-                    <div>
-                        <label className="mb-2.5 block text-black dark:text-white">
-                            Saint Name Marathi
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Enter Saint Name"
-                            value={saintNameMarathi}
-                            onChange={(e) => setSaintNameMarathi(e.target.value)}
-                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                    </div>             
                     {/* saint name marathi ends */}
 
                     {/* audio_file_path */}
@@ -348,34 +313,28 @@ const UpdateLiterature = () => {
                             Audio File Path
                         </label>
                         <input
-                            type="text"
+                            type="file"
                             placeholder="Enter Audio File Path"
-                            value={audioFilePath}
-                            onChange={(e) => setAudioFilePath(e.target.value)}
+                            onChange={handlePdf}
                             className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         />
-                    </div>   
+                    </div>
                     {/* audio_file_path */}
 
                     {/* literature content */}
-                    <div>
-                        <label className="mb-2.5 block text-black dark:text-white">
-                            Literature Content
-                        </label>
-                        <textarea
-                            type="text"
-                            placeholder="Enter Literature Content"
-                            value={literatureContent}
-                            onChange={(e) => setLiteratureContent(e.target.value)}
-                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                        />
-                    </div>        
+
                     {/* literature content ends */}
 
 
 
 
 
+                </div>
+                <div className='mt-10'>
+                    <label className="mb-2.5 block text-black dark:text-white">
+                        Literature Content
+                    </label>
+                    <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={literatureContent} onChange={handleContent} />
                 </div>
                 <div className="w-50 mx-auto mt-5">
                     <button onClick={() => handleUpdate()}
