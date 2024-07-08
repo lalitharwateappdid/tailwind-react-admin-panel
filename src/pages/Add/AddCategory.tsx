@@ -20,29 +20,44 @@ const AddCategory = () => {
     const [submit, setSubmit] = useState("Submit")
     const [child, setChild] = useState(false)
     const [category, setCategory] = useState("")
+    const [image, setImage] = useState("")
 
     const [categoryImage, setCategoryImage] = useState([])
     const [categoryDropdown, setSubCategoryDropdown] = useState([])
 
+
+    const handleImage = (value) => {
+        setImage(value)
+    }
 
 
     // function to store books
     const createBook = async () => {
         try {
 
-            
+
+            if (child == false) {
+                console.log(image)
+                const response = await axios.post(`${apiLink}category/create-parent-category`, {
+                    name: name,
+                    description: description,
+                    image:image.cover_image
+
+                });
+                Notify(response.data.message);
+                setName('');
+                setDescription('');
+
+                setSubmit("Submit")
+            }
+
+            else {
+
+            }
+
+
             setSubmit("Submitting...")
-            
-            const response = await axios.post(`${apiLink}category/create`, {
-                name: name,
-                description: description,
 
-            });
-            Notify(response.data.message);
-            setName('');
-            setDescription('');
-
-            setSubmit("Submit")
         }
         catch (err) {
             setSubmit("Submit")
@@ -59,7 +74,7 @@ const AddCategory = () => {
     const fetchData = async () => {
         const response = await axios.get(`${apiLink}category/get-category`);
         const result = await response.data.data
-        console.log(result)
+        // console.log(result)
         setSubCategoryDropdown(result)
     }
 
@@ -143,6 +158,8 @@ const AddCategory = () => {
                             <Select
                                 styles={customStyles}
                                 options={categoryImage}
+                                value={image}
+                                onChange={handleImage}
                                 className="z-50"
                                 formatOptionLabel={(country) => (
 

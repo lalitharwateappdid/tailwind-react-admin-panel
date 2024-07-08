@@ -20,8 +20,15 @@ function CategoryTable() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch(`${apiLink}category/get`);
-            const data = await response.json();
+            // const response = await fetch(`${apiLink}category/get-category`);
+            // const data = await response.data;
+            // console.log(data)
+            // setApiData(data);
+
+            const response = await axios.get(`${apiLink}category/get-category`);
+
+            const data = await response.data.data
+
             setApiData(data);
         }
         catch (error) {
@@ -100,8 +107,8 @@ function CategoryTable() {
                     <>
                     <>
                          <ModalImage className="w-10  z-9999"
-                            small={`${apiImageLink}${item.cover_image}`}
-                            large={`${apiImageLink}${item.cover_image}`}
+                            small={`${item.cover_image}`}
+                            large={`${item.cover_image}`}
 
                         />
                     </>
