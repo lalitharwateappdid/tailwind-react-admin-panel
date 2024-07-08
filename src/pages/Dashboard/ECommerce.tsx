@@ -47,7 +47,7 @@ const ECommerce: React.FC = () => {
       <Link to="/">
           <CardDataStats title="Total App Users" total={appUser} rate="" >
             <span className="material-symbols-outlined">
-              draw
+              users
             </span>
           </CardDataStats>
         </Link>
