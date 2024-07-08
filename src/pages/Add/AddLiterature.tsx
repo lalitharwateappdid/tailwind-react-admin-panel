@@ -37,6 +37,7 @@ const AddLiterature = () => {
 
     const [showSubCategory, setShowSubCategory] = useState(false); // State to control visibility of sub-category dropdown
     const [showSubSubCategory, setShowSubSubCategory] = useState(false); // State to control visibility of sub-sub-category dropdown
+//    const[showSubSubSubCategory,setShowSubSubSubCategory] = useState(false)
     const [showSubSubSubCategory, setShowSubSubSubCategory] = useState(false); // State to control visibility of subsubsubcategory dropdown
     const [showSubSubSubSubCategory, setShowSubSubSubSubCategory] = useState(false); // State to control visibility of subsubsubsubcategory dropdown
     // Add more as needed for deeper levels
@@ -143,6 +144,7 @@ const AddLiterature = () => {
             if (result.relatedCategories.length > 0) {
                 setSubSubSubCategoryData(result.relatedCategories);
                 setCategoryId(result.relatedCategories)
+                    
                 setShowSubSubSubCategory(true); // Show sub-sub-sub-category dropdown
             } else {
                 setSubSubSubCategoryData([]);
@@ -184,6 +186,7 @@ const getSubSubSubSubCategory = async (subSubSubCategoryId) => {
 // Function to handle form submission
 const create = async () => {
     try {
+        
         const formData = new FormData();
         formData.append("literature_pdf", literaturePDF);
         formData.append("literatureAudio", audioFilePath);
