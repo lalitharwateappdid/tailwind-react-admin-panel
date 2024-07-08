@@ -18,6 +18,7 @@ const ECommerce: React.FC = () => {
   const [eBook, setEbook] = useState("")
   const [event, setEvent] = useState("")
   const [literature, setLiterature] = useState("")
+  const [appUser,setAppUser] = useState("")
 
   const getCount = async () => {
     const response = await axios.get(`${apiLink}dashboard/get`)
@@ -33,6 +34,7 @@ const ECommerce: React.FC = () => {
     setCategories(count.subCategory)
     setEvent(count.event)
     setLiterature(count.literature)
+    setAppUser(count.app_user)
   }
 
   useEffect(() => {
@@ -42,6 +44,13 @@ const ECommerce: React.FC = () => {
     <DefaultLayout>
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
+      <Link to="/">
+          <CardDataStats title="Total App Users" total={appUser} rate="" >
+            <span className="material-symbols-outlined">
+              draw
+            </span>
+          </CardDataStats>
+        </Link>
         <Link to="/home-content">
           <CardDataStats title="Total Sliders" total={slider} rate="" >
             <span className="material-symbols-outlined">
