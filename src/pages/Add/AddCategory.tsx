@@ -21,6 +21,7 @@ const AddCategory = () => {
     const [child, setChild] = useState(false)
     const [category, setCategory] = useState("")
     const [image, setImage] = useState("")
+    const [childCategory,setChildCategory] = useState("")
 
     const [categoryImage, setCategoryImage] = useState([])
     const [categoryDropdown, setSubCategoryDropdown] = useState([])
@@ -37,7 +38,7 @@ const AddCategory = () => {
 
 
             if (child == false) {
-                console.log(image)
+                setSubmit("Submitting...")
                 const response = await axios.post(`${apiLink}category/create-parent-category`, {
                     name: name,
                     description: description,
@@ -52,11 +53,21 @@ const AddCategory = () => {
             }
 
             else {
+                setSubmit("Submitting...")
+               
+                const response = await axios.post(`${apiLink}category/create-child-category`,{
+                    name:name,
+                    description: description,
+                    image:image.cover_image,
+                    child_category:childCategory
+                })
 
+                setSubmit("Submit")
             }
 
+            setSubmit("Submit")
 
-            setSubmit("Submitting...")
+
 
         }
         catch (err) {
@@ -206,7 +217,7 @@ const AddCategory = () => {
                                 </label>
 
                                 <div className=" z-20 bg-transparent dark:bg-form-input">
-                                    <select className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary">
+                                    <select onChange={(e) => {setChildCategory(e.target.value)}} className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary">
                                         {categoryDropdown && categoryDropdown.length > 0 ? (
                                             categoryDropdown.map((category) => (
                                                 <option key={category.id} value={category.id} className="text-body dark:text-bodydark">
