@@ -70,7 +70,7 @@ const ECommerce: React.FC = () => {
        
 
         <Link to="quotes">
-          <CardDataStats title="Total Quotesss" total={quote} rate="" >
+          <CardDataStats title="Total Quotes" total={quote} rate="" >
             <span className="material-symbols-outlined">
               format_quote
             </span>
