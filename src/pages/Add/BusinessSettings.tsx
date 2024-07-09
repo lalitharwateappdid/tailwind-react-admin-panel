@@ -133,6 +133,7 @@ const BusinessSettings = () => {
             try {
                 const category_response = await fetch(`${apiLink}business-settings/get`);
                 const category_data = await category_response.json();
+
                 // console.log(category_data.data);
                 setAboutTitle(category_data.data['about_title'])
                 setAboutDescription(category_data.data['about_description'])
@@ -264,7 +265,8 @@ const BusinessSettings = () => {
                             <MarkdownEditor
                                 value={aboutDescription}
                                 height='200px'
-                                onChange={(e) => { setAboutDescription(e.target.value) }}
+
+                                onChange={(e) => { setAboutDescription(e) }}
                             />
                         </div>
                     </div>
