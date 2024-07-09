@@ -195,7 +195,7 @@ const create = async () => {
         formData.append("author_name_marathi", authorNameMarathi);
         formData.append("author_name_english", authorNameEnglish);
         formData.append("literature_content", literatureContent);
-        formData.append("category_id", subSubSubSubCategory || subSubSubCategory || subSubCategory || category); // Use the deepest selected category
+        formData.append("category_id",  category); // Use the deepest selected category
         formData.append("sr_no", sr_no);
 
         setSubmit("Submitting...");
@@ -282,56 +282,7 @@ return (
                         </select>
                     </div>
 
-                    {/* Select Sub-Categories (rendered dynamically based on state and data) */}
-                    {showSubCategory && (
-                        <div>
-                            <label className="mb-2.5 block text-black dark:text-white">
-                                Select Sub-Category
-                            </label>
-                            <select
-                                onChange={(e) => handleSubCategoryChange(e.target.value)}
-                                value={subCategory}
-                                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            >
-                                <option value="">Select Sub-Category</option>
-                                {renderSubCategories(subCategoryData)}
-                            </select>
-                        </div>
-                    )}
-
-                    {/* Select Sub-Sub-Categories (rendered dynamically based on state and data) */}
-                    {showSubSubCategory && (
-                        <div>
-                            <label className="mb-2.5 block text-black dark:text-white">
-                                Select Sub-Sub-Category
-                            </label>
-                            <select
-                                onChange={(e) => handleSubSubCategoryChange(e.target.value)}
-                                value={subSubCategory}
-                                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            >
-                                <option value="">Select Sub-Sub-Category</option>
-                                {renderSubCategories(subSubCategoryData)}
-                            </select>
-                        </div>
-                    )}
-
-                    {/* Select Sub-Sub-Sub-Categories (rendered dynamically based on state and data) */}
-                    {showSubSubSubCategory && (
-                        <div>
-                            <label className="mb-2.5 block text-black dark:text-white">
-                                Select Sub-Sub-Sub-Category
-                            </label>
-                            <select
-                                onChange={(e) => handleSubSubSubCategoryChange(e.target.value)}
-                                value={subSubSubCategory}
-                                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            >
-                                <option value="">Select Sub-Sub-Sub-Category</option>
-                                {renderSubCategories(subSubSubCategoryData)}
-                            </select>
-                        </div>
-                    )}
+                  
 
                     {/* Add more dropdowns for deeper levels as needed */}
 

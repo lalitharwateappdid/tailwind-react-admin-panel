@@ -200,7 +200,7 @@ const AddCategory = () => {
                                 className="z-50"
                                 formatOptionLabel={(country) => (
 
-                                    <img src={country.cover_image} />
+                                    <img className='w-10 text-center' src={country.cover_image} />
 
 
                                 )}
