@@ -292,7 +292,7 @@ return (
                             Sr No
                         </label>
                         <input
-                            type="text"
+                            type="number"
                             placeholder="Enter Sr No"
                             value={sr_no}
                             onChange={(e) => setSrNo(e.target.value)}
