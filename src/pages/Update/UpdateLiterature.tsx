@@ -34,6 +34,7 @@ const UpdateLiterature = () => {
     const [subCategoryData, setSubCategoryData] = useState([])
 
     const { id } = useParams();
+    const ids = id
 
     const handleContent = (value) => {
         setLiteratureContent(value)
@@ -102,6 +103,7 @@ const UpdateLiterature = () => {
             formData.append("literatureAudio", audioFilePath)
             formData.append("literature_pdf", "asdf")
             formData.append("sr_no", srno)
+            formData.append("id",id)
             setUpdate("Updating...")
             const response = await axios.put(`${apiLink}literature/update`, formData, {
                 headers: {
@@ -144,13 +146,13 @@ const UpdateLiterature = () => {
                                 <option value="" disabled selected className="text-body dark:text-bodydark">
                                     Select Category
                                 </option>
-                                {
+                                {/* {
                                     categoryData.map((category) => (
                                         <option key={category.id} value={category.id}   className="text-body dark:text-bodydark">
                                             {category.name}
                                         </option>
                                     ))
-                                }
+                                } */}
 
                             </select>
 
