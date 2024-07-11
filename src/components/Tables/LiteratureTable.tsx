@@ -17,7 +17,7 @@ function LiteratureTable() {
 
 
     const truncateString = (string) => {
-        return string.slice(0,30) + "..."
+        return string.slice(0,50) + "..."
     }
 
     useEffect(() => {
@@ -108,7 +108,7 @@ function LiteratureTable() {
                     <a href={`${item.audio_file_path}`} target="_blank"><i className="bg-primary hover:opacity-70 transition text-white p-3 rounded-full fa-solid fa-headphones"></i></a>
 
                 )}></Column>
-                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="Sr. Number" header="sr_number" />
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="sr_number" header="Sr. Number" />
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="literature_content" header="Literature Content" body={(item, key) => (
                     <>
                         {Parser(
