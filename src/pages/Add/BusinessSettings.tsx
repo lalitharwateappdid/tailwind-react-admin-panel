@@ -133,8 +133,9 @@ const BusinessSettings = () => {
             try {
                 const category_response = await fetch(`${apiLink}business-settings/get`);
                 const category_data = await category_response.json();
+                console.log(category_data)
 
-                // console.log(category_data.data);
+                // console.log(category_data.data); 
                 setAboutTitle(category_data.data['about_title'])
                 setAboutDescription(category_data.data['about_description'])
                 setYoutube(category_data.data['youtube']);
