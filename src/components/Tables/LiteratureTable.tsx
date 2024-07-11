@@ -15,6 +15,11 @@ function LiteratureTable() {
     const [apiData, setApiData] = useState([]);
     const [value, setValue] = useState("")
 
+
+    const truncateString = (string) => {
+        return string.slice(0,30) + "..."
+    }
+
     useEffect(() => {
         fetchData();
     }, []);
@@ -106,7 +111,8 @@ function LiteratureTable() {
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="Sr. Number" header="sr_number" />
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="literature_content" header="Literature Content" body={(item, key) => (
                     <>
-                        {Parser(item.literature_content)}
+                        {Parser(
+                            truncateString(item.literature_content))}
                     </>
                 )} />
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="literature_english" header="Literature English" />
