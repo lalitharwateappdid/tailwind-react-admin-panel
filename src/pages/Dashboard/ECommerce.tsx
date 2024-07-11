@@ -32,7 +32,7 @@ const ECommerce: React.FC = () => {
     setSubCategories(count.subCategory)
     setSlider(count.homeContent)
     setEbook(count.ebook)
-    setCategories(count.subCategory)
+    setCategories(count.category)
     setEvent(count.event)
     setLiterature(count.literature)
     setAppUser(count.app_user)
