@@ -19,6 +19,7 @@ const ECommerce: React.FC = () => {
   const [event, setEvent] = useState("")
   const [literature, setLiterature] = useState("")
   const [appUser,setAppUser] = useState("")
+  const [masterImage,setMasterImage] = useState("")
 
   const getCount = async () => {
     const response = await axios.get(`${apiLink}dashboard/get`)
@@ -35,6 +36,7 @@ const ECommerce: React.FC = () => {
     setEvent(count.event)
     setLiterature(count.literature)
     setAppUser(count.app_user)
+    setMasterImage(count.master_image)
   }
 
   useEffect(() => {
@@ -118,7 +120,7 @@ const ECommerce: React.FC = () => {
         </Link>
 
         <Link to="/literature">
-          <CardDataStats title="Total Master Images" total={literature} rate="" >
+          <CardDataStats title="Total Master Images" total={masterImage} rate="" >
             <span className="material-symbols-outlined">
               image
             </span>
