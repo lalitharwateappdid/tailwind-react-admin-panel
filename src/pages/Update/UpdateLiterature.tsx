@@ -144,13 +144,13 @@ const UpdateLiterature = () => {
                                 <option value="" disabled selected className="text-body dark:text-bodydark">
                                     Select Category
                                 </option>
-                                {/* {
+                                {
                                     categoryData.map((category) => (
-                                        <option key={category.id} value={category.id} className="text-body dark:text-bodydark">
+                                        <option key={category.id} value={category.id}   className="text-body dark:text-bodydark">
                                             {category.name}
                                         </option>
                                     ))
-                                } */}
+                                }
 
                             </select>
 

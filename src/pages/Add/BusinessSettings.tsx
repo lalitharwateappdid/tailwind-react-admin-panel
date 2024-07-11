@@ -81,7 +81,7 @@ const BusinessSettings = () => {
 
     // function to store books
     const createMedia = async () => {
-
+        console.log(share)
         try {
             const formData = new FormData();
             formData.append("about_title", aboutTitle)
