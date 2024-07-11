@@ -150,6 +150,7 @@ const BusinessSettings = () => {
                 setMyWants(category_data.data['my_wants'])
                 setQuoteTitle(category_data.data['quote_title'])
                 setTextContent(category_data.data['text_content'])
+                setShare(category_data.data['share'])
 
                 // console.log(category_data.data["force_update"])
                 // setCategoryData(category_data.data);
