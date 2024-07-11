@@ -119,7 +119,7 @@ const ECommerce: React.FC = () => {
           </CardDataStats>
         </Link>
 
-        <Link to="/literature">
+        <Link to="/master-image">
           <CardDataStats title="Total Master Images" total={masterImage} rate="" >
             <span className="material-symbols-outlined">
               image
