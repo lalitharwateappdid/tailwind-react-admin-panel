@@ -377,7 +377,12 @@ const BusinessSettings = () => {
 
                     <h3 className="dark:text-white font-bold underline text-center my-5">Share Content</h3>
                     <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={share} onChange={handleShare} />
+                    <MarkdownEditor
+                                value={aboutDescription}
+                                height='200px'
 
+                                onChange={(e) => { setAboutDescription(e) }}
+                            />
 
 
                 <div className="w-50 mx-auto mt-5">
