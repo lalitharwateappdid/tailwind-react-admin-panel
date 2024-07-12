@@ -376,12 +376,12 @@ const BusinessSettings = () => {
                     {/* contact us section ends */}
 
                     <h3 className="dark:text-white font-bold underline text-center my-5">Share Content</h3>
-                    <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={share} onChange={handleShare} />
+                    {/* <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={share} onChange={handleShare} /> */}
                     <MarkdownEditor
-                                value={aboutDescription}
+                                value={share}
                                 height='200px'
 
-                                onChange={(e) => { setAboutDescription(e) }}
+                                onChange={handleShare}
                             />
 
 
