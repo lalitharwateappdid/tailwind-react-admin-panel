@@ -26,7 +26,6 @@ const UpdateCategory = () => {
     const [childCategory, setChildCategory] = useState("")
     const [category_id, setCategoryId] = useState("")
     const [parentCategory, setParentCategory] = useState("")
-
     const [categoryImage, setCategoryImage] = useState([])
     const [categoryDropdown, setSubCategoryDropdown] = useState([])
 
@@ -119,9 +118,11 @@ const UpdateCategory = () => {
         const response = await axios.get(`${apiLink}category/edit/${id}`)
 
         const result = response.data.data;
+        // console.log(result)
         setDescription(result.description)
         setName(result.title)
         setChild(result.masterCategory)
+        setCategoryImage(result.cover_image)
         
     }
 
@@ -234,7 +235,7 @@ const UpdateCategory = () => {
                                 value={image}
                                 onChange={handleImage}
                                 className="z-50"
-                               
+                                
                                 formatOptionLabel={(country) => (
                                     
                                     <img className='w-10 text-center' src={country.cover_image} />

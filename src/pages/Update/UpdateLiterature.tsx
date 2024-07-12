@@ -89,6 +89,7 @@ const UpdateLiterature = () => {
 
     const handleUpdate = async () => {
         try {
+            console.log(category)
             const formData = new FormData()
             formData.append("category_id", category)
             formData.append("sub_category_id", subCategory),
@@ -149,7 +150,7 @@ const UpdateLiterature = () => {
                                 </option>
                                 {
                                     categoryData.map((categorys) => (
-                                        <option key={categorys.id} value={categorys.id} selected={categorys.id === category}   className="text-body dark:text-bodydark" onChange={(e)  => setCategory(e.target.value)}>
+                                        <option key={categorys.id} value={categorys.id} selected={categorys.id === category}   className="text-body dark:text-bodydark" >
                                             {categorys.title}
                                         </option>
                                     ))
@@ -185,7 +186,7 @@ const UpdateLiterature = () => {
                             Sr No
                         </label>
                         <input
-                            type="text"
+                            type="number"
                             placeholder="Enter Sr No"
                             value={srno}
                             onChange={(e) => setSrno(e.target.value)}
