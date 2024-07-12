@@ -46,8 +46,8 @@ const UpdateLiterature = () => {
         try {
             const response = await axios.get(`${apiLink}literature/edit/${id}`);
             const data = response.data.data
-
-            setCategory(data.category_id)
+            
+            setCategory(data.categoryId)
             setSubCategory(data.sub_category_id)
             setLiteratureEnglish(data.literature_english)
             setLiteratureMarathi(data.literature_marathi)
@@ -69,12 +69,13 @@ const UpdateLiterature = () => {
 
     const fetch = async () => {
         const data = await axios.get(`${apiLink}category/get`)
-        const result = await data.data.data
+        const result = await data.data
+       
         setCategoryData(result)
 
-        const subFetch = await axios.get(`${apiLink}sub-category/get`)
-        const subResult = await subFetch.data.data
-        setSubCategoryData(subResult)
+        // const subFetch = await axios.get(`${apiLink}sub-category/get`)
+        // const subResult = await subFetch.data.data
+        // setSubCategoryData(subResult)
     }
 
     useEffect(() => {
@@ -143,16 +144,16 @@ const UpdateLiterature = () => {
                             <select value={category} onChange={(e) => setCategory(e.target.value)}
                                 className="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                             >
-                                <option value="" disabled selected className="text-body dark:text-bodydark">
+                                <option value="" disabled  className="text-body dark:text-bodydark">
                                     Select Category
                                 </option>
-                                {/* {
-                                    categoryData.map((category) => (
-                                        <option key={category.id} value={category.id}   className="text-body dark:text-bodydark">
-                                            {category.name}
+                                {
+                                    categoryData.map((categorys) => (
+                                        <option key={categorys.id} value={categorys.id} selected={categorys.id === category}   className="text-body dark:text-bodydark" onChange={(e)  => setCategory(e.target.value)}>
+                                            {categorys.title}
                                         </option>
                                     ))
-                                } */}
+                                }
 
                             </select>
 
