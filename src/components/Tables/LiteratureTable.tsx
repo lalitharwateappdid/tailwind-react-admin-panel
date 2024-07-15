@@ -36,7 +36,7 @@ function LiteratureTable() {
     }
 
     const handleDelete = async (id: BigInteger) => {
-        // console.log(id);
+        // console.log(id);sd
         try {
             const result = await Swal.fire({
                 title: "Are you sure?",
