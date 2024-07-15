@@ -75,7 +75,7 @@ const UpdateLiterature = () => {
 
         // const subFetch = await axios.get(`${apiLink}sub-category/get`)
         // const subResult = await subFetch.data.data
-        // setSubCategoryData(subResult)  d ad
+        // setSubCategoryData(subResult)  d addsf
     }
 
     useEffect(() => {
