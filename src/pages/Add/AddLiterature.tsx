@@ -364,8 +364,11 @@ return (
                         />
                     </div>
 
-                    <div>
-                        <label className="mb-2.5 block text-black dark:text-white">
+                 
+
+                </div>
+                <div>
+                        <label className="mb-2.5 mt-[2.5rem] block text-black dark:text-white">
                             Literature Content
                         </label>
                         <ReactQuill
@@ -375,7 +378,6 @@ return (
                             onChange={handleContent}
                         />
                     </div>
-
                     <div className="w-50 mx-auto mt-5">
                         <button
                             onClick={() => create()}
@@ -384,7 +386,6 @@ return (
                             {submit}
                         </button>
                     </div>
-                </div>
             </div>
         </DefaultLayout>
     </>
