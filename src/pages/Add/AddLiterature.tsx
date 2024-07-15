@@ -372,7 +372,7 @@ return (
                             Literature Content
                         </label>
                         <ReactQuill
-                            className='h-[150px] rounded-lg mb-20'
+                            className='h-[350px] rounded-lg mb-20'
                             theme="snow"
                             value={literatureContent}
                             onChange={handleContent}
