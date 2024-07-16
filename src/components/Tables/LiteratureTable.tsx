@@ -5,9 +5,11 @@ import Swal from 'sweetalert2';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { InputSwitch } from 'primereact/inputswitch';
+import { InputText } from "primereact/inputtext";
 import { Link } from "react-router-dom";
 import Notify from "../toast_notify/Notify";
 import Parser from 'html-react-parser';
+import { FaSearch } from "react-icons/fa";
 
 
 
@@ -15,6 +17,7 @@ function LiteratureTable() {
     const [apiData, setApiData] = useState([]);
     const [value, setValue] = useState("")
 
+    const [globalFilter, setGlobalFilter] = useState(null);
 
     const truncateString = (string) => {
         return string.slice(0,50) + "..."
@@ -91,31 +94,43 @@ function LiteratureTable() {
 
     return (
         <>
+        
+         
             <div className="float-right mb-4">
                 <Link to="/add-literature" className="bg-primary text-white px-3 py-2 rounded-md hover:opacity-65">Add</Link>
             </div>
             <br />
             <br />
-            <DataTable paginatorClassName={"dark:bg-[#243141] dark:text-[#fff]"} value={apiData} className="shadow-xl " stripedRows paginator rows={10}
+            <div className="p-inputgroup">
+                <span className="p-inputgroup-addon">
+                <FaSearch />
+                </span>
+                <InputText
+                    type="search"
+                    onInput={(e) => setGlobalFilter(e.target.value)}
+                    placeholder="Global Search"
+                />
+            </div>
+            <DataTable globalFilter={globalFilter} paginatorClassName={"dark:bg-[#243141] dark:text-[#fff]"} value={apiData} className="shadow-xl " stripedRows paginator rows={10}
                 rowsPerPageOptions={[5, 10, 25, 50]}
                 tableStyle={{ minWidth: '50rem' }}>
-                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141] w-[10px]"} field="id" header="Sr.No" body={(item, key) => (
+                <Column  headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141] w-[10px]"} field="id" header="Sr.No" body={(item, key) => (
                     <>
                         <span>{key.rowIndex + 1}</span>
                     </>
                 )} ></Column>
                
-                <Column  headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141] w-[20px]"} field="sr_number" header="Sr. Number" />
-                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]  w-[250px]"} field="literature_content" header="Literature Content" body={(item, key) => (
+                <Column filter headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141] w-[20px]"} field="sr_number" header="Sr. Number" />
+                <Column filter headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]  w-[250px]"} field="literature_content" header="Literature Content" body={(item, key) => (
                     <>
                         {Parser(
                             truncateString(item.literature_content))}
                     </>
                 )} />
                 {/* <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="literature_english" header="Literature English" /> */}
-                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]  w-[250px]"} field="literature_marathi" header="Literature Marathi" />
+                <Column filter headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]  w-[250px]"} field="literature_marathi" header="Literature Marathi" />
                 {/* <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="author_name_english" header="Author Name English" /> */}
-                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]  w-[250px] "} field="author_name_marathi" header="Author Name Marathi" />
+                <Column filter headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]  w-[250px] "} field="author_name_marathi" header="Author Name Marathi" />
 
 
 
