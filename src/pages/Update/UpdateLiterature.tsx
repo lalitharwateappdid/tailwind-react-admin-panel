@@ -356,7 +356,7 @@ const UpdateLiterature = () => {
                     <label className="mb-2.5 block text-black dark:text-white">
                         Literature Content
                     </label>
-                    <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={literatureContent} onChange={handleContent} />
+                    <ReactQuill className='h-[350px] rounded-lg mb-20' theme="snow" value={literatureContent} onChange={handleContent} />
                 </div>
                 <div className="w-50 mx-auto mt-5">
                     <button onClick={() => handleUpdate()}
