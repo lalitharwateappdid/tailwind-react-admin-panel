@@ -31,6 +31,7 @@ function LiteratureTable() {
         try {
             const response = await fetch(`${apiLink}literature/get`);
             const data = await response.json();
+            console.log(data)
             setApiData(data.data);
         }
         catch (error) {
@@ -127,9 +128,9 @@ function LiteratureTable() {
                             truncateString(item.literature_content))}
                     </>
                 )} />
-                {/* <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="literature_english" header="Literature English" /> */}
-                <Column filter headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]  w-[250px]"} field="literature_marathi" header="Literature Marathi" />
-                {/* <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="author_name_english" header="Author Name English" /> */}
+                <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff] hidden dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13] hidden  dark:bg-[#243141]"} field="literature_english" header="Literature English" /> 
+                <Column filter headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]   dark:bg-[#243141]  w-[250px]"} field="literature_marathi" header="Literature Marathi" />
+                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  hidden dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13] hidden  dark:bg-[#243141]"} field="author_name_english" header="Author Name English" /> 
                 <Column filter headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]  w-[250px] "} field="author_name_marathi" header="Author Name Marathi" />
 
 
