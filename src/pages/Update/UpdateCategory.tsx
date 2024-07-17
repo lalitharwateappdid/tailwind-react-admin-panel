@@ -122,7 +122,7 @@ const UpdateCategory = () => {
         setDescription(result.description)
         setName(result.title)
         setChild(result.masterCategory)
-        setCategoryImage(result.cover_image)
+        // setCategoryImage(result.cover_image)
         
     }
 
@@ -156,6 +156,7 @@ const UpdateCategory = () => {
         }
     }
 
+   
 
 
 
@@ -232,7 +233,7 @@ const UpdateCategory = () => {
                             <Select
                                 styles={customStyles}
                                 options={categoryImage}
-                                value={image}
+                                
                                 onChange={handleImage}
                                 className="z-50"
                                 
