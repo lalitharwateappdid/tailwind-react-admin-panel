@@ -120,7 +120,7 @@ function LiteratureTable() {
                         <span>{key.rowIndex + 1}</span>
                     </>
                 )} ></Column>
-               
+               <Column filter headerClassName={"dark:text-[#fff]   dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff]  dark:border-[#ffffff13]  dark:bg-[#243141] w-[20px]"} field="category.title" header="Category" />
                 <Column filter headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141] w-[20px]"} field="sr_number" header="Sr. Number" />
                 <Column filter headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]  w-[250px]"} field="literature_content" header="Literature Content" body={(item, key) => (
                     <>
