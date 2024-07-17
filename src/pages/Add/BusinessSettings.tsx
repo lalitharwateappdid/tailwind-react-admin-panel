@@ -10,6 +10,9 @@ import MarkdownEditor from '@uiw/react-markdown-editor';
 import { set } from 'react-datepicker/dist/date_utils';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import ModalImage from "react-modal-image";
+import { apiImageLink } from "../../api_link";
+
 
 
 
@@ -37,6 +40,7 @@ const BusinessSettings = () => {
     const [textContent,setTextContent] = useState("")
     const [mywants,setMyWants] = useState("")
     const [share,setShare] = useState("")
+    const [getImage,setImage] = useState("")
     
 
     const handleImage = (e) => {
@@ -152,6 +156,7 @@ const BusinessSettings = () => {
                 setQuoteTitle(category_data.data['quote_title'])
                 setTextContent(category_data.data['text_content'])
                 setShare(category_data.data['share'])
+                setImage(category_data.data['about_image']);
 
                 // console.log(category_data.data["force_update"])
                 // setCategoryData(category_data.data);
@@ -244,7 +249,7 @@ const BusinessSettings = () => {
                                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             />
                         </div>
-
+                        <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-2">
                         <div>
                             <label className="mb-3 block text-black dark:text-white">
                                 Image
@@ -255,6 +260,14 @@ const BusinessSettings = () => {
                                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             />
                             {/* <img src={} alt="Brand" /> */}
+                        </div>
+                        <div>
+                        <ModalImage className="w-30  z-9999"
+                        small={`${apiImageLink}${getImage}`}
+                        large={`${apiImageLink}${getImage}`}
+
+                    />
+                        </div>
                         </div>
                     </div>
 
