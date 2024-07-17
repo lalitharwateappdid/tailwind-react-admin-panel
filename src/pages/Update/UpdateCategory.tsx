@@ -268,7 +268,7 @@ const UpdateCategory = () => {
                         </div>
 
                         <div className="flex items-center gap-x-1 ">
-                            <InputSwitch className="p-invalid" checked={child==="1"?true:false} onChange={((e) => setChild(e.target.value))} /> <span>Is This Child Category?</span>
+                            <InputSwitch className="p-invalid" checked={child==1?false:true} onChange={((e) => setChild(e.target.value))} /> <span>Is This Child Category?</span>
                         </div>
 
 
