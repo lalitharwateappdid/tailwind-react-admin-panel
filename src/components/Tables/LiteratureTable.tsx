@@ -19,6 +19,10 @@ function LiteratureTable() {
 
     const [globalFilter, setGlobalFilter] = useState(null);
 
+    const [categoryFilter, setCategoryFilter] = useState(null);
+
+    const [categoryData,setCategoryData] = useState([]);
+
     const truncateString = (string) => {
         return string.slice(0,50) + "..."
     }
@@ -38,6 +42,17 @@ function LiteratureTable() {
             console.error("Soemthing went wrong try again later");
         }
     }
+
+    const getCategory = async () => {
+        try {
+            const response = await axios.get(`${apiLink}category/get-category`);
+            const result = response.data.data;
+            setCategoryData(result);
+        }
+        catch(err){
+            console.error("Something went wrong " + err)
+        }
+    };
 
     const handleDelete = async (id: BigInteger) => {
         // console.log(id);sd
@@ -103,6 +118,20 @@ function LiteratureTable() {
             <br />
             <br />
             <div className="p-inputgroup">
+            {/* <select
+                            // onChange={(e) => handleCategoryChange(e.target.value)}
+                            value={categoryData}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        >
+                            <option value="">Select Category</option>
+                          
+                                categoryData.map((cat) => (
+                                    <option key={cat.id} value={cat.id}>
+                                        {cat.title}
+                                    </option>
+                                ))
+                            ) 
+                        </select> */}
                 <span className="p-inputgroup-addon">
                 <FaSearch />
                 </span>
