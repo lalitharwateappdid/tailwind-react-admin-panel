@@ -29,6 +29,7 @@ const UpdateLiterature = () => {
 
 
 
+
     // third party
     const [categoryData, setCategoryData] = useState([])
     const [subCategoryData, setSubCategoryData] = useState([])
@@ -133,6 +134,7 @@ const UpdateLiterature = () => {
         <>
             <DefaultLayout>
                 <Breadcrumb pageName="Update Literature" />
+               
                 <div className='bg-white rounded p-10'>
                 <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8">
                     {/* category_id dropdown */}
