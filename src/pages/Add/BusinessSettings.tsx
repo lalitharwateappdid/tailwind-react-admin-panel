@@ -35,19 +35,19 @@ const BusinessSettings = () => {
     const [forceUpdate, setForceUpdate] = useState("")
     const [maintenanaceMode, setMaintenanceMode] = useState("")
     const [appInfo, setAppInfo] = useState("")
-    const [quoteTitle,setQuoteTitle] = useState("")
-    const [alternativeWebsite,SetalternativeWebsite] = useState("")
-    const [textContent,setTextContent] = useState("")
-    const [mywants,setMyWants] = useState("")
-    const [share,setShare] = useState("")
-    const [getImage,setImage] = useState("")
-    const [getDrawerImage,setDrawerImage] = useState("")
-    
+    const [quoteTitle, setQuoteTitle] = useState("")
+    // const [alternativeWebsite, SetalternativeWebsite] = useState("")
+    const [textContent, setTextContent] = useState("")
+    const [mywants, setMyWants] = useState("")
+    const [share, setShare] = useState("")
+    // const [getImage,setImage] = useState("")
+    const [getDrawerImage, setDrawerImage] = useState("")
+
 
     const handleImage = (e) => {
         setAboutImage(e.target.files[0]);
     }
-    
+
     const handleContact = (value) => {
         setContact(value)
     }
@@ -58,40 +58,41 @@ const BusinessSettings = () => {
 
 
     // handle forceupdate input
-    function handleForceUpdate(){
-        if(forceUpdate == "1"){
+    function handleForceUpdate() {
+        if (forceUpdate == "1") {
             setForceUpdate("0")
         }
-        else{
+        else {
             setForceUpdate("1")
         }
     }
 
-    function handleTerms(value){
+    function handleTerms(value) {
         setTerms(value)
     }
 
-    function handlePrivacy(value){
+    function handlePrivacy(value) {
         setPrivacyPolicy(value)
     }
 
-    function handleShare(value){
+    function handleShare(value) {
         setShare(value)
     }
 
-    function handleMaintenanceMode(){
-        if(maintenanaceMode == "1"){
+    function handleMaintenanceMode() {
+        if (maintenanaceMode == "1") {
             setMaintenanceMode("0")
         }
-        else{
+        else {
             setMaintenanceMode("1")
         }
     }
 
     // function to store books
     const createMedia = async () => {
-        console.log(share)
+
         try {
+
             const formData = new FormData();
             formData.append("about_title", aboutTitle)
             formData.append("about_description", aboutDescription);
@@ -104,13 +105,13 @@ const BusinessSettings = () => {
             formData.append("image", image);
             formData.append("app_link", app)
             formData.append("app_info", appInfo)
-            formData.append("force_update",forceUpdate)
-            formData.append("maintenance_mode",maintenanaceMode)
-            formData.append("my_wants",mywants)
-            formData.append("quote_title",quoteTitle)
-            formData.append("text_content",textContent)
-            formData.append("share",share)
-            formData.append("drawer_image",getDrawerImage)
+            formData.append("force_update", forceUpdate)
+            formData.append("maintenance_mode", maintenanaceMode)
+            formData.append("my_wants", mywants)
+            formData.append("quote_title", quoteTitle)
+            formData.append("text_content", textContent)
+            formData.append("share", share)
+            formData.append("drawer_image", getDrawerImage)
 
             setSubmit("Submitting...")
 
@@ -143,7 +144,7 @@ const BusinessSettings = () => {
             try {
                 const category_response = await fetch(`${apiLink}business-settings/get`);
                 const category_data = await category_response.json();
-                console.log(category_data)
+                // console.log(category_data)
 
                 // console.log(category_data.data); 
                 setAboutTitle(category_data.data['about_title'])
@@ -162,9 +163,9 @@ const BusinessSettings = () => {
                 setQuoteTitle(category_data.data['quote_title'])
                 setTextContent(category_data.data['text_content'])
                 setShare(category_data.data['share'])
-                setImage(category_data.data['about_image']);
+                setAboutImage(category_data.data['about_image']);
                 setDrawerImage(category_data.data['drawer_image']);
-            
+
 
                 // console.log(category_data.data["force_update"])
                 // setCategoryData(category_data.data);
@@ -206,7 +207,7 @@ const BusinessSettings = () => {
                             <label className="mb-3 block text-black dark:text-white">
                                 Force Update
                             </label>
-                            <InputSwitch className="p-invalid" onChange={handleForceUpdate} checked={forceUpdate == "1" ? true: false} />
+                            <InputSwitch className="p-invalid" onChange={handleForceUpdate} checked={forceUpdate == "1" ? true : false} />
 
                         </div>
 
@@ -220,7 +221,7 @@ const BusinessSettings = () => {
                     </div>
                     {/* android section ends */}
                     <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-8 mt-15">
-                    <div>
+                        <div>
                             <label className="mb-3 block text-black dark:text-white">
                                 Quote Title
                             </label>
@@ -232,13 +233,13 @@ const BusinessSettings = () => {
                                 className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                             />
                         </div>
-                   
 
-                    <div>
+
+                        <div>
                             <label className="mb-3 block text-black dark:text-white">
                                 Text Content
                             </label>
-                           
+
                             <textarea rows="1" value={textContent} onChange={(e) => setTextContent(e.target.value)} placeholder="Enter Text Content" class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"></textarea>
                         </div>
                     </div>
@@ -258,24 +259,24 @@ const BusinessSettings = () => {
                             />
                         </div>
                         <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-2">
-                        <div>
-                            <label className="mb-3 block text-black dark:text-white">
-                                Image
-                            </label>
-                            <input
-                                type="file"
-                                onChange={handleImage}
-                                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
-                            />
-                            {/* <img src={} alt="Brand" /> */}
-                        </div>
-                        <div>
-                        <ModalImage className="w-30  z-9999"
-                        small={`${apiImageLink}${getImage}`}
-                        large={`${apiImageLink}${getImage}`}
+                            <div>
+                                <label className="mb-3 block text-black dark:text-white">
+                                    Image
+                                </label>
+                                <input
+                                    type="file"
+                                    onChange={handleImage}
+                                    className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                />
+                                {/* <img src={} alt="Brand" /> */}
+                            </div>
+                            <div>
+                                <ModalImage className="w-30  z-9999"
+                                    small={`${apiImageLink}${image}`}
+                                    large={`${apiImageLink}${image}`}
 
-                    />
-                        </div>
+                                />
+                            </div>
                         </div>
                     </div>
 
@@ -287,7 +288,7 @@ const BusinessSettings = () => {
 
 
                             <ReactQuill
-                            className='h-[350px] rounded-lg mb-20' theme="snow"
+                                className='h-[350px] rounded-lg mb-20' theme="snow"
                                 value={aboutDescription}
                                 height='200px'
 
@@ -310,13 +311,13 @@ const BusinessSettings = () => {
                             {/* <img src={} alt="Brand" /> */}
                         </div>
                         <div>
-                        <ModalImage className="w-30  z-9999"
-                        small={`${apiImageLink}${getDrawerImage}`}
-                        large={`${apiImageLink}${getDrawerImage}`}
+                            <ModalImage className="w-30  z-9999"
+                                small={`${apiImageLink}${getDrawerImage}`}
+                                large={`${apiImageLink}${getDrawerImage}`}
 
-                    />
+                            />
                         </div>
-                        </div>
+                    </div>
 
                     {/* about app section ends */}
 
@@ -346,8 +347,8 @@ const BusinessSettings = () => {
                     <div className="grid lg:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
 
-                        <ReactQuill className='h-[350px] rounded-lg mb-20' theme="snow"
-                        height='200px' value={appInfo} onChange={(value, viewUpdate) => setAppInfo(value)} />
+                            <ReactQuill className='h-[350px] rounded-lg mb-20' theme="snow"
+                                height='200px' value={appInfo} onChange={(value, viewUpdate) => setAppInfo(value)} />
                         </div>
 
 
@@ -422,14 +423,14 @@ const BusinessSettings = () => {
                     <h3 className="dark:text-white font-bold underline text-center my-5">Share Content</h3>
                     {/* <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={share} onChange={handleShare} /> */}
                     <MarkdownEditor
-                                value={share}
-                                height='200px'
+                        value={share}
+                        height='200px'
 
-                                onChange={handleShare}
-                            />
+                        onChange={handleShare}
+                    />
 
 
-                <div className="w-50 mx-auto mt-5">
+                    <div className="w-50 mx-auto mt-5">
                         <button onClick={() => createMedia()}
                             className="flex justify-center font-bold rounded-lg bg-primary text-white text-center w-50  py-3"
                         >{submit}</button>
