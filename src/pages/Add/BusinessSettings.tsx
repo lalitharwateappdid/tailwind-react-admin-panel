@@ -310,8 +310,8 @@ const BusinessSettings = () => {
                         </div>
                         <div>
                         <ModalImage className="w-30  z-9999"
-                        small={`${apiImageLink}${getImage}`}
-                        large={`${apiImageLink}${getImage}`}
+                        small={`${apiImageLink}${getDrawerImage}`}
+                        large={`${apiImageLink}${getDrawerImage}`}
 
                     />
                         </div>
