@@ -286,7 +286,8 @@ const BusinessSettings = () => {
                             </label>
 
 
-                            <MarkdownEditor
+                            <ReactQuill
+                            className='h-[350px] rounded-lg mb-20' theme="snow"
                                 value={aboutDescription}
                                 height='200px'
 
@@ -345,7 +346,7 @@ const BusinessSettings = () => {
                     <div className="grid lg:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
 
-                        <MarkdownEditor
+                        <ReactQuill className='h-[350px] rounded-lg mb-20' theme="snow"
                         height='200px' value={appInfo} onChange={(value, viewUpdate) => setAppInfo(value)} />
                         </div>
 
