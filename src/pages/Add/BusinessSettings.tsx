@@ -41,6 +41,7 @@ const BusinessSettings = () => {
     const [mywants,setMyWants] = useState("")
     const [share,setShare] = useState("")
     const [getImage,setImage] = useState("")
+    const [getDrawerImage,setDrawerImage] = useState("")
     
 
     const handleImage = (e) => {
@@ -49,6 +50,10 @@ const BusinessSettings = () => {
     
     const handleContact = (value) => {
         setContact(value)
+    }
+
+    const handleDrawerImage = (e) => {
+        setDrawerImage(e.target.files[0])
     }
 
 
@@ -105,6 +110,7 @@ const BusinessSettings = () => {
             formData.append("quote_title",quoteTitle)
             formData.append("text_content",textContent)
             formData.append("share",share)
+            formData.append("drawer_image",getDrawerImage)
 
             setSubmit("Submitting...")
 
@@ -157,6 +163,8 @@ const BusinessSettings = () => {
                 setTextContent(category_data.data['text_content'])
                 setShare(category_data.data['share'])
                 setImage(category_data.data['about_image']);
+                setDrawerImage(category_data.data['drawer_image']);
+            
 
                 // console.log(category_data.data["force_update"])
                 // setCategoryData(category_data.data);
@@ -286,6 +294,28 @@ const BusinessSettings = () => {
                             />
                         </div>
                     </div>
+
+                    <h3 className="dark:text-white font-bold underline text-center my-5">Drawer Image</h3>
+                    <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-2">
+                        <div>
+                            <label className="mb-3 block text-black dark:text-white">
+                                Drawer Image
+                            </label>
+                            <input
+                                type="file"
+                                onChange={handleDrawerImage}
+                                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                            />
+                            {/* <img src={} alt="Brand" /> */}
+                        </div>
+                        <div>
+                        <ModalImage className="w-30  z-9999"
+                        small={`${apiImageLink}${getImage}`}
+                        large={`${apiImageLink}${getImage}`}
+
+                    />
+                        </div>
+                        </div>
 
                     {/* about app section ends */}
 
