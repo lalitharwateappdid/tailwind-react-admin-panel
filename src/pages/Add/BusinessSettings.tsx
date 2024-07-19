@@ -410,8 +410,8 @@ const BusinessSettings = () => {
                     {/* privacy policy section ends */}
 
                     {/* terms and condition section starts */}
-                    <h3 className="dark:text-white font-bold underline text-center my-5">Terms & Conditions</h3>
-                    <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={terms} onChange={handleTerms} />
+                    {/* <h3 className="dark:text-white font-bold underline text-center my-5">Terms & Conditions</h3>
+                    <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={terms} onChange={handleTerms} /> */}
                     {/* terms and condition section ends */}
 
                     {/* contact us section starts */}
@@ -421,12 +421,12 @@ const BusinessSettings = () => {
 
                     <h3 className="dark:text-white font-bold underline text-center my-5">Share Content</h3>
                     {/* <ReactQuill className='h-[150px] rounded-lg mb-20' theme="snow" value={share} onChange={handleShare} /> */}
-                    <MarkdownEditor
+                    <textarea rows="6" 
                                 value={share}
-                                height='200px'
-
-                                onChange={handleShare}
-                            />
+                            
+                                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                                onChange={(e) => setShare(e.target.value)}
+                            ></textarea>
 
 
                 <div className="w-50 mx-auto mt-5">
