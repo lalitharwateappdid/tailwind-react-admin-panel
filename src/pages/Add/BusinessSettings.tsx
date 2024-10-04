@@ -42,6 +42,7 @@ const BusinessSettings = () => {
     const [share, setShare] = useState("")
     // const [getImage,setImage] = useState("")
     const [getDrawerImage, setDrawerImage] = useState("")
+    const [getAndroidProduction,setAndroidProduction] = useState("")
 
 
     const handleImage = (e) => {
@@ -64,6 +65,15 @@ const BusinessSettings = () => {
         }
         else {
             setForceUpdate("1")
+        }
+    }
+
+    function handleAndroidProduction(){
+        if(getAndroidProduction == "1"){
+            setAndroidProduction("0")
+        }
+        else{
+            setAndroidProduction("1")
         }
     }
 
@@ -112,6 +122,7 @@ const BusinessSettings = () => {
             formData.append("text_content", textContent)
             formData.append("share", share)
             formData.append("drawer_image", getDrawerImage)
+            formData.append("android_production",getAndroidProduction)
 
             setSubmit("Submitting...")
 
@@ -165,6 +176,7 @@ const BusinessSettings = () => {
                 setShare(category_data.data['share'])
                 setAboutImage(category_data.data['about_image']);
                 setDrawerImage(category_data.data['drawer_image']);
+                setAndroidProduction(category_data.data['android_production']);
 
 
                 // console.log(category_data.data["force_update"])
@@ -189,7 +201,7 @@ const BusinessSettings = () => {
 
 
                     {/* android section starts */}
-                    <div className="grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <label className="mb-3 block text-black dark:text-white">
                                 Android Version
@@ -216,6 +228,13 @@ const BusinessSettings = () => {
                                 Maintenance Mode
                             </label>
                             <InputSwitch className="p-invalid" onChange={handleMaintenanceMode} checked={maintenanaceMode == "1" ? true : false} />
+
+                        </div>
+                        <div>
+                            <label className="mb-3 block text-black dark:text-white">
+                                Android Production
+                            </label>
+                            <InputSwitch className="p-invalid" onChange={handleAndroidProduction} checked={getAndroidProduction == "1" ? true : false} />
 
                         </div>
                     </div>
