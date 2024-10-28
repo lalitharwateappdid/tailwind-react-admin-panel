@@ -6,9 +6,12 @@ import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { apiLink } from '../../api_link';
+import ModalImage from "react-modal-image";
 
 const AddLiterature = () => {
     const [categoryId,setCategoryId] = useState("")
+
+    const [image,setImage] = useState("")
 
     const [category, setCategory] = useState('');
     const [subCategory, setSubCategory] = useState('');
@@ -50,6 +53,10 @@ const AddLiterature = () => {
     // Function to handle audio file input
     const handleAudio = (e) => {
         setAudioFilePath(e.target.files[0]);
+    };
+
+    const handleImage = (e) => {
+        setImage(e.target.files[0]);
     };
 
     // Function to handle rich text editor content change
@@ -195,6 +202,7 @@ const create = async () => {
         formData.append("author_name_marathi", authorNameMarathi);
         formData.append("author_name_english", authorNameEnglish);
         formData.append("literature_content", literatureContent);
+        formData.append("literatureImage",image)
         formData.append("category_id",  category); // Use the deepest selected category
         formData.append("sr_no", sr_no);
 
@@ -360,6 +368,18 @@ return (
                             type="file"
                             placeholder="Enter Audio File Path"
                             onChange={handleAudio}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
+                           Image
+                        </label>
+                        <input
+                            type="file"
+                            placeholder="Upload Image"
+                            onChange={handleImage}
                             className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         />
                     </div>

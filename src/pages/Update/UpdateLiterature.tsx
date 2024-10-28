@@ -8,6 +8,8 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import ModalImage from "react-modal-image";
+import { apiImageLink } from "../../api_link";
 
 const UpdateLiterature = () => {
 
@@ -25,6 +27,7 @@ const UpdateLiterature = () => {
     const [saintNameMarathi, setSaintNameMarathi] = useState("")
     const [literatureContent, setLiteratureContent] = useState("")
     const [audioFilePath, setAudioFilePath] = useState("")
+    const [image,setImage] = useState("")
     const [srno, setSrno] = useState("")
 
 
@@ -60,6 +63,7 @@ const UpdateLiterature = () => {
             setSaintNameMarathi(data.saint_name_marathi)
             setLiteratureContent(data.literature_content)
             setAudioFilePath(data.audio_file_path)
+            setImage(data.image_file_path)
             setSrno(data.sr_number)
 
         }
@@ -88,9 +92,13 @@ const UpdateLiterature = () => {
         setAudioFilePath(e.target.files[0])
     }
 
+    const handleImage = (e) => {
+        setImage(e.target.files[0])
+    }
+
     const handleUpdate = async () => {
         try {
-            console.log(category)
+            console.log(category)   
             const formData = new FormData()
             formData.append("category_id", category)
             formData.append("sub_category_id", subCategory),
@@ -106,6 +114,7 @@ const UpdateLiterature = () => {
             formData.append("literatureAudio", audioFilePath)
             formData.append("literature_pdf", "asdf")
             formData.append("sr_no", srno)
+            formData.append("literatureImage",image)
             formData.append("id",id)
             setUpdate("Updating...")
             const response = await axios.put(`${apiLink}literature/update`, formData, {
@@ -344,6 +353,27 @@ const UpdateLiterature = () => {
                             className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                         />
                     </div>
+
+                    <div>
+                        <label className="mb-2.5 block text-black dark:text-white">
+                            Image
+                        </label>
+                        <input
+                            type="file"
+                            placeholder="Upload Image"
+                            onChange={handleImage}
+                            className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                        />
+                        {
+                            image &&
+                            <ModalImage className="w-30 mt-10  z-9999"
+                                    small={`${image}`}
+                                    large={`${image}`}
+
+                                />
+                        }
+                    </div>
+                    
                     {/* audio_file_path */}
 
                     {/* literature content */}
