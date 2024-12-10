@@ -24,9 +24,10 @@ const AddCategory = () => {
     const [childCategory, setChildCategory] = useState("")
     const [category_id, setCategoryId] = useState("")
     const [parentCategory, setParentCategory] = useState("")
-
+    
     const [categoryImage, setCategoryImage] = useState([])
     const [categoryDropdown, setSubCategoryDropdown] = useState([])
+    const [childCategoryDropdown, setChildCategoryDropdown] = useState([])
 
     const [toggleForm,setToggleForm] = useState(false)
 
@@ -111,8 +112,9 @@ const AddCategory = () => {
     const fetchData = async () => {
         const response = await axios.get(`${apiLink}category/get-category`);
         const result = await response.data.data
-        // console.log(result)
-        setSubCategoryDropdown(result)
+        
+        setSubCategoryDropdown(result.filter((data) => data.masterCategory == "1"))
+        setChildCategoryDropdown(result.filter((data) => data.masterCategory == "0"))
     }
 
     const fetchCategoryImage = async () => {
@@ -128,7 +130,7 @@ const AddCategory = () => {
     useEffect(() => {
         fetchData()
         fetchCategoryImage()
-    }, [])
+    }, [childCategoryDropdown,categoryDropdown])
 
 
 
@@ -304,8 +306,8 @@ const AddCategory = () => {
 
                             <div className=" z-20 bg-transparent dark:bg-form-input">
                                 <select onChange={(e) => { setCategoryId(e.target.value) }} className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary">
-                                    {categoryDropdown && categoryDropdown.length > 0 ? (
-                                        categoryDropdown.map((category) => (
+                                    {childCategoryDropdown && childCategoryDropdown.length > 0 ? (
+                                        childCategoryDropdown.map((category) => (
                                             <option key={category.id} value={category.id} className="text-body dark:text-bodydark">
                                                 {category.title}
                                             </option>

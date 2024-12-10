@@ -29,6 +29,7 @@ const UpdateCategory = () => {
     const [parentCategory, setParentCategory] = useState("")
     const [categoryImage, setCategoryImage] = useState([])
     const [categoryDropdown, setSubCategoryDropdown] = useState([])
+    const [childCategoryDropdown, setChildCategoryDropdown] = useState([])
 
     const handleImage = (value) => {
         setImage(value)
@@ -111,8 +112,11 @@ const UpdateCategory = () => {
     const fetchData = async () => {
         const response = await axios.get(`${apiLink}category/get-category`);
         const result = await response.data.data
+
+
         // console.log(result)
-        setSubCategoryDropdown(result)
+        setSubCategoryDropdown(result.filter((data) => data.masterCategory == "1"))
+        setChildCategoryDropdown(result.filter((data) => data.masterCategory == "0"))
     }
     
     const getData = async() => {
@@ -354,8 +358,8 @@ const UpdateCategory = () => {
                         onChange={(e) => { setCategoryId(e.target.value) }}
                         className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                     >
-                        {categoryDropdown && categoryDropdown.length > 0 ? (
-                            categoryDropdown.map((category) => (
+                        {childCategoryDropdown && childCategoryDropdown.length > 0 ? (
+                            childCategoryDropdown.map((category) => (
                                 <option key={category.id} value={category.id} className="text-body dark:text-bodydark">
                                     {category.title}
                                 </option>

@@ -43,6 +43,9 @@ const BusinessSettings = () => {
     // const [getImage,setImage] = useState("")
     const [getDrawerImage, setDrawerImage] = useState("")
     const [getAndroidProduction,setAndroidProduction] = useState("")
+    const [eventNotification,setEventNotification] = useState()
+    const [quoteNotification,setQuoteNotification] = useState()
+    const [globalNotification,setGlobalNotification] = useState(true)
 
 
     const handleImage = (e) => {
@@ -98,6 +101,16 @@ const BusinessSettings = () => {
         }
     }
 
+    function handleEventNotification(value){
+        setEventNotification(value)
+    }
+
+    function handleQuoteNotification(value){
+        quoteNotification(value)
+    }
+
+
+
     // function to store books
     const createMedia = async () => {
 
@@ -123,8 +136,13 @@ const BusinessSettings = () => {
             formData.append("share", share)
             formData.append("drawer_image", getDrawerImage)
             formData.append("android_production",getAndroidProduction)
+            formData.append("event_notification_timing",eventNotification)
+            formData.append("quote_notification_timing",quoteNotification)
+            formData.append("global_notification",globalNotification)
 
             setSubmit("Submitting...")
+
+            
 
             const response = await axios.post(`${apiLink}business-settings/create`, formData, {
                 headers: {
@@ -177,6 +195,9 @@ const BusinessSettings = () => {
                 setAboutImage(category_data.data['about_image']);
                 setDrawerImage(category_data.data['drawer_image']);
                 setAndroidProduction(category_data.data['android_production']);
+                setEventNotification(category_data.data['event_notification_timing']);
+                setQuoteNotification(category_data.data['quote_notification_timing']);
+                
 
 
                 // console.log(category_data.data["force_update"])
@@ -198,9 +219,43 @@ const BusinessSettings = () => {
             <DefaultLayout>
                 <Breadcrumb pageName="Business Settings" />
                 <div className="shadow-xl py-10 px-5 bg-[#fff] rounded-lg dark:bg-transparent">
+                <h3 className="dark:text-white font-bold underline text-center my-5 ">Notification Timing</h3>
+                <div className="grid lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 gap-8 mb-15">
+                        <div>
+                            <label className="mb-3 block text-black dark:text-white">
+                               Event Notification Timing
+                            </label>
+                            <input
+                                type="time"
+                                value={eventNotification}
+                                onChange={(e) => setEventNotification(e.target.value)}
+                                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                            />
+                        </div>
+                        <div>
+                            <label className="mb-3 block text-black dark:text-white">
+                               Quote Notification Timing
+                            </label>
+                            <input
+                                type="time"
+                                value={quoteNotification}
+                                onChange={(e) => setQuoteNotification(e.target.value)}
+                                className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                            />
+                        </div>
 
+                        <div>
+                            <label className="mb-3 block text-black dark:text-white">
+                                Global Notification
+                            </label>
+                            <InputSwitch className="p-invalid" onChange={() => setGlobalNotification(prev => !prev)} checked={globalNotification == true ? true : false} />
+
+                        </div>
+                </div>
+                
 
                     {/* android section starts */}
+                    <h3 className="dark:text-white font-bold underline text-center my-5 ">Android Settings</h3>
                     <div className="grid lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <label className="mb-3 block text-black dark:text-white">
