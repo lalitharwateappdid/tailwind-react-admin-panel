@@ -197,6 +197,7 @@ const BusinessSettings = () => {
                 setAndroidProduction(category_data.data['android_production']);
                 setEventNotification(category_data.data['event_notification_timing']);
                 setQuoteNotification(category_data.data['quote_notification_timing']);
+                setGlobalNotification(category_data.data['global_notification']);
                 
 
 
@@ -219,7 +220,7 @@ const BusinessSettings = () => {
             <DefaultLayout>
                 <Breadcrumb pageName="Business Settings" />
                 <div className="shadow-xl py-10 px-5 bg-[#fff] rounded-lg dark:bg-transparent">
-                <h3 className="dark:text-white font-bold underline text-center my-5 ">Notification Timing</h3>
+                <h3 className="dark:text-white font-bold underline text-center my-5 ">Notification Settings</h3>
                 <div className="grid lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 gap-8 mb-15">
                         <div>
                             <label className="mb-3 block text-black dark:text-white">
@@ -248,7 +249,7 @@ const BusinessSettings = () => {
                             <label className="mb-3 block text-black dark:text-white">
                                 Global Notification
                             </label>
-                            <InputSwitch className="p-invalid" onChange={() => setGlobalNotification(prev => !prev)} checked={globalNotification == true ? true : false} />
+                            <InputSwitch className="p-invalid" onClick={() => setGlobalNotification((prev) => !prev)} checked={globalNotification == true ? true : false} />
 
                         </div>
                 </div>

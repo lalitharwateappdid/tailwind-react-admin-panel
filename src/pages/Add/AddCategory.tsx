@@ -130,7 +130,7 @@ const AddCategory = () => {
     useEffect(() => {
         fetchData()
         fetchCategoryImage()
-    }, [childCategoryDropdown,categoryDropdown])
+    }, [])
 
 
 

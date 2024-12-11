@@ -50,6 +50,7 @@ import AddEbook from './pages/Add/AddEbook';
 import UpdateEvent from './pages/Update/UpdateEvent';
 import UpdateEbook from './pages/Update/UpdateEbook';
 import UpdateMasterImage from './pages/Update/UpdateMasterImage';
+import UnMapCategory from './pages/Home/UnmapCategory';
 
 // toast configuration method
 
@@ -138,8 +139,10 @@ function App() {
           path="/settings"
           element={
             <>
+             <PrivateRoute>
               <PageTitle title="SadhanaAnand" />
               <Settings />
+              </PrivateRoute>
             </>
           }
         />
@@ -237,6 +240,9 @@ function App() {
         } />
         <Route path='/add-category' element={<AddCategory />} />
         <Route path='/edit-category/:id' element={<UpdateCategory />} />
+
+        {/* unmap category route */}
+        <Route path='/unmap-category' element={<UnMapCategory />} />
 
 
 
