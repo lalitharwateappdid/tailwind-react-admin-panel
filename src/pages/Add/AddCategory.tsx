@@ -269,7 +269,7 @@ const AddCategory = () => {
                     }}
                     className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                   >
-                    {parentCategory == '' ? (
+                    { (
                       <>
                         <option
                           value=""
@@ -277,23 +277,6 @@ const AddCategory = () => {
                         >
                           Select Parent Category
                         </option>
-                        {categoryDropdown && categoryDropdown.length > 0 ? (
-                          categoryDropdown.map((category) => (
-                            <option
-                              key={category.id}
-                              value={category.id}
-                              className="text-body dark:text-bodydark"
-                            >
-                              {category.title}
-                            </option>
-                          ))
-                        ) : (
-                          <option disabled>No categories available</option>
-                        )}
-                      </>
-                    ) : (
-                      <>
-                        
                         {categoryDropdown && categoryDropdown.length > 0 ? (
                           categoryDropdown.map((category) => (
                             <option
@@ -345,7 +328,7 @@ const AddCategory = () => {
                     }}
                     className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                   >
-                      {category_id == '' ? (
+                      {(
                       <>
                         <option
                           value=""
@@ -353,23 +336,6 @@ const AddCategory = () => {
                         >
                           Select Child Category
                         </option>
-                        {childCategoryDropdown && childCategoryDropdown.length > 0 ? (
-                          childCategoryDropdown.map((category) => (
-                            <option
-                              key={category.id}
-                              value={category.id}
-                              className="text-body dark:text-bodydark"
-                            >
-                              {category.title}
-                            </option>
-                          ))
-                        ) : (
-                          <option disabled>No categories available</option>
-                        )}
-                      </>
-                    ) : (
-                      <>
-                        
                         {childCategoryDropdown && childCategoryDropdown.length > 0 ? (
                           childCategoryDropdown.map((category) => (
                             <option

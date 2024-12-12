@@ -10,6 +10,10 @@ import Notify from "../toast_notify/Notify";
 import ModalImage from "react-modal-image";
 import { apiImageLink } from "../../api_link";
 
+// react lazy loading image
+
+
+
 
 
 function HomeContentTable() {
@@ -106,6 +110,7 @@ function HomeContentTable() {
                 {/* <Column field="description" header="Description" headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} /> */}
                 <Column headerClassName={"dark:text-[#fff]  dark:border-[#fff]  dark:bg-[#243141]"} bodyClassName={"dark:text-[#fff] dark:border-[#ffffff13]  dark:bg-[#243141]"} field="image" header="Image" body={(item, key) => (
                     <>
+                   
                         <ModalImage className="w-10  z-9999"
                             small={`${item.image_path}`}
                             large={`${item.image_path}`}
