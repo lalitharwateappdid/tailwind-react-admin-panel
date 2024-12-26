@@ -45,7 +45,7 @@ const BusinessSettings = () => {
     const [getAndroidProduction,setAndroidProduction] = useState("")
     const [eventNotification,setEventNotification] = useState()
     const [quoteNotification,setQuoteNotification] = useState()
-    const [globalNotification,setGlobalNotification] = useState(true)
+    const [globalNotification,setGlobalNotification] = useState(1)
 
 
     const handleImage = (e) => {
@@ -107,6 +107,15 @@ const BusinessSettings = () => {
 
     function handleQuoteNotification(value){
         quoteNotification(value)
+    }
+
+    function handleGlobalNotification(){
+        if(globalNotification == "1"){
+            setGlobalNotification("0")
+        }
+        else{
+            setGlobalNotification("1")
+        }
     }
 
 
@@ -249,7 +258,7 @@ const BusinessSettings = () => {
                             <label className="mb-3 block text-black dark:text-white">
                                 Global Notification
                             </label>
-                            <InputSwitch className="p-invalid" onClick={() => setGlobalNotification((prev) => !prev)} checked={globalNotification == true ? true : false} />
+                            <InputSwitch className="p-invalid" onClick={handleGlobalNotification} checked={globalNotification == "1" ? true : false} />
 
                         </div>
                 </div>
