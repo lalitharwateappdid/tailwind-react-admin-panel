@@ -21,7 +21,7 @@ const UpdateCategory = () => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("")
     const [submit, setSubmit] = useState("Submit")
-    const [child, setChild] = useState(false)
+    const [child, setChild] = useState("0");
     const [category, setCategory] = useState("")
     const [image, setImage] = useState("")
     const [childCategory, setChildCategory] = useState("")
@@ -41,7 +41,7 @@ const UpdateCategory = () => {
         try {
 
 
-            if (child == false) {
+            if (child == "0") {
                 setSubmit("Submitting...")
                 const response = await axios.post(`${apiLink}category/create-parent-category`, {
                     name: name,
@@ -122,11 +122,12 @@ const UpdateCategory = () => {
     const getData = async() => {
         const response = await axios.get(`${apiLink}category/edit/${id}`)
 
-        const result = response.data.data;
-        // console.log(result)
+        const result = await response.data.data;
+        console.log(result)
         setDescription(result.description)
         setName(result.title)
         setChild(result.masterCategory)
+        console.log(child)
         // setCategoryImage(result.cover_image)
         
     }
@@ -144,7 +145,8 @@ const UpdateCategory = () => {
                 id:id,
                 title:name,
                 description:description,
-                image:image.cover_image
+                image:image.cover_image,
+                masterCategory: child
             })
             Notify(response.data.message);
 
@@ -161,6 +163,14 @@ const UpdateCategory = () => {
         }
     }
 
+    const handleSwitchChange = () => {
+        if(child == "1"){
+            setChild("0")
+        }
+        else{
+            setChild("1")
+        }
+      };
    
 
 
@@ -287,11 +297,13 @@ const UpdateCategory = () => {
             </div>
 
             <div className="flex items-center gap-x-1 ">
-                <InputSwitch
-                    className="p-invalid"
-                    checked={child == 1 ? false : true} // Assuming 'child' is boolean, this can be simplified to '!child'
-                    onChange={(e) => setChild(e.target.checked)}
-                /> 
+            <InputSwitch
+        className="p-invalid"
+        checked={child === "1" ? false : true}
+        onChange={handleSwitchChange} 
+      />
+    
+
                 <span>Is This Child Category?</span>
             </div>
         </div>
